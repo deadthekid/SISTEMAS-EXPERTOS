@@ -73,6 +73,10 @@
 .buscador::placeholder{
     color: #184E5D;
 }
+.buscador:focus-visible{
+    border: none;
+    outline: none;
+}
 
 .logo-search{
     width: 30px;
@@ -133,7 +137,7 @@ a:link ,a:visited ,a:active{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 25px;
-    column-gap: 50px;
+    column-gap: 80px;
     grid-template-rows: repeat(2,1fr);
     margin-left: 150px;
     margin-right: 150px;
@@ -145,7 +149,7 @@ a:link ,a:visited ,a:active{
 .tarjeta{
     background-color: #EFEFEF;
     box-sizing: border-box;
-    overflow: auto;
+    overflow: hidden;
     background-image: url("/assets/fondo-targetas.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -153,22 +157,52 @@ a:link ,a:visited ,a:active{
     background-position-x: 1px;
 }
 
-.tarjeta2{
-    background-color: #EFEFEF;
-    box-sizing: border-box;
-    overflow: auto;
-    color: white;
-    background-image: url("/assets/fondo-targetas.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-position-x: 1px;
+.tarjeta:hover{
+    cursor: pointer;
 }
+
 
 .img-tarjeta{
     background-color: red;
-    width: 100px;
+    max-width: 100px;
     height: 100px;
-    margin: 10% 25%;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 20px;
+}
+
+.imagen{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.contenedor-informacion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 49%;
+    margin-top: 10%;
+}
+
+.informacion-producto{
+    background-color: #184E5D;
+    width: 100%;
+    height: 100px;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ECFBFF;
+
+}
+
+.pie-pagina{
+    background-color: #184E5D;
+    height: 3%;
 }
