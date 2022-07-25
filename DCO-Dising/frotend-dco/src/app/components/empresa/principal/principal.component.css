@@ -84,3 +84,10 @@
 .elementoNav{
     width: 10%;
 }
+.logoEmpresa{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 2%;
+}
