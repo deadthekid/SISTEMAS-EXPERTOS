@@ -11,6 +11,7 @@ import { CreacionUsuarioComponent } from './components/Usuarios/creacion-usuario
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IniciarUsuarioComponent } from './components/Usuarios/iniciar-usuario/iniciar-usuario.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     PrincipalUsuariosComponent,
     VerProductoComponent,
-    CreacionUsuarioComponent
+    CreacionUsuarioComponent,
+    IniciarUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -4,33 +4,29 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-creacion-usuario',
-  templateUrl: './creacion-usuario.component.html',
-  styleUrls: ['./creacion-usuario.component.css']
+  selector: 'app-iniciar-usuario',
+  templateUrl: './iniciar-usuario.component.html',
+  styleUrls: ['./iniciar-usuario.component.css']
 })
-export class CreacionUsuarioComponent implements OnInit {
+export class IniciarUsuarioComponent implements OnInit {
+
   usuarioForm:FormGroup;
 
   constructor(private fb: FormBuilder,
               private router:Router,
               private toastr: ToastrService) {
     this.usuarioForm = this.fb.group({
-      nombre:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       contraseña:['',Validators.required],
-      tipoUsuario:['',Validators.required],
-      terminos:['',Validators.required]
-
     })
    }
-    
+
   ngOnInit(): void {
   }
 
   agregarUsuario(){
     console.log(this.usuarioForm);
-    this.toastr.success('El usuario fue registrado con exito', 'Usuario Registrado');
+    this.toastr.success('Inicio de sesión exitoso', 'Inicio de Sesión');
     this.router.navigate(['/usuarios'])
   }
-
 }
