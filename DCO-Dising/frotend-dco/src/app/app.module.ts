@@ -12,6 +12,7 @@ import { CreacionUsuarioComponent } from './components/Usuarios/creacion-usuario
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IniciarUsuarioComponent } from './components/Usuarios/iniciar-usuario/iniciar-usuario.component';
+import { PrincipalUsuariosAutenticadoComponent } from './components/Usuarios/principal-usuarios-autenticado/principal-usuarios-autenticado.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { IniciarUsuarioComponent } from './components/Usuarios/iniciar-usuario/i
     PrincipalUsuariosComponent,
     VerProductoComponent,
     CreacionUsuarioComponent,
-    IniciarUsuarioComponent
+    IniciarUsuarioComponent,
+    PrincipalUsuariosAutenticadoComponent
   ],
   imports: [
     BrowserModule,
