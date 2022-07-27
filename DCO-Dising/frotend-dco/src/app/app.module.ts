@@ -11,6 +11,13 @@ import { AdminUsuariosComponent } from './components/administracion/admin-usuari
 import { AdminPlanesComponent } from './components/administracion/admin-planes/admin-planes.component';
 import { AdminTemasComponent } from './components/administracion/admin-temas/admin-temas.component';
 import { AdminNavbarComponent } from './components/administracion/admin-navbar/admin-navbar.component';
+import { AdminDetallesUsuarioComponent } from './components/administracion/admin-detalles-usuario/admin-detalles-usuario.component';
+import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
+import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
+import { AdminDetallesTemaComponent } from './components/administracion/admin-detalles-tema/admin-detalles-tema.component';
+import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nuevo-usuario/admin-nuevo-usuario.component';
+import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
+import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
 
 
 @NgModule({
@@ -22,7 +29,14 @@ import { AdminNavbarComponent } from './components/administracion/admin-navbar/a
     AdminUsuariosComponent,
     AdminPlanesComponent,
     AdminTemasComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    AdminDetallesUsuarioComponent,
+    AdminDetallesEmpresaComponent,
+    AdminDetallesPlanComponent,
+    AdminDetallesTemaComponent,
+    AdminNuevoUsuarioComponent,
+    AdminNuevoPlanComponent,
+    AdminNuevoTemaComponent
   ],
   imports: [
     BrowserModule,
