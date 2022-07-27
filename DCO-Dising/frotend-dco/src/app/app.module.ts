@@ -10,6 +10,7 @@ import { AdminEmpresasComponent } from './components/administracion/admin-empres
 import { AdminUsuariosComponent } from './components/administracion/admin-usuarios/admin-usuarios.component';
 import { AdminPlanesComponent } from './components/administracion/admin-planes/admin-planes.component';
 import { AdminTemasComponent } from './components/administracion/admin-temas/admin-temas.component';
+import { AdminNavbarComponent } from './components/administracion/admin-navbar/admin-navbar.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AdminTemasComponent } from './components/administracion/admin-temas/adm
     AdminEmpresasComponent,
     AdminUsuariosComponent,
     AdminPlanesComponent,
-    AdminTemasComponent
+    AdminTemasComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
