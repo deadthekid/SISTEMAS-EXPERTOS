@@ -7,11 +7,14 @@ import { LoginComponent } from './components/empresa/login/login.component';
 import { RegistroComponent } from './components/empresa/registro/registro.component';
 import { PrincipalComponent } from './components/empresa/principal/principal.component';
 import { MultimediaComponent } from './components/empresa/multimedia/multimedia.component';
-import { GaleriaComponent } from './components/empresa/galeria/galeria.component';
-import { GaleriaDetallesComponent } from './components/empresa/galeria-detalles/galeria-detalles.component';
 import { RegistrarComponent } from './components/empresa/registrar/registrar.component';
 import { ActualizarInfoComponent } from './components/empresa/actualizar-info/actualizar-info.component';
 import { HistorialComponent } from './components/empresa/historial/historial.component';
+import { DetallesArchivosComponent } from './components/empresa/detalles-archivos/detalles-archivos.component';
+import { ImagenesComponent } from './components/empresa/imagenes/imagenes.component';
+import { VideosComponent } from './components/empresa/videos/videos.component';
+import { OtrosArchivosComponent } from './components/empresa/otros-archivos/otros-archivos.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,15 +23,18 @@ import { HistorialComponent } from './components/empresa/historial/historial.com
     RegistroComponent,
     PrincipalComponent,
     MultimediaComponent,
-    GaleriaComponent,
-    GaleriaDetallesComponent,
     RegistrarComponent,
     ActualizarInfoComponent,
-    HistorialComponent
+    HistorialComponent,
+    DetallesArchivosComponent,
+    ImagenesComponent,
+    VideosComponent,
+    OtrosArchivosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
