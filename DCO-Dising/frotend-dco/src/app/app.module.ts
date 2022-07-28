@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,16 @@ import { VideosComponent } from './components/empresa/videos/videos.component';
 import { OtrosArchivosComponent } from './components/empresa/otros-archivos/otros-archivos.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { PrincipalUsuariosComponent } from './components/Usuarios/principal-usuarios/principal-usuarios.component';
+import { VerProductoComponent } from './components/Usuarios/ver-producto/ver-producto.component';
+import { CreacionUsuarioComponent } from './components/Usuarios/creacion-usuario/creacion-usuario.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IniciarUsuarioComponent } from './components/Usuarios/iniciar-usuario/iniciar-usuario.component';
+import { PrincipalUsuariosAutenticadoComponent } from './components/Usuarios/principal-usuarios-autenticado/principal-usuarios-autenticado.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,11 +41,21 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ImagenesComponent,
     VideosComponent,
     OtrosArchivosComponent
+    PrincipalUsuariosComponent,
+    VerProductoComponent,
+    CreacionUsuarioComponent,
+    IniciarUsuarioComponent,
+    PrincipalUsuariosAutenticadoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxPaginationModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
