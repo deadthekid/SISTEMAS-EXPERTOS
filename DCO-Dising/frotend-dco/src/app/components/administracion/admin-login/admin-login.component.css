@@ -1,0 +1,59 @@
+.cabeza {
+    background-color: #184E5D;
+    flex: 1;
+}
+
+.pie {
+    background-color: #184E5D;
+    flex: 1;
+}
+
+.contenedor {
+    background-color: #ECFBFF;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido {
+    background-color: #ECFBFF;
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 150px;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.formLogin {
+    background-color: #FFFFFF;
+    box-shadow: -3px 3px 8px #184e5d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+}
+.titulo{
+    color: #184e5d;
+}
+.datosEntrada{
+    box-sizing: border-box;
+    width: fit-content;
+    text-align-last: center;
+}
+.entrada{
+    border-radius: 7px;
+}
+.btnLogin{
+    border-radius: 7px;
+    background-color: #184E5D;
+    color: white;
+    width: 100%;
+}

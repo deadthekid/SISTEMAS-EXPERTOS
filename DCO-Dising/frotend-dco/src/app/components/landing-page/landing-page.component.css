@@ -1,12 +1,3 @@
-.cabeza {
-    background-color: #184E5D;
-    text-align: center;
-}
-
-.pie {
-    background-color: #184E5D;
-    flex: 1;
-}
 
 .contenedor {
     background-color: rgba(216, 246, 255, .50);
@@ -25,10 +16,6 @@
     padding-bottom: 5rem;
     row-gap: 7px;
     flex-wrap: wrap;
-}
-
-.seccion {
-    flex: 5;
 }
 
 .row {
@@ -53,19 +40,4 @@
     height: 50%;
     width: 90%;
     text-align: -webkit-center;
-}
-
-
-.logo-img {
-    width: 120%;
-}
-
-.btnCerrarSesion {
-    background-color: rgba(216, 246, 255, .50);
-    border-radius: 10px;
-    width: 100%;
-}
-
-.elementoNav{
-    width: 10%;
 }

@@ -39,6 +39,7 @@ import { AdminDetallesUsuarioComponent } from './components/administracion/admin
 import { AdminDetallesTemaComponent } from './components/administracion/admin-detalles-tema/admin-detalles-tema.component';
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { AdminDetallesEmpresaComponent } from './components/administracion/admin
     AdminDetallesUsuarioComponent,
     AdminDetallesTemaComponent,
     AdminDetallesPlanComponent,
-    AdminDetallesEmpresaComponent
+    AdminDetallesEmpresaComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

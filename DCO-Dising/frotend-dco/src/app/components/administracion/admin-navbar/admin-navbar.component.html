@@ -1,1 +1,31 @@
-<p>admin-navbar works!</p>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/admin/home">
+            <img class="logo-img" src="../../../../assets/img/logo 2.png" alt="" width="100" height="100">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/usuarios">USUARIOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/empresas">EMPRESAS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/planes">PLANES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/temas">TEMAS</a>
+          </li>
+        </ul>
+      </div>
+      <div class="infoAdmin">
+        <div>Admin 1</div>
+        <div>ID 001</div>
+        <input class="btnCerrarSesion" type="button" value="Cerrar Sesión" routerLink="/admin/login">
+      </div>
+    </div>
+</nav>
