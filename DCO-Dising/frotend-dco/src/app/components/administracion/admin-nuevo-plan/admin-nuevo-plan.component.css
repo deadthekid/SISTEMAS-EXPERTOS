@@ -1,0 +1,34 @@
+.contenido {
+    height: 60vh;
+}
+
+.titulo {
+    height: 10vh;
+    padding-top: 3vh;
+    padding-left: 9vh;
+}
+
+.datosPlan {
+    padding-top: 8vh;
+    padding-left: 10vh;
+}
+
+.datoPlan {
+    border-radius: 10px;
+    width: 50vh;
+}
+
+.boton {
+    height: 10vh;
+}
+
+.btnNuevo {
+    width: 10%;
+    height: 60%;
+}
+
+
+.pie {
+    background-color: #184E5D;
+    flex: 1;
+}

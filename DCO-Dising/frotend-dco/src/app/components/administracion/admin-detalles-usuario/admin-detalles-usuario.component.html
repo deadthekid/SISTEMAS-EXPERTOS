@@ -1,0 +1,45 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container-fluid">
+    <div class="row titulo">
+        <h3>Detalles Usuario</h3>
+    </div>
+    <div class="row contenido">
+        <div class="col-7 datosUsuario">
+            <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <td scope="col"></td>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Nombre</td>
+                    <td>{{datosUsuario.nombre}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">ID</td>
+                    <td>{{datosUsuario.id}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Correo Electrónico</td>
+                    <td>{{datosUsuario.email}}</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Contraseña</td>
+                    <td>{{datosUsuario.pass}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-5 justify-content-center">
+            <div class="row justify-content-center">
+                <img class="fotoPerfil" src="../../../../assets/img/perfil-base.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="row boton justify-content-center">
+        <button class="btn btn-success btnNuevo">Editar</button>
+    </div>
+</div>
+<div class="pie"><br></div>
