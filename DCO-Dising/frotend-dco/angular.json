@@ -24,9 +24,14 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -101,6 +106,6 @@
     }
   },
   "cli": {
-    "analytics": "8803ce13-ed2c-4fd1-87a8-0f225213818e"
+    "analytics": "c691e7f4-b458-4444-8551-8ef183bd0314"
   }
 }

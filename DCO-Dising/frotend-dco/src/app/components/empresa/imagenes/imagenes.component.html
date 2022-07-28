@@ -1,0 +1,33 @@
+<div class="contenedor">
+    <div class="cabeza">
+        <nav class="navbar cabeza">
+            <div class="container">
+                <a class="navbar-brand" href="/empresa/principal">
+                    <img class="logo-img" src="../../../../assets/img/logo 2.png" alt="" width="100" height="100">
+                </a>
+                <div class="elementoNav"><a href="">Explorar</a></div>
+                <div class="elementoNav"><a href="/empresa/multimedia">Banco Multimedia</a></div>
+                <div class="elementoNav"><a href="/empresa/administrarPaginas">Páginas</a></div>
+                <div class="elementoNav"><a href="/empresa/productosYcategorias">Productos y Categorías</a></div>
+                <div class="elementoNav"><input class="btnCerrarSesion" type="button" value="Cerrar Sesión"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="contenido">
+        <div class="imagenes">
+            <div class="row" *ngFor="let i of imagenes | paginate: {itemsPerPage: 12, currentPage: page}">
+                <div class="card col-3" style="width: 18rem; padding: 5px;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre de la imagen </h5>
+                        <p class="card-text"> Fecha de la imagen </p>
+                        <a href="#" class="btn btn-primary">Detalles</a>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls style="text-align: center;" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+    <div class="pie"><br></div>
+</div>
