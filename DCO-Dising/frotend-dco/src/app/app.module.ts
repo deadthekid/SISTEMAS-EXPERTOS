@@ -18,6 +18,7 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nuevo-usuario/admin-nuevo-usuario.component';
 import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
 import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
