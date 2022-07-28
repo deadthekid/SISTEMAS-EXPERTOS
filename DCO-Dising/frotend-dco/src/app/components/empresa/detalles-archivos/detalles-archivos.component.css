@@ -1,0 +1,98 @@
+.cabeza {
+    background-color: #184E5D;
+    text-align: center;
+}
+
+.pie {
+    background-color: #184E5D;
+    flex: 1;
+}
+
+.contenedor {
+    background-color: rgba(216, 246, 255, .50);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido {
+    background-color: rgba(216, 246, 255, .50);
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    row-gap: 7px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 20%;
+    flex: 0.4;
+}
+
+.logo-img {
+    width: 120%;
+}
+
+.btnCerrarSesion {
+    background-color: rgba(216, 246, 255, .50);
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.elementoNav {
+    width: 10%;
+}
+
+.detalles {
+    display: grid;
+    width: 80%;
+    grid-template-areas:
+        "imagen imagen nombre"
+        "imagen imagen fecha"
+        ". shortcut ."
+        "actualizar . eliminar";
+
+    text-align: center;
+    place-items: center;
+
+}
+
+.imagen {
+    grid-area: imagen;
+}
+
+#imagen {}
+
+.nombre {
+    grid-area: nombre;
+}
+
+#nombre {}
+
+.fecha {
+    grid-area: fecha;
+}
+
+#fecha {}
+
+.shortcut {
+    grid-area: shortcut;
+}
+
+#shortcut {}
+
+.actualizar {
+    grid-area: actualizar;
+}
+
+#actualizar {}
+
+.eliminar {
+    grid-area: eliminar;
+}
+
+#eliminar {}
