@@ -1,1 +1,50 @@
-<p>admin-temas works!</p>
+<app-admin-navbar></app-admin-navbar>
+<div class="contenedor">
+    <div class="container mt-5 mb-5">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>Lista de Plantillas</span>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">4001</th>
+                            <td>Plantilla 1</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4002</th>
+                            <td>Plantilla 2</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4005</th>
+                            <td>Plantilla 5</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4006</th>
+                            <td>Plantilla 7</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">4007</th>
+                            <td>Plantilla 7</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <button class="btn btnTema" routerLink="/admin/nuevoTema">Nueva Plantilla</button>
+        </div>
+    </div>
+    <div class="pie"><br></div>
+</div>
