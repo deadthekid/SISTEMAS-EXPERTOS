@@ -40,7 +40,7 @@ import { PrincipalUsuariosAutenticadoComponent } from './components/Usuarios/pri
     DetallesArchivosComponent,
     ImagenesComponent,
     VideosComponent,
-    OtrosArchivosComponent
+    OtrosArchivosComponent,
     PrincipalUsuariosComponent,
     VerProductoComponent,
     CreacionUsuarioComponent,
@@ -50,7 +50,7 @@ import { PrincipalUsuariosAutenticadoComponent } from './components/Usuarios/pri
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
