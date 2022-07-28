@@ -11,7 +11,7 @@ export class AdminNuevoUsuarioComponent implements OnInit {
   formularioUsuario = new FormGroup({
     nombre: new FormControl(''),
     id: new FormControl(''),
-    contraseña: new FormControl(''),
+    pass: new FormControl(''),
     email: new FormControl('')
   });
 

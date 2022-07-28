@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-detalles-usuario',
@@ -7,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDetallesUsuarioComponent implements OnInit {
 
+  datosUsuario = {
+    'nombre': 'Usuario 1',
+    'id': 10011,
+    'email': 'usuario1q@gmail.com',
+    'pass': '**********'
+  };
   constructor() { }
 
   ngOnInit(): void {
