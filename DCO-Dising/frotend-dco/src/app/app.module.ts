@@ -26,6 +26,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IniciarUsuarioComponent } from './components/Usuarios/iniciar-usuario/iniciar-usuario.component';
 import { PrincipalUsuariosAutenticadoComponent } from './components/Usuarios/principal-usuarios-autenticado/principal-usuarios-autenticado.component';
 import { AdminLoginComponent } from './components/administracion/admin-login/admin-login.component';
+import { AdminUsuariosComponent } from './components/administracion/admin-usuarios/admin-usuarios.component';
+import { AdminTemasComponent } from './components/administracion/admin-temas/admin-temas.component';
+import { AdminPlanesComponent } from './components/administracion/admin-planes/admin-planes.component';
+import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nuevo-usuario/admin-nuevo-usuario.component';
+import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
+import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
+import { AdminNavbarComponent } from './components/administracion/admin-navbar/admin-navbar.component';
+import { AdminHomeComponent } from './components/administracion/admin-home/admin-home.component';
+import { AdminEmpresasComponent } from './components/administracion/admin-empresas/admin-empresas.component';
+import { AdminDetallesUsuarioComponent } from './components/administracion/admin-detalles-usuario/admin-detalles-usuario.component';
+import { AdminDetallesTemaComponent } from './components/administracion/admin-detalles-tema/admin-detalles-tema.component';
+import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
+import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 
 
 @NgModule({
@@ -47,7 +60,20 @@ import { AdminLoginComponent } from './components/administracion/admin-login/adm
     CreacionUsuarioComponent,
     IniciarUsuarioComponent,
     PrincipalUsuariosAutenticadoComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminUsuariosComponent,
+    AdminTemasComponent,
+    AdminPlanesComponent,
+    AdminNuevoUsuarioComponent,
+    AdminNuevoTemaComponent,
+    AdminNuevoPlanComponent,
+    AdminNavbarComponent,
+    AdminHomeComponent,
+    AdminEmpresasComponent,
+    AdminDetallesUsuarioComponent,
+    AdminDetallesTemaComponent,
+    AdminDetallesPlanComponent,
+    AdminDetallesEmpresaComponent
   ],
   imports: [
     BrowserModule,
