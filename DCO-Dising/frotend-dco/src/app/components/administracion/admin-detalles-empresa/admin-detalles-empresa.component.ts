@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-detalles-empresa.component.css']
 })
 export class AdminDetallesEmpresaComponent implements OnInit {
+  datosEmpresa = {
+    'nombre': 'Empresa 1',
+    'id': 20011,
+    'email': 'empresa1q@gmail.com',
+    'estado': 'Activo',
+    'direccion': 'Dirección 1'
+  };
 
   constructor() { }
 
