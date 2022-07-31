@@ -2,18 +2,25 @@
     <div class="cabeza"></div>
     <div class="nav"></div>
     <div class="contenido">
-        <form class="formLogin">
+        <form class="formLogin" [formGroup]="infoLogin">
             <div class="titulo"><h5>Iniciar Sesión</h5></div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="email" placeholder="correo electrónico">
+                <input class="entrada" type="email" placeholder="correo electrónico" formControlName="correo">
+                <div class="error" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">Error, el campo es
+                    obligatorio</div>
             </div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="password" placeholder="contraseña">
+                <input class="entrada" type="password" placeholder="contraseña" formControlName="contrasena">
+                <div class="error" *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)">Error, el
+                    campo es obligatorio</div>
             </div>
             <br>
-            <button class="btnLogin" type="submit">INGRESAR</button>
+            <div></div>
+            <button class="btnLogin" type="submit" (click)="login()">INGRESAR</button>
+            <br>
+            <a href="/empresa/registro">¿No tienes una cuenta? Registrate aca</a>
         </form>
         <img src="../../../../assets/img/logo1.png" alt="" class="logo">
     </div>

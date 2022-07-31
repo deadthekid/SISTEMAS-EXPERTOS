@@ -14,4 +14,10 @@ export class empresaService {
     agregar(empresa: Empresa): Observable<any> {
         return this.http.post(this.url + "/registro", empresa)
     }
+    buscar (correo: string): Observable<any> {
+        return this.http.get(this.url+"/registro/"+correo)
+    }
+    login(infoLogin: object): Observable<any>{
+        return this.http.post(this.url+"/login",infoLogin)
+    }
 }

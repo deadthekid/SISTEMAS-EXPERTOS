@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Empresa } from 'src/app/models/empresa.model';
 import { ToastrService } from 'ngx-toastr';
 import { empresaService } from 'src/app/services/empresa.service'; 
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -17,12 +17,11 @@ export class RegistroComponent implements OnInit {
     plan: new FormControl('', [Validators.required]),
     termino: new FormControl(false, [Validators.requiredTrue])
   })
-  
+  existe: boolean=false
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    private _empresaServicio: empresaService,
-    private aRouter: ActivatedRoute
+    private _empresaServicio: empresaService
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +48,19 @@ export class RegistroComponent implements OnInit {
       this.toastr.error('Algo salio mal en el registro')
     })
   }
-
+  buscar(){
+    this._empresaServicio.buscar(this.correo?.value!).subscribe(data=>{
+      if(data[0]){
+        this.toastr.error('Ese correo ya está en uso')
+        this.existe=true;
+      }else{
+        this.registrar()
+      }
+    },error=>{
+      console.log(error)
+      this.toastr.error('Algo salio mal en el registro')
+    })
+  }
 
 
   changeSelect() {
