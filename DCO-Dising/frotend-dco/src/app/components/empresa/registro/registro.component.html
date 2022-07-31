@@ -2,38 +2,49 @@
     <div class="cabeza"></div>
     <div class="nav"></div>
     <div class="contenido">
-        <form class="formLogin">
+        <form class="formLogin" [formGroup]="formulario">
             <div class="titulo">
                 <h5>Registro</h5>
             </div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="text" placeholder="Nombre de tu tienda">
+                <input class="entrada" type="text" placeholder="Nombre de tu tienda" formControlName="nombre">
+                <div class="error" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">Error, el campo es
+                    obligatorio</div>
             </div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="email" placeholder="correo electrónico">
+                <input class="entrada" type="email" placeholder="correo electrónico" formControlName="correo" required>
+                <div class="error" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">Error, el campo es
+                    obligatorio</div>
             </div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="password" placeholder="contraseña">
+                <input class="entrada" type="password" placeholder="contraseña" formControlName="contrasena">
+                <div class="error" *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)">Error, el
+                    campo es obligatorio</div>
             </div>
             <br>
             <div class="datosEntrada">
-                <select class="entrada" style="width: 190px;">
-                    <option selected>Seleccione su plan:</option>
+                <div>Seleccione su plan</div>
+                <select class="entrada" style="width: 190px;" formControlName="plan" (change)="changeSelect()">
+                    <option selected>...</option>
                     <option value="1">Caro</option>
                     <option value="2">Mediano</option>
                     <option value="3">Barato</option>
                 </select>
+                <div class="error" *ngIf="plan?.invalid && (plan?.dirty || plan?.touched)">Error, el campo es obligatorio</div>
             </div>
             <br>
             <div>
-                <a class="terminos-link"><input class="input-f" type="checkbox">
+                <a class="terminos-link"><input class="input-f" type="checkbox" formControlName="termino">
                     Acepta los Terminos y Condiciones</a>
+                <div class="error" *ngIf="termino?.invalid && (termino?.dirty || termino?.touched)">Error, el campo es
+                    obligatorio</div>
             </div>
             <br>
-            <button class="btnLogin" type="submit">REGISTRARSE</button>
+            <button [disabled]="!formulario.valid" class="btnLogin" type="button"
+                (click)="registrar()">REGISTRARSE</button>
         </form>
         <img src="../../../../assets/img/logo1.png" alt="" class="logo">
     </div>
