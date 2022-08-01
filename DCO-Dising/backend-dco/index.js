@@ -1,16 +1,16 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+const express = require('express');
+const conectarDB = require('./config/db');
 
-//Middleware
-app.use(express.static('public'));//Se usa para ejecutar funciones middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+//Creamos el servidor
+const app = express();
 
-app.post('/guardar',function(req,res){
-    res.send(`Guardar el Usuario ${req.body.nombre}`);
+//Conectamos a la DB
+conectarDB();
+
+app.use(express.json());
+
+app.use('/api/usuarios',require('./routes/usuario'));
+
+app.listen(4000,()=>{
+    console.log('El servidor esta corriendo perfectamente');
 })
-
-app.listen(8888,function(){
-    console.log('Se levanto el servidor');
-});
