@@ -40,7 +40,7 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -83,7 +83,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     NgxPaginationModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
 
 
   ],

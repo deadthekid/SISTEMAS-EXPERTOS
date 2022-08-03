@@ -53,3 +53,34 @@ exports.actualizarUsuario = async(req,res)=>{
     }
 }
 
+exports.obtenerUsuario = async(req,res)=>{
+    try{
+        let usuario = await Usuario.findById(req.params.id);
+
+        if(!usuario){
+            res.status(404).json({msg:'No existe el producto'})
+        }
+
+        res.json(usuario);
+
+    }catch(error){
+        console.log(error);
+        req.status(500).send('Hubo un error');
+    }
+}
+
+exports.eliminarUsuario = async(req,res)=>{
+    try{
+        let usuario = await Usuario.findById(req.params.id);
+
+        if(!usuario){
+            res.status(404).json({msg:'No existe el producto'})
+        }
+        await Usuario.findOneAndRemove({_id:req.params.id});
+        res.json({msg:'Usuario eliminado con exito'});
+
+    }catch(error){
+        console.log(error);
+        req.status(500).send('Hubo un error');
+    }
+}
