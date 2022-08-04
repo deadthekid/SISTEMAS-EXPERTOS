@@ -9,6 +9,12 @@ const empresa = mongoose.Schema({
         type: String,
         required: true
     },
+    descripcion: {
+        type: String,
+    },
+    logo: {
+        type: String
+    },
     contrasena: {
         type: String,
         required: true
@@ -28,4 +34,4 @@ const empresa = mongoose.Schema({
     },
 })
 
-module.exports= mongoose.model('empresa',empresa)
+module.exports = mongoose.model('empresa', empresa)

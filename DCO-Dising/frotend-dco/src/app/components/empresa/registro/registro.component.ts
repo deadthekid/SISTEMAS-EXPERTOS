@@ -31,6 +31,8 @@ export class RegistroComponent implements OnInit {
     const empresa: Empresa = {
       nombre: this.nombre?.value!,
       correo: this.correo?.value!,
+      descripcion: '',
+      logo: '',
       contrasena: this.contrasena?.value!,
       plan: this.plan?.value!,
       bancoMultimedia: [],

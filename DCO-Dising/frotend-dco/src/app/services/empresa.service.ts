@@ -20,4 +20,10 @@ export class empresaService {
     login(infoLogin: object): Observable<any>{
         return this.http.post(this.url+"/login",infoLogin)
     }
+    rellenar (idEmpresa: string): Observable<any>{
+        return this.http.get(this.url+"/actualizarInfo/"+idEmpresa)
+    }
+    actualizar (infoEmpresa: object): Observable<any>{
+        return this.http.post(this.url+"/actualizarInfo/",infoEmpresa)
+    }
 }

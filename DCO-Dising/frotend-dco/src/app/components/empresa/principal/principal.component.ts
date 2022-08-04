@@ -17,6 +17,7 @@ export class PrincipalComponent implements OnInit {
     if(!window.localStorage.getItem('usuario')){
       this.router.navigate(['/'])
       this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
+    }else{
     }
   }
 }

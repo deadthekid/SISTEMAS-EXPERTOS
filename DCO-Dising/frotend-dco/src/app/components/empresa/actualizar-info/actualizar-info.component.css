@@ -56,16 +56,20 @@
     grid-auto-flow: row;
     grid-template-areas:
         "nombre inputNombre . correo inputCorreo"
-        ". imagen imagen imagen . "
-        ". imagen imagen imagen ."
-        ". . . . ."
         "descripcion inputDescripcion inputDescripcion inputDescripcion inputDescripcion"
-        "cambiarContra inputContra . btnGuardar btnGuardar"
-        "confirmarContra inputConfirmar . btnGuardar btnGuardar"
+        "cambiarContra inputContra . confirmarContra inputConfirmar"
+        "imagen imagen imagen visualizacion visualizacion "
+        "imagen imagen imagen visualizacion visualizacion"
+        ". . . . ."
+        ". btnGuardar btnGuardar btnGuardar ."
 }
 
 .imagen{
     grid-area: imagen;
+    text-align: center;
+}
+.visualizacion{
+    grid-area: visualizacion;
     text-align: center;
 }
 .nombre{
@@ -120,4 +124,14 @@
 }
 #inputConfirmar{
     width: -webkit-fill-available;
+}
+.error{
+    color: red;
+    margin: 5px;
+    font-size: .7rem;
+}
+.correcto{
+    color: green;
+    margin: 5px;
+    font-size: .7rem;
 }
