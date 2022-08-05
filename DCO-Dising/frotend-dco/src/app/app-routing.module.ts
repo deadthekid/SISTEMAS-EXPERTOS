@@ -31,6 +31,8 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nuevo-usuario/admin-nuevo-usuario.component';
 import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
 import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
+import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
+
 
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
@@ -50,6 +52,7 @@ const routes: Routes = [
   {path :'usuarios/crearUsuario', component:CreacionUsuarioComponent},
   {path :'usuarios/inicioUsuario', component:IniciarUsuarioComponent},
   {path :'usuarios/usaurio/inicio', component:PrincipalUsuariosAutenticadoComponent},
+  {path :'usuarios/usaurio/producto', component:CreacionProductoComponent},
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empresas', component: AdminEmpresasComponent },

@@ -1,5 +1,5 @@
 const Usuario = require("../models/Usuario");
-
+const multipart = require('connect-multiparty'); 
 
 exports.crearUsuario = async (req,res)=>{
     try{
@@ -46,7 +46,7 @@ exports.actualizarUsuario = async(req,res)=>{
 
         usuario = await Usuario.findOneAndUpdate({_id:req.params.id},usuario,{new:true} );
         res.json(usuario);
-
+        
     }catch(error){
         console.log(error);
         req.status(500).send('Hubo un error');
@@ -84,3 +84,4 @@ exports.eliminarUsuario = async(req,res)=>{
         req.status(500).send('Hubo un error');
     }
 }
+

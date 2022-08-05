@@ -40,7 +40,8 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {HttpClientModule} from '@angular/common/http'
     AdminDetallesTemaComponent,
     AdminDetallesPlanComponent,
     AdminDetallesEmpresaComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    CreacionProductoComponent
   ],
   imports: [
     BrowserModule,
