@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { empresaService } from 'src/app/services/empresa.service';
-import { UploadService } from 'src/app/services/upload/upload.service';
+
+import { read } from '@popperjs/core';
 @Component({
   selector: 'app-actualizar-info',
   templateUrl: './actualizar-info.component.html',
@@ -17,18 +18,22 @@ export class ActualizarInfoComponent implements OnInit {
   actualizar = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    logo: new FormControl('',),
+    logo: new FormControl("",),
     descripcion: new FormControl('', [Validators.required]),
     contrasena: new FormControl('', [Validators.required]),
     confirmar: new FormControl('', [Validators.required]),
   })
 
-  constructor(private router: Router, private toastr: ToastrService, private empresaServicio: empresaService, private uploadServicio: UploadService) { }
+  archivo!: string;
+
+  constructor(private router: Router, private toastr: ToastrService, private empresaServicio: empresaService) { }
 
   ngOnInit(): void {
     this.seguridad()
+    this.rellenarInfo()
+    this.validarContrasenas()
   }
-
+  
   validarContrasenas() {
     if (this.contrasena?.value === this.confirmar?.value) {
       this.validarContras = true
@@ -50,29 +55,42 @@ export class ActualizarInfoComponent implements OnInit {
 
     }
   }
-
+  rellenarInfo() {
+    this.empresaServicio.rellenar(window.localStorage.getItem('usuario')!).subscribe((res) => {
+      this.nombre?.setValue(res.nombre)
+      this.correo?.setValue(res.correo)
+      this.descripcion?.setValue(res.descripcion)
+      this.contrasena?.setValue(res.contrasena)
+      this.confirmar?.setValue(res.confirmar)
+      this.archivo=res.logo
+    })
+  }
 
 
   subir(element: any) {
     this.uploadedFiles = element.target.files;
     console.log(this.uploadedFiles)
+    
+    //previsualizacion de la imagen que se subira y creacion del b64 que se guardará para generar el logo o cualquier archivo que se quiera subir
+    const reader = new FileReader()
+    reader.onload = () => this.archivo = reader.result as string
+    reader.readAsDataURL(this.uploadedFiles[0])
+    console.log(this.archivo)
   }
+  
 
-  probar() {
-    let formData = new FormData();
-    if(this.uploadedFiles){
-      for (var i = 0; i < this.uploadedFiles.length; i++) {
-        formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
-      }
+  actualizarInfo() {
+    
+    let datos={
+      idEmpresa: window.localStorage.getItem('usuario'),
+      nombre: this.nombre?.value,
+      correo: this.correo?.value,
+      descripcion: this.descripcion?.value,
+      contrasena: this.contrasena?.value,
+      logo: this.archivo
     }
-    formData.append("idEmpresa",window.localStorage.getItem('usuario')!)
-    formData.append("nombre",this.nombre?.value!)
-    formData.append("correo",this.correo?.value!)
-    formData.append("logo",this.logo?.value!)
-    formData.append("descripcion",this.descripcion?.value!)
-    formData.append("contrasena",this.contrasena?.value!)
 
-    this.uploadServicio.uploadFile(formData).subscribe((res) => {
+    this.empresaServicio.actualizar(datos).subscribe((res) => {
       console.log('el servidor responde: ', res);
     });
   }
@@ -96,5 +114,8 @@ export class ActualizarInfoComponent implements OnInit {
   }
   get confirmar() {
     return this.actualizar.get('confirmar')
+  }
+  get visualizar() {
+    return this.actualizar.get('visualizar')
   }
 }

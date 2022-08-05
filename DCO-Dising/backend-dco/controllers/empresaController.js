@@ -45,46 +45,28 @@ exports.login = async (req, res) => {
 }
 
 exports.actualizarInfo = async (req, res) => {
-    const { files, body } = req
+    const { body } = req
     let empresa
-    if (files.uploads) {
-        console.log(files.uploads[0].path)
-
-        console.log("antes del cambio", body)
-        console.log("antes del cambio del path de logo", body.logo)
-        body.logo = files.uploads[0].path
-        console.log("luego del cambio del path de logo", body.logo)
-        console.log(body)
-
-        const resultado=Empresa.updateOne({ _id: body.idEmpresa }, {
-            
-                nombre: 'hola',
-                correo: 'jorge@hotmail.com',
-                descripcion: 'probando actualizacion de la informacion',
-                contrasena: 'probando123'
-            
-        })
-        console.log(resultado)
-
-        const probando= await Empresa.findByIdAndUpdate({_id:body.idEmpresa},{
+    
+    try{
+        empresa = await Empresa.findByIdAndUpdate({ _id: body.idEmpresa }, {
             'nombre': body.nombre,
             'correo': body.correo,
             'descripcion': body.descripcion,
             'contrasena': body.contrasena,
             'logo': body.logo
-        },{new: true})
-        console.log(probando)
-
-    } else {
-        const resultado = Empresa().update({ '_id': body.idEmpresa }, {
-            'nombre': body.nombre,
-            'correo': body.correo,
-            'descripcion': body.descripcion,
-            'contrasena': body.contrasena
-        })
-        console.log(resultado)
+        }, { new: true })
+        console.log(empresa)
+        res.send(empresa)
+    }catch(e){
+        res.send(e)
     }
+    res.end()
+}
 
-
+exports.rellenarInfo = async (req, res) => {
+    const id = req.params.id
+    const empresa = await Empresa.findById({ '_id': id })
+    res.send(empresa)
     res.end()
 }

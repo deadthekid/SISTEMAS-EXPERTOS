@@ -17,11 +17,10 @@ router.post('/actualizarInfo',empresaController.actualizarInfo)
 
 
 //subida de archivos
-const multipart = require('connect-multiparty'); 
-const multipartMiddleware = multipart({  
-    uploadDir: './uploads'
-});
-router.post('/subirArchivo', multipartMiddleware, empresaController.actualizarInfo);
+
+router.get('/rellenarInfo/:id',empresaController.rellenarInfo)
+
+router.post('/actualizarInfo', empresaController.actualizarInfo);
 
 
 
