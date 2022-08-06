@@ -31,6 +31,7 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nuevo-usuario/admin-nuevo-usuario.component';
 import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
 import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
+import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
 
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'empresa/imagenes',component:ImagenesComponent},
   {path: 'empresa/otrosArchivos',component:OtrosArchivosComponent},
   {path: 'empresa/detalleArchivos/:id',component:DetallesArchivosComponent},
+  {path: 'empresa/categorias',component:CategoriasComponent},
   {path :'usuarios', component:PrincipalUsuariosComponent},
   {path :'usuarios/verProducto', component:VerProductoComponent},
   {path :'usuarios/crearUsuario', component:CreacionUsuarioComponent},

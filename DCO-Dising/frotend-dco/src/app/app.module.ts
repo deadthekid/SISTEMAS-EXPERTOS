@@ -41,6 +41,7 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     AdminDetallesTemaComponent,
     AdminDetallesPlanComponent,
     AdminDetallesEmpresaComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,

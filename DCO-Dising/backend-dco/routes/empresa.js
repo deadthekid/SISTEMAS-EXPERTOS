@@ -21,9 +21,10 @@ router.post('/actualizarInfo',empresaController.actualizarInfo)
 router.get('/rellenarInfo/:id',empresaController.rellenarInfo)
 
 router.post('/actualizarInfo', empresaController.actualizarInfo);
-
-
-
-
+router.get('/logo/:id',empresaController.logo)
+router.post('/aggCategoria',empresaController.aggCategoria)
+router.get('/getCategorias/:id',empresaController.getCategorias)
+router.put('/updCategorias',empresaController.updCategorias)
+router.delete('/delCategorias',empresaController.delCategorias)
 
 module.exports=router

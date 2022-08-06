@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { empresaService } from 'src/app/services/empresa.service';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -8,10 +9,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor(private router: Router,private toastr: ToastrService,) { }
+  constructor(private router: Router,private toastr: ToastrService, private empresaServicio: empresaService) { }
+  logo!:string
 
   ngOnInit(): void {
     this.seguridad()
+    this.logoEmpresa()
   }
   seguridad(){
     if(!window.localStorage.getItem('usuario')){
@@ -20,4 +23,10 @@ export class PrincipalComponent implements OnInit {
     }else{
     }
   }
+  logoEmpresa(){
+    this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res)=>{
+      this.logo=res[0].logo
+    })
+  }
+  
 }

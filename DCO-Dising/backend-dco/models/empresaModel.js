@@ -32,6 +32,9 @@ const empresa = mongoose.Schema({
     productos: {
         type: []
     },
+    categorias: {
+        type: []
+    }
 })
 
 module.exports = mongoose.model('empresa', empresa)

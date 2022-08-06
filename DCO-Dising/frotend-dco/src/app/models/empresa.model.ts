@@ -9,8 +9,9 @@ export class Empresa {
     bancoMultimedia: any;
     pagina: any;
     productos: any;
+    categorias: any
 
-    constructor(nombre: string, correo: string, descripcion: string,logo: string, contrasena: string, plan: string, bancoMultimedia: any, pagina: any, productos: any
+    constructor(nombre: string, correo: string, descripcion: string,logo: string, contrasena: string, plan: string, bancoMultimedia: any, pagina: any, productos: any, categorias: any
     ) {
         this.nombre = nombre
         this.correo = correo
@@ -21,5 +22,6 @@ export class Empresa {
         this.bancoMultimedia = bancoMultimedia
         this.pagina = pagina
         this.productos = productos
+        this.categorias=categorias
     }
 }

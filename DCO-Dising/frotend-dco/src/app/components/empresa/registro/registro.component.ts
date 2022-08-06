@@ -37,7 +37,8 @@ export class RegistroComponent implements OnInit {
       plan: this.plan?.value!,
       bancoMultimedia: [],
       pagina: [],
-      productos: []
+      productos: [],
+      categorias: []
     }
     console.log("empresa: ",empresa)
     this._empresaServicio.agregar(empresa).subscribe(data=>{

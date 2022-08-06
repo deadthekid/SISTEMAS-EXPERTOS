@@ -14,13 +14,13 @@ import { read } from '@popperjs/core';
 
 export class ActualizarInfoComponent implements OnInit {
   uploadedFiles!: Array<File>;
-  validarContras!: boolean
+  validarContras: boolean=false
   actualizar = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     logo: new FormControl("",),
     descripcion: new FormControl('', [Validators.required]),
-    contrasena: new FormControl('', [Validators.required]),
+    contrasena: new FormControl({value:'', disabled: true}, [Validators.required]),
     confirmar: new FormControl('', [Validators.required]),
   })
 
@@ -31,7 +31,6 @@ export class ActualizarInfoComponent implements OnInit {
   ngOnInit(): void {
     this.seguridad()
     this.rellenarInfo()
-    this.validarContrasenas()
   }
   
   validarContrasenas() {
@@ -91,7 +90,8 @@ export class ActualizarInfoComponent implements OnInit {
     }
 
     this.empresaServicio.actualizar(datos).subscribe((res) => {
-      console.log('el servidor responde: ', res);
+      this.toastr.success('Informción actualizada de forma exitos')
+      this.router.navigate(['/empresa/principal'])
     });
   }
 

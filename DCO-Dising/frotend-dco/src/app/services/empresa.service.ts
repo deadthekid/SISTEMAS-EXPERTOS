@@ -26,4 +26,19 @@ export class empresaService {
     actualizar (infoEmpresa: object): Observable<any>{
         return this.http.post(this.url+"/actualizarInfo/",infoEmpresa)
     }
+    logo (idEmpresa: string): Observable<any>{
+        return this.http.get(this.url+"/logo/"+idEmpresa)
+    }
+    aggCategoria (infoCategoria: object): Observable<any>{
+        return this.http.post(this.url+"/aggCategoria",infoCategoria)
+    }
+    getCategorias (idEmpresa: string):Observable<any>{
+        return this.http.get(this.url+"/getCategorias/"+idEmpresa)
+    }
+    editCategorias (infoCategoria: object): Observable<any>{
+        return this.http.put(this.url+"/updCategorias",infoCategoria)
+    }
+    delCategorias (idEmpresa: string, categoria: string): Observable<any>{
+        return this.http.delete(this.url+`/delCategorias/?idEmpresa=${idEmpresa}&categoria=${categoria}`)
+    }
 }

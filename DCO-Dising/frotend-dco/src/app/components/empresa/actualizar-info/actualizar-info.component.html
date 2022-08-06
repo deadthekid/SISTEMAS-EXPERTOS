@@ -49,7 +49,7 @@
                 CAMBIAR CONTRASEÑA:
             </div>
             <div class="inputContra">
-                <input formControlName="contrasena" type="password" id="inputContra">
+                <input formControlName="contrasena" type="password" id="inputContra" >
 
             </div>
             <div class="confirmarContra">
@@ -61,7 +61,8 @@
                 <div class="correcto" *ngIf="validarContras  && confirmar?.dirty">Las contraseñas coinciden</div>
             </div>
             <div class="btnGuardar">
-                <input type="button" value="ACTUALIZAR" (click)="actualizarInfo()">
+                <div *ngIf="!validarContras" class="error">Necesita confirmar la contraseña para poder actualizar los datos</div>
+                <input *ngIf="validarContras" type="button" value="ACTUALIZAR" (click)="actualizarInfo()">
             </div>
         </form>
     </div>

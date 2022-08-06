@@ -50,7 +50,7 @@
 .actualizar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
     grid-auto-columns: 1fr;
     gap: 5px 5px;
     grid-auto-flow: row;
@@ -61,7 +61,7 @@
         "cambiarContra inputContra . confirmarContra inputConfirmar"
         "imagen imagen imagen visualizacion . "
         "imagen imagen imagen visualizacion ."
-        ". . . . ."
+        
         ". btnGuardar btnGuardar btnGuardar ."
 }
 .titulo{

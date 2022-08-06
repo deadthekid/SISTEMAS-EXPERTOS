@@ -27,26 +27,12 @@
     flex-wrap: wrap;
 }
 
-.seccion {
-    flex: 5;
-}
-
-.row {
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    text-align: center;
-    background-color: rgba(38, 108, 128, .10);
-    width: 300%;
-    column-gap: 7px;
-}
-
 .btnPrincipal {
     background-color: rgba(38, 108, 128, .10);
     border: none;
     height: 100%;
     margin: 5px;
-    width: 30%;
+    width: 33%;
 }
 
 .botones {
@@ -66,19 +52,9 @@
 
 .btnCerrarSesion {
     background-color: rgba(216, 246, 255, .50);
+    color: white;
     border-radius: 10px;
     width: 100%;
-}
-
-.barra {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-content: stretch;
-    height: 5rem;
-    align-items: center;
-
 }
 
 .elementoNav{
@@ -90,6 +66,10 @@
     height: 100px;
     top: 20%;
     left: 2%;
+}
+
+#entrada{
+    border-radius: .375rem;
 }
 .error{
     color: red;
