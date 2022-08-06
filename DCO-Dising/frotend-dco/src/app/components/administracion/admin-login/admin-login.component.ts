@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor() { }
+  formLogin =  new FormGroup({
+    correo: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    contrasena: new FormControl('', [Validators.required])
+  })
+
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private _adminService : AdminService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    let login = this.formLogin.value;
+    this._adminService.login(login).subscribe(data => {
+      if(data){
+        console.log(data);
+        this.toastr.success('Ingreso de forma exitosa', 'Bienvenido ' +data.nombre);
+      }else{
+        this.toastr.error('Datos incorrectos', 'Correo o contraseña no validos');
+      }
+    }, error =>{
+      console.log(error);
+    });
   }
 
 }
