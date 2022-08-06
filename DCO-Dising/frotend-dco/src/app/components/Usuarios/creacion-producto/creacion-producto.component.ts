@@ -21,7 +21,9 @@ export class CreacionProductoComponent implements OnInit {
     this.productoForm = this.fb.group({
       nombre:['',Validators.required],
       precio:['',[Validators.required]],
-      img:['',Validators.required]
+      img:['',Validators.required],
+      descripcion:['',[Validators.required]],
+      vendedor:['',Validators.required]
     })
   }
 
@@ -32,7 +34,9 @@ export class CreacionProductoComponent implements OnInit {
     const PRODUCTO: Producto={
       nombre: this.productoForm.get('nombre')?.value,
       precio: this.productoForm.get('precio')?.value,
-      img: this.img
+      img: this.img,
+      descripcion: this.productoForm.get('descripcion')?.value,
+      vendedor: this.productoForm.get('vendedor')?.value,
     }
     console.log(PRODUCTO);
     this._productoService.guardarProducto(PRODUCTO).subscribe(data=>{

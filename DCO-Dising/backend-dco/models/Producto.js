@@ -13,6 +13,14 @@ const ProductoSchema = moongose.Schema({
         type:String,
         require:true
     },
+    descripcion : {
+        type:String,
+        require:true
+    },
+    vendedor:{
+        type:String,
+        require:true
+    },
     fechaCreacion : {
         type:Date,
         default:Date.now()

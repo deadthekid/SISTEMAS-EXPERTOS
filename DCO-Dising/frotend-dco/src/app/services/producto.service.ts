@@ -14,8 +14,12 @@ export class ProductoService {
     guardarProducto(producto: Producto): Observable<any>{
     return this.http.post(this.url,producto);
     }
-    buscar (idProducto: string): Observable<any> {
-    return this.http.get(this.url+"/"+idProducto)
+    buscarProducto (id: string): Observable<any> {
+    return this.http.get(this.url+"/"+id)
+    }
+
+    getProductos(): Observable<any>{
+      return this.http.get(this.url)
     }
 
 }

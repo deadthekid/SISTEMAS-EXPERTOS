@@ -16,24 +16,32 @@
                 <div class="cuerpo-formulario">
                     <form [formGroup]="productoForm" >
                         <div class="entrada-contenedor3">
-                            <div>
-                                <input formControlName="img" (change)="subir($event)" type="file" class="form-control" accept="image/*">
-                            </div>
-                            <br>
                             <div class="visualizacion">
                                 <img [src]="img"  style="width: 100%;">
                             </div>
                             <div>
-                                <input type="text" placeholder="File" formControlName="nombre" class="entradat">
+                                <input formControlName="img" (change)="subir($event)" type="file" class="form-control rounded-pill text-bg-info" accept="image/*">
                             </div>
+                            <br>
+                            
                             <div>
-                                <input type="number" placeholder="File" formControlName="precio" class="entradat">
+                                <input type="text" placeholder="nombre" formControlName="nombre" class="entradat">
+                            </div>
+                            <div class="mt-2">
+                                <input type="number" placeholder="precio" formControlName="precio" class="entradat">
                             </div>
                             
+                            <div class="mt-2">
+                                <input type="text" placeholder="vendedor" formControlName="vendedor" class="entradat">
+                            </div>
+                            <div class="area-texto">
+                                <textarea class="area-texto" id="w3review" name="w3review"formControlName="descripcion" rows="4" cols="50"></textarea>
+                            </div>
+                            <div class="btni">
+                                <input type="button" class="btn-formulario rounded-pill" value="PUBLICAR" (click)="agregarUsuario($event)">
+                            </div>
                         </div>
-                      <div class="btnGuardar">
-                            <input type="button" value="ACTUALIZAR" (click)="agregarUsuario($event)">
-                        </div>
+                        
                     </form>
                 </div>
                 

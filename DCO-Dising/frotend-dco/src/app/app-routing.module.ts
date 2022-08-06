@@ -48,7 +48,7 @@ const routes: Routes = [
   {path: 'empresa/otrosArchivos',component:OtrosArchivosComponent},
   {path: 'empresa/detalleArchivos/:id',component:DetallesArchivosComponent},
   {path :'usuarios', component:PrincipalUsuariosComponent},
-  {path :'usuarios/verProducto', component:VerProductoComponent},
+  {path :'usuarios/verProducto/:id', component:VerProductoComponent},
   {path :'usuarios/crearUsuario', component:CreacionUsuarioComponent},
   {path :'usuarios/inicioUsuario', component:IniciarUsuarioComponent},
   {path :'usuarios/usaurio/inicio', component:PrincipalUsuariosAutenticadoComponent},

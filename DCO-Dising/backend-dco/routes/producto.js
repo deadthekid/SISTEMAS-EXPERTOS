@@ -7,5 +7,6 @@ const productoController = require('../controllers/productoController')
 //api/producto
 router.post('/',productoController.subirProducto);
 router.get('/:id',productoController.obtenerProducto);
+router.get('/',productoController.obtenerProductos);
 module.exports = router;
 

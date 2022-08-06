@@ -26,149 +26,28 @@
         </div>
     </div>
     <div class="contenido-principal">
-        <div class="conetenedor-cards">
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
+        <div class="container">
+            <div class="row">
+                    <div class="col-3 mt-4" style="width: 20%; " *ngFor="let producto of listProductos">
+                        <a href="/usuarios/verProducto/{{producto._id}}">
+                        <div class="card imagen-back" >
+                            <div class="img-tarjeta">
+                                <img class="imagen" src="{{producto.img}}">
                             </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
+                            <div class="contenedor-informacion">
+                                <div class="informacion-producto">
+                                    <div>
+                                        {{producto.nombre}}
+                                    </div>
+                                    <div>
+                                        {{producto.precio}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="/usuarios/verProducto">
-                <div class="tarjeta">
-                    <div class="img-tarjeta">
-                        <img class="imagen" src="./assets/pc-macbook.png">
-                    </div>
-                    <div class="contenedor-informacion">
-                        <div class="informacion-producto">
-                            <div>
-                                MacBook-Pro
-                            </div>
-                            <div>
-                                Lps. 10000
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
-            
-           
-           
-          
-            
+                        </a>  
+                    </div>  
+            </div>
             
         </div>
     </div>

@@ -95,17 +95,20 @@ a:link ,a:visited ,a:active{
 
 .formulario{
     background-color: #FFFFFF;
-    height: 60%;
+    height: 85%;
     width: 25%;
     box-shadow: -3px 3px 8px #184e5d;
     display: flex;
     flex-direction: column;
+    overflow: auto;
     
 }
-
+.visualizacion{
+    margin-bottom: 10px;
+}
 .titulo-formulario{
  flex: 1;
- margin: 12px 15px;
+ margin: 0px 15px;
  height: 100%;
  display: flex;
  align-items: flex-end;
@@ -145,6 +148,10 @@ a:link ,a:visited ,a:active{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.entrada2{
+    width: 80%;
 }
 
 .terminos{
@@ -236,13 +243,26 @@ a:link ,a:visited ,a:active{
 }
 
 .btn-formulario{
-    width: 100%;
+    width: 100%!important;
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 15px;
     background-color: #184E5D;
     color: #ECFBFF;
+}
+.area-texto{
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.area-textoInterno{
+    width: 100%;
+    text-align: justify!important;
+}
+
+.btni{
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 15px;
 }
 
 .pie-formulario{
