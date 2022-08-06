@@ -17,4 +17,8 @@ export class AdminService {
     return this.http.post(this.url+"/login",infoLogin)
   }
 
+  getPlanes(): Observable<any>{
+    return this.http.get(this.url+"/planes")
+  }
+
 }

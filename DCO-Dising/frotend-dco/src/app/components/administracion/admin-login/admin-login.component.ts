@@ -19,7 +19,7 @@ export class AdminLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    private _adminService : AdminService
+    private adminService : AdminService
   ) { }
 
   ngOnInit(): void {
@@ -27,10 +27,11 @@ export class AdminLoginComponent implements OnInit {
 
   login(){
     let login = this.formLogin.value;
-    this._adminService.login(login).subscribe(data => {
+    this.adminService.login(login).subscribe(data => {
       if(data){
         console.log(data);
         this.toastr.success('Ingreso de forma exitosa', 'Bienvenido ' +data.nombre);
+        this.router.navigate(['/admin/home']);
       }else{
         this.toastr.error('Datos incorrectos', 'Correo o contraseña no validos');
       }
