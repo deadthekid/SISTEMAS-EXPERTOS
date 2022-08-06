@@ -23,7 +23,8 @@ export class CreacionProductoComponent implements OnInit {
       precio:['',[Validators.required]],
       img:['',Validators.required],
       descripcion:['',[Validators.required]],
-      vendedor:['',Validators.required]
+      empresa:['',Validators.required],
+      categoria:['',Validators.required]
     })
   }
 
@@ -36,7 +37,8 @@ export class CreacionProductoComponent implements OnInit {
       precio: this.productoForm.get('precio')?.value,
       img: this.img,
       descripcion: this.productoForm.get('descripcion')?.value,
-      vendedor: this.productoForm.get('vendedor')?.value,
+      empresa: this.productoForm.get('empresa')?.value,
+      categoria: this.productoForm.get('categoria')?.value
     }
     console.log(PRODUCTO);
     this._productoService.guardarProducto(PRODUCTO).subscribe(data=>{

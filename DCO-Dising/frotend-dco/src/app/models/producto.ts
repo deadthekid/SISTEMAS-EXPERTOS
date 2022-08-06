@@ -4,14 +4,16 @@ export class Producto {
     precio: number;
     img: string;
     descripcion: string;
-    vendedor: string;
+    empresa: string;
+    categoria:string;
 
-    constructor(nombre:string,precio: number,img: string, descripcion:string,vendedor:string){
+    constructor(nombre:string,precio: number,img: string, descripcion:string,empresa:string,categoria:string){
         this.nombre=nombre;
         this.precio=precio;
         this.img=img;
         this.descripcion=descripcion;
-        this.vendedor=vendedor;
+        this.empresa=empresa;
+        this.categoria = categoria;
     }
 
 }

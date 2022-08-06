@@ -93,6 +93,10 @@ a:link ,a:visited ,a:active{
     right: 10%;
 }
 
+.anchoMax{
+    width: 100%;
+}
+
 .formulario{
     background-color: #FFFFFF;
     height: 85%;

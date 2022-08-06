@@ -19,20 +19,28 @@
                             <div class="visualizacion">
                                 <img [src]="img"  style="width: 100%;">
                             </div>
-                            <div>
-                                <input formControlName="img" (change)="subir($event)" type="file" class="form-control rounded-pill text-bg-info" accept="image/*">
+                            <div style="width: 100%;">
+                                <input formControlName="img" (change)="subir($event)"  type="file" class="form-control  rounded-pill text-bg-info" accept="image/*">
                             </div>
                             <br>
                             
-                            <div>
+                            <div class="anchoMax">
                                 <input type="text" placeholder="nombre" formControlName="nombre" class="entradat">
                             </div>
-                            <div class="mt-2">
+                            <div class="mt-2 anchoMax">
                                 <input type="number" placeholder="precio" formControlName="precio" class="entradat">
                             </div>
                             
-                            <div class="mt-2">
-                                <input type="text" placeholder="vendedor" formControlName="vendedor" class="entradat">
+                            <div class="mt-2 anchoMax" >
+                                <input type="text" placeholder="empresa" formControlName="empresa" class="entradat">
+                            </div>
+                            <div class="mt-2" style="width: 100%;">
+                                <label class="text-center">Seleccione una categoria</label>
+                                <select class="form-select entradat" placeholder="categoria" formControlName="categoria" aria-label="Default select example">
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select>
                             </div>
                             <div class="area-texto">
                                 <textarea class="area-texto" id="w3review" name="w3review"formControlName="descripcion" rows="4" cols="50"></textarea>

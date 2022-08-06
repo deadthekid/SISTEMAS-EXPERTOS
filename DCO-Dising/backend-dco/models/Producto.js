@@ -17,7 +17,11 @@ const ProductoSchema = moongose.Schema({
         type:String,
         require:true
     },
-    vendedor:{
+    empresa:{
+        type:String,
+        require:true
+    },
+    categoria:{
         type:String,
         require:true
     },
