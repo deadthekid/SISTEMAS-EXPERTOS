@@ -41,8 +41,8 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
-
 
 @NgModule({
   declarations: [
@@ -78,6 +78,7 @@ import { CategoriasComponent } from './components/empresa/categorias/categorias.
     AdminDetallesPlanComponent,
     AdminDetallesEmpresaComponent,
     LandingPageComponent,
+    CreacionProductoComponent,
     CategoriasComponent
   ],
   imports: [
@@ -86,10 +87,8 @@ import { CategoriasComponent } from './components/empresa/categorias/categorias.
     NgxPaginationModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
-    ToastrModule.forRoot()
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

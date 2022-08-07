@@ -157,6 +157,13 @@ a:link ,a:visited ,a:active{
     background-position-x: 1px;
 }
 
+.imagen-back{
+    background-image: url("/assets/fondo-targetas.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .tarjeta:hover{
     cursor: pointer;
 }

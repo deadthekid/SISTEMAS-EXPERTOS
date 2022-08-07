@@ -1,29 +1,38 @@
-var express = require('express');
+const express = require('express');
 var bodyParser = require('body-parser');
-var conectarDB = require('./config/db');
-var cors = require('cors')
+const conectarDB = require('./config/db');
+const cors= require("cors");
+const path = require('path');
+const multipart = require('connect-multiparty'); 
+//Creamos el servidor
+const app = express();
 
+//Conectamos a la DB
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+var conectarDB = require('./config/db');
+conectarDB()
 var app = express();
 
 
 //Middleware
-
-
-app.use(express.static('public'));//Se usa para ejecutar funciones middleware
-app.use(bodyParser.json({limit: '200mb'}));
+//Se usa para ejecutar funciones middleware
 app.use(bodyParser.urlencoded({
     limit: '200mb',
     extended:true}
     ));
-app.use(cors())
-
-
-
-
-conectarDB()
+    
+//rutas
+app.use('/api/usuarios',require('./routes/usuario'));
+app.use('/api/productos',require('./routes/producto'));
 app.use('/empresa/',require('./routes/empresa'))
 
-
-app.listen(8888,function(){
-    console.log('Se levanto el servidor');
+app.listen(4000,()=>{
+    console.log('El servidor esta corriendo perfectamente');
 });
+
+
+
+ 
