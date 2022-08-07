@@ -8,7 +8,7 @@ import { Archivo } from '../models/archivo.model';
 })
 
 export class archivoService {
-    url = 'http://localhost:8888/empresa';
+    url = 'http://localhost:4000/empresa';
 
     constructor(private http: HttpClient) { }
     agregar(archivo: object): Observable<any> {
