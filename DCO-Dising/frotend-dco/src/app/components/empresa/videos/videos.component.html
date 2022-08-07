@@ -15,13 +15,12 @@
     </div>
     <div class="contenido">
         <div class="imagenes">
-            <div class="row" *ngFor="let i of videos | paginate: {itemsPerPage: 12, currentPage: page}">
-                <div class="card col-3" style="width: 18rem; padding: 5px;">
-                    <img src="..." class="card-img-top" alt="...">
+            <div class="row" >
+                <div class="card col-3" style="width: 18rem; padding: 5px;" *ngFor="let i of videos | paginate: {itemsPerPage: 12, currentPage: page}">
+                    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa_dntwmphiLeJafmYwujdbtYtpkbjchIMZA&usqp=CAU" class="card-img-top imgCard" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Nombre del video </h5>
-                        <p class="card-text"> Fecha del video </p>
-                        <a href="#" class="btn btn-primary">Detalles</a>
+                        <h5 class="card-title">{{i.nombre}} </h5>
+                        <div style="text-align: center;"><input type="button" value="Detalles" class="btnDetalles" (click)="detalles(i.id)"></div>
                     </div>
                 </div>
             </div>
