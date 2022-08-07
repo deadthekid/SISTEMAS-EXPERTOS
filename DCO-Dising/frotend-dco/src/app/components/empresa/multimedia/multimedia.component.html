@@ -28,7 +28,7 @@
             <a href="/empresa/videos"><input class="btnPrincipal" type="button" value="VIDEOS"></a>
         </div>
     </div>
-    <img src="" alt="logo empresa" class="logoEmpresa">
+    <img [src]="logo" alt="no disponible" class="logoEmpresa">
     <div class="pie"><br></div>
 </div>
 
@@ -41,11 +41,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="file" class="form-control">
+                <form [formGroup]="infoArchivo">
+                    <input type="file" class="form-control" (change)="subir($event)" formControlName="archivo">
+                </form>
+            </div>
+            <div class="visualizacion">
+                <img *ngIf="infoArchivo.valid" [src]="archivo2" alt="esperando archivo" style="width: 100%;">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-primary" (click)="agregar()" *ngIf="infoArchivo.valid" data-bs-dismiss="modal">Agregar</button>
             </div>
         </div>
     </div>

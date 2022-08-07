@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,8 +41,8 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import {HttpClientModule} from '@angular/common/http';
 import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
+import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { CreacionProductoComponent } from './components/Usuarios/creacion-produc
     AdminDetallesPlanComponent,
     AdminDetallesEmpresaComponent,
     LandingPageComponent,
-    CreacionProductoComponent
+    CreacionProductoComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,
@@ -86,9 +88,7 @@ import { CreacionProductoComponent } from './components/Usuarios/creacion-produc
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
-
-
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

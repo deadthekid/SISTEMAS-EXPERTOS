@@ -32,7 +32,7 @@ import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nu
 import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
 import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
 import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
-
+import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
 
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
@@ -47,6 +47,7 @@ const routes: Routes = [
   {path: 'empresa/imagenes',component:ImagenesComponent},
   {path: 'empresa/otrosArchivos',component:OtrosArchivosComponent},
   {path: 'empresa/detalleArchivos/:id',component:DetallesArchivosComponent},
+  {path: 'empresa/categorias',component:CategoriasComponent},
   {path :'usuarios', component:PrincipalUsuariosComponent},
   {path :'usuarios/verProducto/:id', component:VerProductoComponent},
   {path :'usuarios/crearUsuario', component:CreacionUsuarioComponent},
