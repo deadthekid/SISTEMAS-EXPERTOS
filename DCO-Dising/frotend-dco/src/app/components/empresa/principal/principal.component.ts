@@ -23,6 +23,12 @@ export class PrincipalComponent implements OnInit {
     }else{
     }
   }
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    window.localStorage.removeItem('usuario')
+    this.toastr.success('Cierre de sesión exitoso')
+    this.router.navigate(['/empresa/login'])
+  }
   logoEmpresa(){
     this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res)=>{
       this.logo=res[0].logo

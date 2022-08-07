@@ -20,5 +20,10 @@ export class HistorialComponent implements OnInit {
       this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
     }
   }
-
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    window.localStorage.removeItem('usuario')
+    this.toastr.success('Cierre de sesión exitoso')
+    this.router.navigate(['/empresa/login'])
+  }
 }

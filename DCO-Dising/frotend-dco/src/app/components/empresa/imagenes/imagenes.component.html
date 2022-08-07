@@ -9,14 +9,14 @@
                 <div class="elementoNav"><a href="/empresa/multimedia">Banco Multimedia</a></div>
                 <div class="elementoNav"><a href="/empresa/administrarPaginas">Páginas</a></div>
                 <div class="elementoNav"><a href="/empresa/productosYcategorias">Productos y Categorías</a></div>
-                <div class="elementoNav"><input class="btnCerrarSesion" type="button" value="Cerrar Sesión"></div>
+                <div class="elementoNav"><input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()"></div>
             </div>
         </nav>
     </div>
     <div class="contenido">
         <div class="imagenes">
             <div class="row">
-                <div class="card col-3" style="width: 18rem; padding: 5px;" *ngFor="let i of imagenes | paginate: {itemsPerPage: 12, currentPage: page}">
+                <div class="card col-3" style="width: 18rem; padding: 5px;" *ngFor="let i of imagenes | paginate: {itemsPerPage: 15, currentPage: page}">
                     <img [src]="i.datos" class="card-img-top imgCard" alt="..." >
                     <div class="card-body">
                         <h5 class="card-title">{{i.nombre}} </h5>

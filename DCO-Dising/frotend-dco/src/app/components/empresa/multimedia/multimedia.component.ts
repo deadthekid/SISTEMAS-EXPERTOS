@@ -31,6 +31,12 @@ export class MultimediaComponent implements OnInit {
       this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
     }
   }
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    window.localStorage.removeItem('usuario')
+    this.toastr.success('Cierre de sesión exitoso')
+    this.router.navigate(['/empresa/login'])
+  }
   logoEmpresa() {
     this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res) => {
       this.logo = res[0].logo
@@ -51,12 +57,15 @@ export class MultimediaComponent implements OnInit {
     } else {
       const reader = new FileReader()
       reader.onload = () => this.archivo = reader.result as string
-      reader.onload = () => this.archivo2 = reader.result as string
       reader.readAsDataURL(this.uploadedFiles[0])
+      const reader2 = new FileReader()
+      reader2.onload = () => this.archivo2 = reader2.result as string
+      reader2.readAsDataURL(this.uploadedFiles[0])
+  
     }
 
-
   }
+  
   agregar() {
     let infoArchivo = {
       tipo: this.uploadedFiles[0].type.split('/')[1],
@@ -65,11 +74,7 @@ export class MultimediaComponent implements OnInit {
       archivo: '',
       idEmpresa: window.localStorage.getItem('usuario')
     }
-    if (infoArchivo.tipo != 'APNG' && infoArchivo.tipo != 'GIF' && infoArchivo.tipo != 'ICO' && infoArchivo.tipo != 'JPEG' && infoArchivo.tipo != 'PNG' && infoArchivo.tipo != 'SVG') {
-      console.log('ingreso algo que no es imagen')
-    }
-    infoArchivo.archivo=this.archivo2
-    
+    infoArchivo.archivo=this.archivo
     this.archivoServicio.agregar(infoArchivo).subscribe((res) => {
       this.toastr.success('Archivo agregado de forma exitosa')
       this.infoArchivo.get('archivo')?.setValue('')

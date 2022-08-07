@@ -9,7 +9,7 @@
                 <div class="elementoNav"><a href="/empresa/multimedia">Banco Multimedia</a></div>
                 <div class="elementoNav"><a href="/empresa/administrarPaginas">Páginas</a></div>
                 <div class="elementoNav"><a href="/empresa/productosYcategorias">Productos y Categorías</a></div>
-                <div class="elementoNav"><input class="btnCerrarSesion" type="button" value="Cerrar Sesión"></div>
+                <div class="elementoNav"><input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()"></div>
             </div>
         </nav>
     </div>
@@ -17,34 +17,29 @@
         <div class="detalles">
             <div class="imagen">
                 <div id="imagen">
-                    <img src="" alt="no disponible">
+                    <img [src]="detalles.visualizar" alt="no disponible" width="100%">
                 </div>
             </div>
             <div class="nombre">
-                <div id="nombre">
-                    nombre del archivo
-                </div>
-            </div>
-            <div class="fecha">
-                <div id="fecha">
-                    fecha del archivo
-                </div>
+                <h4 id="nombre">
+                    Nombre: {{detalles.nombre}}
+                </h4>
             </div>
             <div class="shortcut">
-                <div id="shortcut">
-                    shortcut del archivo
-                </div>
+                <h4 id="shortcut">
+                    Shortcut: {{detalles.shortcut}}
+                </h4>
             </div>
             <div class="actualizar">
                 <div id="actualizar">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalActualizar">
+                    <button type="button" class="btn botones" data-bs-toggle="modal" data-bs-target="#modalActualizar">
                         Actualizar
                     </button>
                 </div>
             </div>
             <div class="eliminar">
                 <div id="eliminar">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEliminar">
+                    <button type="button" class="btn botones" data-bs-toggle="modal" data-bs-target="#modalEliminar">
                         Eliminar
                     </button>
                 </div>
@@ -67,26 +62,32 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Eliminar</button>
+                <button type="button" class="btn btn-primary" (click)="eliminar()">Eliminar</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="modalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Actualizar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar archivo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="file"  class="form-control">
+                <form [formGroup]="infoArchivo">
+                    <input type="file" class="form-control" (change)="subir($event)" formControlName="archivo">
+                </form>
+            </div>
+            <div class="visualizacion">
+                <img *ngIf="infoArchivo.valid" [src]="visualizar" alt="esperando archivo" style="width: 100%;">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar cambios</button>
+                <button type="button" class="btn btn-primary" (click)="actualizar()" *ngIf="infoArchivo.valid" data-bs-dismiss="modal">Agregar</button>
             </div>
         </div>
     </div>

@@ -51,10 +51,9 @@
     display: grid;
     width: 80%;
     grid-template-areas:
-        "imagen imagen nombre"
-        "imagen imagen fecha"
-        ". shortcut ."
-        "actualizar . eliminar";
+        "imagen nombre"
+        "imagen shortcut"
+        "actualizar eliminar";
 
     text-align: center;
     place-items: center;
@@ -65,34 +64,55 @@
     grid-area: imagen;
 }
 
-#imagen {}
+#imagen {
+    width: 500px;
+}
 
 .nombre {
     grid-area: nombre;
+
+
+
 }
 
-#nombre {}
-
-.fecha {
-    grid-area: fecha;
+#nombre {
+    border: 1px black solid;
+    border-radius: 7px;
+    padding: 15px;
+    width: 400px;
+    text-align: left;
 }
-
-#fecha {}
 
 .shortcut {
     grid-area: shortcut;
 }
 
-#shortcut {}
+#shortcut {
+    border: 1px black solid;
+    border-radius: 7px;
+    padding: 15px;
+    width: 400px;
+    text-align: left;
+}
 
 .actualizar {
     grid-area: actualizar;
 }
 
-#actualizar {}
-
 .eliminar {
     grid-area: eliminar;
 }
 
-#eliminar {}
+.botones {
+    background-color: #184E5D;
+    border-radius: 7px;
+    color: white;
+    width: 200px;
+}
+
+.visualizacion {
+
+    width: 400px;
+    align-self: center;
+
+}

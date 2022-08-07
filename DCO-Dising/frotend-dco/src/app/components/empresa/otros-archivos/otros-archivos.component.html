@@ -15,12 +15,12 @@
     </div>
     <div class="contenido">
         <div class="imagenes">
-            <div class="row" *ngFor="let i of otrosArchivos | paginate: {itemsPerPage: 12, currentPage: page}">
-                <div class="card col-3" style="width: 18rem; padding: 5px;">
+            <div class="row">
+                <div class="card col-3" style="width: 18rem; padding: 5px;" *ngFor="let i of otrosArchivos | paginate: {itemsPerPage: 15, currentPage: page}">
+                    <img src="https://media.istockphoto.com/vectors/file-folder-office-supply-icon-vector-id1182976811?k=20&m=1182976811&s=612x612&w=0&h=vV6IdJW0drWpPcvlen_pOa8jgw41mqdpcaZn-mxoYLg=" class="card-img-top imgCard" alt="..." >
                     <div class="card-body">
-                        <h5 class="card-title">Nombre del archivo </h5>
-                        <p class="card-text"> Fecha del archivo </p>
-                        <a href="#" class="btn btn-primary">Detalles</a>
+                        <h5 class="card-title">{{i.nombre}} </h5>
+                        <div style="text-align: center;"><input type="button" value="Detalles" class="btnDetalles" (click)="detalles(i.id)"></div>
                     </div>
                 </div>
             </div>

@@ -54,6 +54,12 @@ export class ActualizarInfoComponent implements OnInit {
 
     }
   }
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('usuario')
+    this.router.navigate(['/empresa/login'])
+  }
   rellenarInfo() {
     this.empresaServicio.rellenar(window.localStorage.getItem('usuario')!).subscribe((res) => {
       this.nombre?.setValue(res.nombre)

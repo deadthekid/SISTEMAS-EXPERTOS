@@ -45,6 +45,12 @@ export class CategoriasComponent implements OnInit {
     } else {
     }
   }
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('usuario')
+    this.router.navigate(['/empresa/login'])
+  }
   logoEmpresa() {
     this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res) => {
       this.logo = res[0].logo

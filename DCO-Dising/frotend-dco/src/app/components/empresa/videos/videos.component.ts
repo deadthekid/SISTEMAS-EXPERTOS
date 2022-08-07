@@ -23,6 +23,12 @@ export class VideosComponent implements OnInit {
       this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
     }
   }
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    window.localStorage.removeItem('usuario')
+    this.toastr.success('Cierre de sesión exitoso')
+    this.router.navigate(['/empresa/login'])
+  }
   listaVideos() {
     this.archivoServicio.listaVideos(window.localStorage.getItem('usuario')!).subscribe((res) => {
       try {
@@ -34,7 +40,6 @@ export class VideosComponent implements OnInit {
             nombre: element.nombre,
             id: element._id
           }
-          console.log(element)
           listaVideos.push(info)
           this.videos = listaVideos
           
