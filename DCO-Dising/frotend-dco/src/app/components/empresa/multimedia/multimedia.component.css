@@ -71,3 +71,9 @@
 #entrada{
     border-radius: .375rem;
 }
+.visualizacion{
+    grid-area: visualizacion;
+    text-align: center;
+    width: 200px;
+    align-self: center;
+}

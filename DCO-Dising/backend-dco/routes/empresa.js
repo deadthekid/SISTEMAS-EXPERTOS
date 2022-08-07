@@ -26,5 +26,8 @@ router.post('/aggCategoria',empresaController.aggCategoria)
 router.get('/getCategorias/:id',empresaController.getCategorias)
 router.put('/updCategorias',empresaController.updCategorias)
 router.delete('/delCategorias',empresaController.delCategorias)
+router.post('/subirArchivo',empresaController.subirArchivo)
+router.get('/listaImagenes/:id',empresaController.listaImagenes)
+router.get('/listaVideos/:id',empresaController.listaVideos)
 
 module.exports=router

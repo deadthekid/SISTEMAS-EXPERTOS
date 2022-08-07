@@ -1,4 +1,5 @@
 const Empresa = require('../models/empresaModel');
+const Archivo = require('../models/archivoModel')
 
 exports.agregar = async (req, res) => {
     try {
@@ -107,15 +108,58 @@ exports.updCategorias = async (req, res) => {
     res.send(empresa)
     res.end()
 }
-exports.delCategorias = async (req,res)=>{
-    const {idEmpresa, categoria}=req.query
-    
+exports.delCategorias = async (req, res) => {
+    const { idEmpresa, categoria } = req.query
+
     let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
     let categorias = empresa[0].categorias
     let indice = categorias.indexOf(categoria)
-    categorias.splice(indice,1)
-    console.log(categorias)
+    categorias.splice(indice, 1)
+    
     empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
     res.send(empresa)
+    res.end()
+}
+exports.subirArchivo = async (req, res) => {
+    const { idEmpresa } = req.body
+    const archivo = new Archivo(req.body)
+    
+    archivo.save()
+    let empresa = await Empresa.find({ '_id': idEmpresa }, { 'bancoMultimedia': 1 })
+    let bancoMultimedia = empresa[0].bancoMultimedia
+
+    bancoMultimedia.push(archivo._id)
+
+    empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'bancoMultimedia': bancoMultimedia }, { new: true })
+
+
+    res.send(empresa)
+    res.end()
+}
+exports.listaImagenes = async (req, res) => {
+    const idEmpresa = req.params.id
+    const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
+    const listaImagenes = []
+    archivos.forEach(archivo => {
+        if (archivo.tipo == 'apng' || archivo.tipo == 'gif' || archivo.tipo == 'ico' || archivo.tipo == 'jpeg' || archivo.tipo == 'png' || archivo.tipo == 'svg') {
+            listaImagenes.push(archivo)
+            
+        }
+    });
+    
+    res.send(listaImagenes)
+    res.end()
+}
+exports.listaVideos = async (req, res) => {
+    const idEmpresa = req.params.id
+    const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
+    const listaVideos = []
+    archivos.forEach(archivo => {
+        if (archivo.tipo == 'mp4' || archivo.tipo == 'mov' || archivo.tipo == 'wmv' || archivo.tipo == 'avi' || archivo.tipo == 'mkv' || archivo.tipo == 'webm') {
+            listaVideos.push(archivo)
+        }
+    });
+    
+    res.send(listaVideos)
     res.end()
 }
