@@ -33,14 +33,13 @@ export class MultimediaComponent implements OnInit {
       this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
         if (res == null) {
           this.router.navigate(['/'])
-          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina', 'ERROR')
           window.localStorage.removeItem('empresa')
         }
       })
     }
   }
   cerrarSesion() {
-    console.log('dio click en cerrar sesion')
     window.localStorage.removeItem('empresa')
     this.toastr.success('Cierre de sesión exitoso')
     this.router.navigate(['/empresa/login'])
@@ -69,7 +68,6 @@ export class MultimediaComponent implements OnInit {
       const reader2 = new FileReader()
       reader2.onload = () => this.archivo2 = reader2.result as string
       reader2.readAsDataURL(this.uploadedFiles[0])
-
     }
 
   }
@@ -81,13 +79,19 @@ export class MultimediaComponent implements OnInit {
       tamano: this.uploadedFiles[0].size,
       archivo: '',
       idEmpresa: window.localStorage.getItem('empresa'),
-      shortcut:''
+      shortcut: ''
     }
-    infoArchivo.archivo = this.archivo
-    this.archivoServicio.agregar(infoArchivo).subscribe((res) => {
-      this.toastr.success('Archivo agregado de forma exitosa')
-      this.infoArchivo.get('archivo')?.setValue('')
-    })
+    //4mb pasados a bytes
+    if (infoArchivo.tamano > (10 * 1024 * 1024)) {
+      this.toastr.error('Tamaño maximo de archivos: 4mb', 'Tamaño excedido')
+    } else {
+      infoArchivo.archivo = this.archivo
+      this.archivoServicio.agregar(infoArchivo).subscribe((res) => {
+        this.toastr.success('Archivo agregado de forma exitosa')
+        this.infoArchivo.get('archivo')?.setValue('')
+      })
+    }
+
   }
 
 

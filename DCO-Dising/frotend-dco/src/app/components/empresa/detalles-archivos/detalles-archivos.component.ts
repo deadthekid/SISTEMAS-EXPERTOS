@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Sanitizer, ɵ_sanitizeUrl } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { archivoService } from 'src/app/services/archivo.service';
@@ -12,12 +13,13 @@ import { empresaService } from 'src/app/services/empresa.service';
 })
 export class DetallesArchivosComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService, private archivoServicio: archivoService, private empresaServicio: empresaService) { }
+  constructor(private router: Router, private toastr: ToastrService, private archivoServicio: archivoService, private empresaServicio: empresaService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.seguridad()
     this.idArchivoURL()
   }
+  descarga:any
   tipo!: string
   idArchivo!: string
   detalles = {
@@ -47,7 +49,7 @@ export class DetallesArchivosComponent implements OnInit {
     }
   }
   cerrarSesion(){
-    console.log('dio click en cerrar sesion')
+    
     window.localStorage.removeItem('empresa')
     this.toastr.success('Cierre de sesión exitoso')
     this.router.navigate(['/empresa/login'])
@@ -59,7 +61,7 @@ export class DetallesArchivosComponent implements OnInit {
   jalarDetalles(idArchivo: string) {
     this.archivoServicio.detalles(idArchivo).subscribe((res) => {
       if (res == null) {
-        console.log('es null')
+        
         this.toastr.error('Esa página no contiene datos o no existe, no hay nada que hacer ahí', 'Acceso denegado')
         this.router.navigate(['/empresa/multimedia'])
       } else {
@@ -67,9 +69,11 @@ export class DetallesArchivosComponent implements OnInit {
           this.toastr.error('Esa página no contiene datos o no existe, no hay nada que hacer ahí', 'Acceso denegado')
           this.router.navigate(['/empresa/multimedia'])
         } else {
-          console.log(res)
+          
           this.detalles.nombre = res[0].nombre
           this.detalles.archivo = res[0].archivo
+          this.descarga=this.getFileContent(res[0].archivo)
+          
           this.detalles.shortcut=res[0].shortcut
           if (!(res[0].tipo == 'mp4' || res[0].tipo == 'mov' || res[0].tipo == 'wmv' || res[0].tipo == 'avi' || res[0].tipo == 'mkv' || res[0].tipo == 'webm' || res[0].tipo == 'apng' || res[0].tipo == 'gif' || res[0].tipo == 'ico' || res[0].tipo == 'jpeg' || res[0].tipo == 'png' || res[0].tipo == 'svg')) {
             this.detalles.visualizar = 'https://media.istockphoto.com/vectors/file-folder-office-supply-icon-vector-id1182976811?k=20&m=1182976811&s=612x612&w=0&h=vV6IdJW0drWpPcvlen_pOa8jgw41mqdpcaZn-mxoYLg='
@@ -86,6 +90,10 @@ export class DetallesArchivosComponent implements OnInit {
         }
       }
     })
+  }
+
+  getFileContent(datos:string){
+    return this.sanitizer.bypassSecurityTrustUrl(datos)
   }
 
   subir(element: any) {
