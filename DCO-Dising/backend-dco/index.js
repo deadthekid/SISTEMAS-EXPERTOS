@@ -25,7 +25,8 @@ app.use(bodyParser.urlencoded({
 //rutas
 app.use('/api/usuarios',require('./routes/usuario'));
 app.use('/api/productos',require('./routes/producto'));
-app.use('/empresa/',require('./routes/empresa'))
+app.use('/empresa/',require('./routes/empresa'));
+app.use('/admin/',require('./routes/admin'));
 
 app.listen(4000,()=>{
     console.log('El servidor esta corriendo perfectamente');
