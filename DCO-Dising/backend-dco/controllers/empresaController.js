@@ -43,6 +43,17 @@ exports.login = async (req, res) => {
         res.send(e)
     }
 }
+exports.seguridad=async (req,res)=>{
+    const idEmpresa=req.params.id
+    try{
+        let empresa= await Empresa.find({"_id":idEmpresa})
+        res.send(true)
+        res.end()
+    }catch(e){
+        res.send(null)
+        res.end()
+    }
+}
 
 exports.actualizarInfo = async (req, res) => {
     const { body } = req
@@ -155,14 +166,16 @@ exports.subirArchivo = async (req, res) => {
         const { idEmpresa } = req.body
         const archivo = new Archivo(req.body)
 
-        archivo.save()
+        
         let empresa = await Empresa.find({ '_id': idEmpresa }, { 'bancoMultimedia': 1 })
         let bancoMultimedia = empresa[0].bancoMultimedia
+        console.log(bancoMultimedia.length)
 
+        archivo.shortcut=bancoMultimedia.length+'-'+archivo.nombre
+        archivo.save()
         bancoMultimedia.push(archivo._id)
 
         empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'bancoMultimedia': bancoMultimedia }, { new: true })
-
 
         res.send(empresa)
         res.end()

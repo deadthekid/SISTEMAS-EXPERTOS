@@ -18,19 +18,19 @@ export class OtrosArchivosComponent implements OnInit {
     this.listaArchivos()
   }
   seguridad() {
-    if (!window.localStorage.getItem('usuario')) {
+    if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
       this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
     }
   }
   cerrarSesion(){
     console.log('dio click en cerrar sesion')
-    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('empresa')
     this.toastr.success('Cierre de sesión exitoso')
     this.router.navigate(['/empresa/login'])
   }
   listaArchivos() {
-    this.archivoServico.listaOtrosArchivos(window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.archivoServico.listaOtrosArchivos(window.localStorage.getItem('empresa')!).subscribe((res) => {
       try {
         let listaOtrosArchivos = []
         for (let i = 0; i < res.length; i++) {

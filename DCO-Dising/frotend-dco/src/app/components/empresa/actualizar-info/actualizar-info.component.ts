@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { empresaService } from 'src/app/services/empresa.service';
 
-import { read } from '@popperjs/core';
+
 @Component({
   selector: 'app-actualizar-info',
   templateUrl: './actualizar-info.component.html',
@@ -36,32 +36,37 @@ export class ActualizarInfoComponent implements OnInit {
   validarContrasenas() {
     if (this.contrasena?.value === this.confirmar?.value) {
       this.validarContras = true
-      console.log("probando validar contraseñasa, debe ser true", this.validarContras)
+      
     } else {
-      console.log("probando validar contraseñasa, debe ser false", this.validarContras)
+      
       this.validarContras = false
     }
-    /*if(this.contrasena?.value===null && this.confirmar?.value===null){
-      console.log("campos vacios")
-    }*/
+    
   }
 
   seguridad() {
-    if (!window.localStorage.getItem('usuario')) {
+    if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
-      this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
     } else {
-
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          window.localStorage.removeItem('empresa')
+        }
+      })
     }
   }
   cerrarSesion(){
-    console.log('dio click en cerrar sesion')
+    
     this.toastr.success('Cierre de sesión exitoso')
-    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('empresa')
     this.router.navigate(['/empresa/login'])
+    
   }
   rellenarInfo() {
-    this.empresaServicio.rellenar(window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.empresaServicio.rellenar(window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.nombre?.setValue(res.nombre)
       this.correo?.setValue(res.correo)
       this.descripcion?.setValue(res.descripcion)
@@ -74,20 +79,21 @@ export class ActualizarInfoComponent implements OnInit {
 
   subir(element: any) {
     this.uploadedFiles = element.target.files;
-    console.log(this.uploadedFiles)
+    
     
     //previsualizacion de la imagen que se subira y creacion del b64 que se guardará para generar el logo o cualquier archivo que se quiera subir
     const reader = new FileReader()
     reader.onload = () => this.archivo = reader.result as string
     reader.readAsDataURL(this.uploadedFiles[0])
-    console.log(this.archivo)
+    
+    console.log(reader)
   }
   
 
   actualizarInfo() {
     
     let datos={
-      idEmpresa: window.localStorage.getItem('usuario'),
+      idEmpresa: window.localStorage.getItem('empresa'),
       nombre: this.nombre?.value,
       correo: this.correo?.value,
       descripcion: this.descripcion?.value,

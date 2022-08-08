@@ -33,4 +33,5 @@ router.get('/listaOtrosArchivos/:id',empresaController.listaOtrosArchivos)
 router.get('/detallesArchivos/:id',empresaController.detallesArchivos)
 router.post('/actualizarArchivo/:id',empresaController.actualizarArchivo)
 router.delete('/eliminarArchivo',empresaController.eliminarArchivo)
+router.get('/seguridad/:id',empresaController.seguridad)
 module.exports=router

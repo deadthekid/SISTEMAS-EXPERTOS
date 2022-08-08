@@ -5,6 +5,7 @@ export class Archivo {
     tamaño: number;
     nombre: string;
     idEmresa: string;
+    shortcut: string;
 
     constructor(
         archivo: string,
@@ -12,11 +13,13 @@ export class Archivo {
         tamaño: number,
         nombre: string,
         idEmresa: string,
+        shortcut: string
     ) {
         this.archivo = archivo
         this.tipo = tipo
         this.tamaño = tamaño
         this.nombre = nombre
         this.idEmresa = idEmresa
+        this.shortcut=shortcut
     }
 }

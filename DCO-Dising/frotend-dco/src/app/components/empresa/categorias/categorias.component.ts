@@ -18,20 +18,20 @@ export class CategoriasComponent implements OnInit {
 
   agregarForm = new FormGroup({
     categoria: new FormControl('', [Validators.required]),
-    idEmpresa: new FormControl(window.localStorage.getItem('usuario'))
+    idEmpresa: new FormControl(window.localStorage.getItem('empresa'))
   })
   editForm = new FormGroup({
     categoria: new FormControl('', [Validators.required]),
-    idEmpresa: new FormControl(window.localStorage.getItem('usuario')),
+    idEmpresa: new FormControl(window.localStorage.getItem('empresa')),
     seleccionado: new FormControl('', [Validators.required]),
   })
   delForm = new FormGroup({
     categoria: new FormControl('', [Validators.required]),
-    idEmpresa: new FormControl(window.localStorage.getItem('usuario'))
+    idEmpresa: new FormControl(window.localStorage.getItem('empresa'))
   })
   updForm = new FormGroup({
     categoria: new FormControl('', [Validators.required]),
-    idEmpresa: new FormControl(window.localStorage.getItem('usuario'))
+    idEmpresa: new FormControl(window.localStorage.getItem('empresa'))
   })
 
   ngOnInit(): void {
@@ -39,20 +39,27 @@ export class CategoriasComponent implements OnInit {
     this.logoEmpresa()
   }
   seguridad() {
-    if (!window.localStorage.getItem('usuario')) {
+    if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
-      this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
     } else {
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          window.localStorage.removeItem('empresa')
+        }
+      })
     }
   }
   cerrarSesion(){
     console.log('dio click en cerrar sesion')
     this.toastr.success('Cierre de sesión exitoso')
-    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('empresa')
     this.router.navigate(['/empresa/login'])
   }
   logoEmpresa() {
-    this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.empresaServicio.logo(window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.logo = res[0].logo
     })
   }
@@ -73,7 +80,7 @@ export class CategoriasComponent implements OnInit {
   //editar una categoria
 
   cargarSelectEditar() {
-    this.empresaServicio.getCategorias(window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.empresaServicio.getCategorias(window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.categorias = res[0].categorias
     })
   }
@@ -86,7 +93,7 @@ export class CategoriasComponent implements OnInit {
     })
   }
   cargarSelectEliminar() {
-    this.empresaServicio.getCategorias(window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.empresaServicio.getCategorias(window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.categorias = res[0].categorias
     })
   }

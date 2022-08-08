@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { archivoService } from 'src/app/services/archivo.service';
+import { empresaService } from 'src/app/services/empresa.service';
 
 @Component({
   selector: 'app-detalles-archivos',
@@ -11,7 +12,7 @@ import { archivoService } from 'src/app/services/archivo.service';
 })
 export class DetallesArchivosComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService, private archivoServicio: archivoService) { }
+  constructor(private router: Router, private toastr: ToastrService, private archivoServicio: archivoService, private empresaServicio: empresaService) { }
 
   ngOnInit(): void {
     this.seguridad()
@@ -32,14 +33,22 @@ export class DetallesArchivosComponent implements OnInit {
     archivo: new FormControl('', [Validators.required])
   })
   seguridad() {
-    if (!window.localStorage.getItem('usuario')) {
+    if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
-      this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+    } else {
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          window.localStorage.removeItem('empresa')
+        }
+      })
     }
   }
   cerrarSesion(){
     console.log('dio click en cerrar sesion')
-    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('empresa')
     this.toastr.success('Cierre de sesión exitoso')
     this.router.navigate(['/empresa/login'])
   }
@@ -61,17 +70,18 @@ export class DetallesArchivosComponent implements OnInit {
           console.log(res)
           this.detalles.nombre = res[0].nombre
           this.detalles.archivo = res[0].archivo
+          this.detalles.shortcut=res[0].shortcut
           if (!(res[0].tipo == 'mp4' || res[0].tipo == 'mov' || res[0].tipo == 'wmv' || res[0].tipo == 'avi' || res[0].tipo == 'mkv' || res[0].tipo == 'webm' || res[0].tipo == 'apng' || res[0].tipo == 'gif' || res[0].tipo == 'ico' || res[0].tipo == 'jpeg' || res[0].tipo == 'png' || res[0].tipo == 'svg')) {
             this.detalles.visualizar = 'https://media.istockphoto.com/vectors/file-folder-office-supply-icon-vector-id1182976811?k=20&m=1182976811&s=612x612&w=0&h=vV6IdJW0drWpPcvlen_pOa8jgw41mqdpcaZn-mxoYLg='
-            this.tipo = 'otrosArchivos'
+            this.tipo = res[0].tipo
           }
           if (res[0].tipo == 'apng' || res[0].tipo == 'gif' || res[0].tipo == 'ico' || res[0].tipo == 'jpeg' || res[0].tipo == 'png' || res[0].tipo == 'svg') {
             this.detalles.visualizar = res[0].archivo
-            this.tipo = 'imagenes'
+            this.tipo = res[0].tipo
           }
           if (res[0].tipo == 'mp4' || res[0].tipo == 'mov' || res[0].tipo == 'wmv' || res[0].tipo == 'avi' || res[0].tipo == 'mkv' || res[0].tipo == 'webm') {
             this.detalles.visualizar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa_dntwmphiLeJafmYwujdbtYtpkbjchIMZA&usqp=CAU"
-            this.tipo = 'videos'
+            this.tipo = res[0].tipo
           }
         }
       }
@@ -108,7 +118,7 @@ export class DetallesArchivosComponent implements OnInit {
       nombre: this.uploadedFiles[0].name,
       tamano: this.uploadedFiles[0].size,
       archivo: '',
-      idEmpresa: window.localStorage.getItem('usuario')
+      idEmpresa: window.localStorage.getItem('empresa')
     }
     infoArchivo.archivo = this.archivo
     this.archivoServicio.actualizar(infoArchivo, this.idArchivo).subscribe((res) => {
@@ -117,7 +127,7 @@ export class DetallesArchivosComponent implements OnInit {
     })
   }
   eliminar() {
-    this.archivoServicio.eliminar(this.idArchivo, window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.archivoServicio.eliminar(this.idArchivo, window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.toastr.success('Archivo eliminado con exito')
       this.router.navigate(['/empresa/' + this.tipo])
       window.location.href = '/empresa/' + this.tipo

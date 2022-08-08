@@ -9,30 +9,37 @@ import { empresaService } from 'src/app/services/empresa.service';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor(private router: Router,private toastr: ToastrService, private empresaServicio: empresaService) { }
-  logo!:string
+  constructor(private router: Router, private toastr: ToastrService, private empresaServicio: empresaService) { }
+  logo!: string
 
   ngOnInit(): void {
     this.seguridad()
     this.logoEmpresa()
   }
-  seguridad(){
-    if(!window.localStorage.getItem('usuario')){
+  seguridad() {
+    if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
-      this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
-    }else{
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+    } else {
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          window.localStorage.removeItem('empresa')
+        }
+      })
     }
   }
-  cerrarSesion(){
+  cerrarSesion() {
     console.log('dio click en cerrar sesion')
-    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('empresa')
     this.toastr.success('Cierre de sesión exitoso')
     this.router.navigate(['/empresa/login'])
   }
-  logoEmpresa(){
-    this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res)=>{
-      this.logo=res[0].logo
+  logoEmpresa() {
+    this.empresaServicio.logo(window.localStorage.getItem('empresa')!).subscribe((res) => {
+      this.logo = res[0].logo
     })
   }
-  
+
 }
