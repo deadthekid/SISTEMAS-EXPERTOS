@@ -15,4 +15,12 @@ export class UsuarioService {
     return this.http.post(this.url,usuario);
   }
 
+  listaUsuarios(): Observable<any>{
+    return this.http.get(this.url);
+  }
+
+  obtenerUsuario( id : String): Observable<any>{
+    return this.http.get(this.url+`/${id}`);
+  }
+
 }

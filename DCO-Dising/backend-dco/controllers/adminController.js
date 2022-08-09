@@ -1,5 +1,7 @@
 const Usuario = require("../models/Usuario");
 
+
+//login admin
 exports.login = async (req, res) => {
     const { correo, contrasena } = req.body
     try {

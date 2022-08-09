@@ -20,8 +20,12 @@ exports.crearUsuario = async (req,res)=>{
 exports.obtenerUsuarios = async(req,res)=>{
     try{
 
-        const usuarios = await Usuario.find();
-        res.json(usuarios)
+        let usuarios = await Usuario.find();
+        if(usuarios[0]){
+            res.send({mensaje:"usuarios encontrados",listaUsuarios:usuarios,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraron usuarios",acceso:0});
+        }
 
     }catch(error){
         console.log(error);
@@ -56,12 +60,11 @@ exports.actualizarUsuario = async(req,res)=>{
 exports.obtenerUsuario = async(req,res)=>{
     try{
         let usuario = await Usuario.findById(req.params.id);
-
-        if(!usuario){
-            res.status(404).json({msg:'No existe el producto'})
+        if(usuario){
+            res.send({mensaje:"usuario encontrado",usuario:usuario,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraro el usuario",acceso:0});
         }
-
-        res.json(usuario);
 
     }catch(error){
         console.log(error);
