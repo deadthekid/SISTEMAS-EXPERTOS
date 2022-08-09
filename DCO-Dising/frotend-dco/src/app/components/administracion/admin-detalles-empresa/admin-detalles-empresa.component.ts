@@ -16,7 +16,8 @@ export class AdminDetallesEmpresaComponent implements OnInit {
     _id:'',
     correo: '',
     estado: 'Activo',
-    descripcion: ''
+    descripcion: '',
+    logo:''
   };
 
   constructor(
@@ -34,12 +35,19 @@ export class AdminDetallesEmpresaComponent implements OnInit {
       if(data.acceso){
         console.log(data.mensaje);
         this.datosEmpresa = data.empresa;
+        this.logoEmpresa();
       }else{
         console.log(data.mensaje);
       }
     }, error=>{
       console.log(error);
     });
+  }
+
+  logoEmpresa(){
+    this.empresaService.logo(this.datosEmpresa._id).subscribe((res)=>{
+      this.datosEmpresa.logo=res[0].logo
+    })
   }
 
 }
