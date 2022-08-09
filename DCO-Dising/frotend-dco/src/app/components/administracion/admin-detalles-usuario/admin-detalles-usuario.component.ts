@@ -18,6 +18,7 @@ export class AdminDetallesUsuarioComponent implements OnInit {
     'contrasenia': '',
     'tipoUsuario':''
   };
+  
   constructor(
     private route : ActivatedRoute,
     private usuarioService : UsuarioService

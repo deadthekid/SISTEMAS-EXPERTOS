@@ -7,6 +7,8 @@ const empresaController= require('../controllers/empresaController')
 router.post('/registro/',empresaController.agregar)
 router.get('/registro/:id',empresaController.obtener)
 router.post('/login/',empresaController.login)
+router.get('/listaEmpresas',empresaController.listar)
+router.get('/empresa/:id',empresaController.obtenerEmpresa)
 //router.delete('/registro/:id',empresaController.borrar)
 //router.put('/registro/',empresaController.actualizar)
 

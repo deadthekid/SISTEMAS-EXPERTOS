@@ -41,4 +41,10 @@ export class empresaService {
     delCategorias (idEmpresa: string, categoria: string): Observable<any>{
         return this.http.delete(this.url+`/delCategorias/?idEmpresa=${idEmpresa}&categoria=${categoria}`)
     }
+    getEmpresas(): Observable<any>{
+        return this.http.get(this.url+'/listaEmpresas');
+    }
+    getEmpresa( id : String): Observable<any>{
+        return this.http.get(this.url+`/empresa/${id}`);
+      }
 }
