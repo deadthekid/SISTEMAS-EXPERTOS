@@ -72,10 +72,18 @@ export class RealizarCompraComponent implements OnInit {
         this.cantidadProductos=cantidad;
         this.subTotal=subtotalAux;
         this.Total=total;
-        
-
-
       }
+    }
+  }
+
+  comprar(){
+    if(window.localStorage.getItem('carrito')==null){
+      this.toastr.warning('Aun no agregado ningun producto a su carrito :(')
+    }else{
+      this.carrito = [];
+      window.localStorage.setItem('carrito',JSON.stringify(this.carrito));
+      this.router.navigate(['/usuarios/usaurio/inicio'])
+      this.toastr.info('Se ha realizado con exito su compra gracias por preferirnos :)')
     }
   }
  

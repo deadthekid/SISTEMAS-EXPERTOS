@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="entrada-contenedor-btn ">
-                            <button   type="submit" [disabled]="compraForm.invalid" class="btn-formulario">Confirmar Compra</button>
+                            <button   type="submit" (click)="(comprar())" [disabled]="compraForm.invalid" class="btn-formulario">Confirmar Compra</button>
                         </div>
                         
                     </form>
