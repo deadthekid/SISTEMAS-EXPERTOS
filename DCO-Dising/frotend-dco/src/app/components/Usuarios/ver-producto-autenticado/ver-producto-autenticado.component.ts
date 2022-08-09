@@ -60,7 +60,9 @@ export class VerProductoAutenticadoComponent implements OnInit {
           let productoAux= {
             idProducto: data._id,
             nombre:data.nombre,
-            precio:data.precio
+            precio:data.precio,
+            img:data.img,
+            des:data.descripcion
           }
           this.carrito.push(productoAux);
           this.toastr.success('Se agrego al carrito')
@@ -78,7 +80,9 @@ export class VerProductoAutenticadoComponent implements OnInit {
             let productoAux2= {
               idProducto: data._id,
               nombre:data.nombre,
-              precio:data.precio
+              precio:data.precio,
+              img:data.img,
+              des:data.descripcion
             }
             this.carrito.push(productoAux2);
             window.localStorage.setItem('carrito',JSON.stringify(this.carrito));

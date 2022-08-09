@@ -43,8 +43,8 @@ import { AdminDetallesEmpresaComponent } from './components/administracion/admin
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
-import { PagoUsuarioComponent } from './components/Usuarios/pago-usuario/pago-usuario.component';
 import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-producto-autenticado/ver-producto-autenticado.component';
+import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/realizar-compra.component';
 
 @NgModule({
   declarations: [
@@ -82,8 +82,8 @@ import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-produ
     LandingPageComponent,
     CreacionProductoComponent,
     CategoriasComponent,
-    PagoUsuarioComponent,
     VerProductoAutenticadoComponent,
+    RealizarCompraComponent,
   ],
   imports: [
     BrowserModule,
