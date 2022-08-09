@@ -85,6 +85,10 @@
     
 }
 
+.tamaño{
+    height: 46px!important;
+}
+
 .buscador-btn{
     width: 100%;
     text-align: center;

@@ -105,6 +105,7 @@
     align-content: center;
     background-color: #ECFBFF;
     border-color: #ECFBFF;
+    height: 46px;
 }
 
 .buscador-btn:hover{
@@ -141,6 +142,11 @@
     width: 70%;
     height: 20%;
     color: #ECFBFF!important;
+}
+
+.boton-comprar{
+    background-color: #184E5D;
+    color: #ECFBFF;
 }
 
 .correccion-btn{
@@ -208,6 +214,12 @@ a:link ,a:visited ,a:active{
     cursor: pointer;
 }
 
+.imagen-back{
+    background-image: url("/assets/fondo-targetas.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 .img-tarjeta{
     background-color: red;

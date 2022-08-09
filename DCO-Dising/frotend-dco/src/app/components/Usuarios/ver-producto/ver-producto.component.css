@@ -93,6 +93,7 @@
     align-content: center;
     background-color: #ECFBFF;
     border-color: #ECFBFF;
+    height: 46px;
 }
 
 .buscador-btn:hover{
