@@ -23,5 +23,8 @@ export class PrincipalUsuariosAutenticadoComponent implements OnInit {
       console.log(error);
     })
   }
+/*
+  
+  }*/
 
 }

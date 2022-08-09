@@ -137,6 +137,23 @@
     width: 50%;
 }
 
+.correccion-contenedor-r{
+    width: 70%;
+    height: 20%;
+    color: #ECFBFF!important;
+}
+
+.correccion-btn{
+    position: absolute;
+    width: 70px;
+    background-color: #184E5D!important;
+    border: none;
+}
+
+.correccion-btn:focus{
+    border-color: #ECFBFF;
+}
+
 .svg{
     width: 100%;
     height: 100%;
