@@ -14,34 +14,43 @@ export class empresaService {
     agregar(empresa: Empresa): Observable<any> {
         return this.http.post(this.url + "/registro", empresa)
     }
-    buscar (correo: string): Observable<any> {
-        return this.http.get(this.url+"/registro/"+correo)
+    buscar(correo: string): Observable<any> {
+        return this.http.get(this.url + "/registro/" + correo)
     }
-    login(infoLogin: object): Observable<any>{
-        return this.http.post(this.url+"/login",infoLogin)
+    login(infoLogin: object): Observable<any> {
+        return this.http.post(this.url + "/login", infoLogin)
     }
-    seguridad(idEmpresa: string): Observable<any>{
-        return this.http.get(this.url+"/seguridad/"+idEmpresa)
+    seguridad(idEmpresa: string): Observable<any> {
+        return this.http.get(this.url + "/seguridad/" + idEmpresa)
     }
-    rellenar (idEmpresa: string): Observable<any>{
-        return this.http.get(this.url+"/rellenarInfo/"+idEmpresa)
+    rellenar(idEmpresa: string): Observable<any> {
+        return this.http.get(this.url + "/rellenarInfo/" + idEmpresa)
     }
-    actualizar (infoEmpresa: object): Observable<any>{
-        return this.http.post(this.url+"/actualizarInfo/",infoEmpresa)
+    actualizar(infoEmpresa: object): Observable<any> {
+        return this.http.post(this.url + "/actualizarInfo/", infoEmpresa)
     }
-    logo (idEmpresa: string): Observable<any>{
-        return this.http.get(this.url+"/logo/"+idEmpresa)
+    logo(idEmpresa: string): Observable<any> {
+        return this.http.get(this.url + "/logo/" + idEmpresa)
     }
-    aggCategoria (infoCategoria: object): Observable<any>{
-        return this.http.post(this.url+"/aggCategoria",infoCategoria)
+    aggCategoria(infoCategoria: object): Observable<any> {
+        return this.http.post(this.url + "/aggCategoria", infoCategoria)
     }
-    getCategorias (idEmpresa: string):Observable<any>{
-        return this.http.get(this.url+"/getCategorias/"+idEmpresa)
+    getCategorias(idEmpresa: string): Observable<any> {
+        return this.http.get(this.url + "/getCategorias/" + idEmpresa)
     }
-    editCategorias (infoCategoria: object): Observable<any>{
-        return this.http.put(this.url+"/updCategorias",infoCategoria)
+    editCategorias(infoCategoria: object): Observable<any> {
+        return this.http.put(this.url + "/updCategorias", infoCategoria)
     }
-    delCategorias (idEmpresa: string, categoria: string): Observable<any>{
-        return this.http.delete(this.url+`/delCategorias/?idEmpresa=${idEmpresa}&categoria=${categoria}`)
+    delCategorias(idEmpresa: string, categoria: string): Observable<any> {
+        return this.http.delete(this.url + `/delCategorias/?idEmpresa=${idEmpresa}&categoria=${categoria}`)
+    }
+    getProductos(idEmpresa: string): Observable<any> {
+        return this.http.get(this.url+'/getProductos/'+idEmpresa)
+    }
+    actualizarProducto(infoActualizar: object):Observable<any>{
+      return this.http.put(this.url+'/actualizarProducto',infoActualizar)
+    }
+    eliminarProducto(idProducto: string, idEmpresa:string):Observable<any>{
+        return this.http.delete(this.url+`/eliminarProducto/?idProducto=${idProducto}&idEmpresa=${idEmpresa}`)
     }
 }

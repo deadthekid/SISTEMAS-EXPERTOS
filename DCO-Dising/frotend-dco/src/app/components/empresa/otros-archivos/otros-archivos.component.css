@@ -1,11 +1,55 @@
-.cabeza {
+.contenedor-nav {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+.navegacion {
     background-color: #184E5D;
-    text-align: center;
+    flex: 1;
+}
+
+
+.nav-l {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    height: 88%;
+    width: 42%;
+}
+
+.nav-c {
+    flex: 2.7;
+    background-color: #184E5D;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-r {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: larger;
+    color: #ECFBFF;
 }
 
 .pie {
     background-color: #184E5D;
-    flex: 1;
+    height: 3%;
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: #ECFBFF;
 }
 
 .contenedor {
@@ -19,12 +63,13 @@
 .contenido {
     background-color: rgba(216, 246, 255, .50);
     display: flex;
-
+    height: 90vh;
     justify-content: center;
     padding-top: 5rem;
     padding-bottom: 5rem;
     row-gap: 7px;
     flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
 .logo {

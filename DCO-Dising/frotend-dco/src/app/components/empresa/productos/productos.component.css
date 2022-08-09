@@ -110,6 +110,7 @@ a:active {
 
 .btnCerrarSesion {
     background-color: rgba(216, 246, 255, .50);
+    color: white;
     border-radius: 10px;
     width: 100%;
 }

@@ -54,7 +54,10 @@ export class ImagenesComponent implements OnInit {
           this.imagenes=listaImagenes
         }
       }catch(e){
-        this.toastr.error('No hay ninguna imagen valida disponible en la base de datos')
+        this.toastr.error('Error en la obtención de la informacion')
+      }
+      if(this.imagenes==undefined){
+        this.toastr.error('No hay imagenes para mostrar')
       }
     })
   }

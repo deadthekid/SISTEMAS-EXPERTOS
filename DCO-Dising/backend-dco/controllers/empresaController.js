@@ -1,5 +1,7 @@
 const Empresa = require('../models/empresaModel');
 const Archivo = require('../models/archivoModel')
+const Productos = require('../models/Producto');
+const Producto = require('../models/Producto');
 
 exports.agregar = async (req, res) => {
     try {
@@ -43,13 +45,13 @@ exports.login = async (req, res) => {
         res.send(e)
     }
 }
-exports.seguridad=async (req,res)=>{
-    const idEmpresa=req.params.id
-    try{
-        let empresa= await Empresa.find({"_id":idEmpresa})
+exports.seguridad = async (req, res) => {
+    const idEmpresa = req.params.id
+    try {
+        let empresa = await Empresa.find({ "_id": idEmpresa })
         res.send(true)
         res.end()
-    }catch(e){
+    } catch (e) {
         res.send(null)
         res.end()
     }
@@ -166,12 +168,12 @@ exports.subirArchivo = async (req, res) => {
         const { idEmpresa } = req.body
         const archivo = new Archivo(req.body)
 
-        
+
         let empresa = await Empresa.find({ '_id': idEmpresa }, { 'bancoMultimedia': 1 })
         let bancoMultimedia = empresa[0].bancoMultimedia
         console.log(bancoMultimedia.length)
 
-        archivo.shortcut=bancoMultimedia.length+'-'+archivo.nombre
+        archivo.shortcut = bancoMultimedia.length + '-' + archivo.nombre
         archivo.save()
         bancoMultimedia.push(archivo._id)
 
@@ -288,8 +290,58 @@ exports.eliminarArchivo = async (req, res) => {
         let borrado = await Archivo.remove({ '_id': idArchivo })
         res.send(borrado)
         res.end()
-    }catch(e){
+    } catch (e) {
         res.send(e)
         res.end()
+    }
+}
+exports.getProductos = async (req, res) => {
+    try {
+        const productos = await Producto.find({ 'empresa': req.params.id })
+        res.send(productos)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.actualizarProducto = async (req, res) => {
+    try {
+        const { nombre,precio,categoria,descripcion,img,idProducto } = req.body
+        let producto= await Producto.findByIdAndUpdate({_id:idProducto},{
+            'nombre': nombre,
+            'precio':precio,
+            'categoria':categoria,
+            'descripcion':descripcion,
+            'img':img
+        })
+        res.send(producto)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.eliminarProducto= async (req,res)=>{
+    try{
+        const {idProducto, idEmpresa}=req.query
+        console.log(idProducto)
+        
+        
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "productos": 1 })
+        let productos = empresa[0].productos
+        let indice = productos.indexOf(idProducto)
+
+        productos.splice(indice, 1)
+
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'productos': productos }, { new: true })
+        
+        let producto= await Producto.remove({ '_id': idProducto })
+
+        res.send(producto)
+        res.end()
+    }catch(e){
+        res.send(e)
+        res-end()
     }
 }

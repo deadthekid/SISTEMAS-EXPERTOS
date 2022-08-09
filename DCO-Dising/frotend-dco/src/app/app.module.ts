@@ -9,7 +9,6 @@ import { LoginComponent } from './components/empresa/login/login.component';
 import { RegistroComponent } from './components/empresa/registro/registro.component';
 import { PrincipalComponent } from './components/empresa/principal/principal.component';
 import { MultimediaComponent } from './components/empresa/multimedia/multimedia.component';
-import { RegistrarComponent } from './components/empresa/registrar/registrar.component';
 import { ActualizarInfoComponent } from './components/empresa/actualizar-info/actualizar-info.component';
 import { HistorialComponent } from './components/empresa/historial/historial.component';
 import { DetallesArchivosComponent } from './components/empresa/detalles-archivos/detalles-archivos.component';
@@ -41,8 +40,11 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminDetallesPlanComponent } from './components/administracion/admin-detalles-plan/admin-detalles-plan.component';
 import { AdminDetallesEmpresaComponent } from './components/administracion/admin-detalles-empresa/admin-detalles-empresa.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
+import { CreacionProductoComponent } from './components/empresa/creacion-producto/creacion-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
+import { ProductosComponent } from './components/empresa/productos/productos.component';
+import { VerProductosComponent } from './components/empresa/ver-productos/ver-productos.component';
+import { DetalleProductoComponent } from './components/empresa/detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,6 @@ import { CategoriasComponent } from './components/empresa/categorias/categorias.
     RegistroComponent,
     PrincipalComponent,
     MultimediaComponent,
-    RegistrarComponent,
     ActualizarInfoComponent,
     HistorialComponent,
     DetallesArchivosComponent,
@@ -79,7 +80,10 @@ import { CategoriasComponent } from './components/empresa/categorias/categorias.
     AdminDetallesEmpresaComponent,
     LandingPageComponent,
     CreacionProductoComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    ProductosComponent,
+    VerProductosComponent,
+    DetalleProductoComponent
   ],
   imports: [
     BrowserModule,

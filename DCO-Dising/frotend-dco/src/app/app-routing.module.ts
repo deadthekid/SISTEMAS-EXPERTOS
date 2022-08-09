@@ -6,7 +6,6 @@ import { HistorialComponent } from './components/empresa/historial/historial.com
 import { LoginComponent } from './components/empresa/login/login.component'
 import { MultimediaComponent } from './components/empresa/multimedia/multimedia.component'
 import { PrincipalComponent } from './components/empresa/principal/principal.component'
-import { RegistrarComponent } from './components/empresa/registrar/registrar.component'
 import { RegistroComponent } from './components/empresa/registro/registro.component'
 import { VideosComponent } from './components/empresa/videos/videos.component';
 import { ImagenesComponent } from './components/empresa/imagenes/imagenes.component';
@@ -31,6 +30,12 @@ import { AdminDetallesTemaComponent } from './components/administracion/admin-de
 import { AdminNuevoUsuarioComponent } from './components/administracion/admin-nuevo-usuario/admin-nuevo-usuario.component';
 import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo-plan/admin-nuevo-plan.component';
 import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
+import { ProductosComponent } from './components/empresa/productos/productos.component';
+import { VerProductosComponent } from './components/empresa/ver-productos/ver-productos.component';
+import { DetalleProductoComponent } from './components/empresa/detalle-producto/detalle-producto.component';
+import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
+import { CreacionProductoComponent } from './components/empresa/creacion-producto/creacion-producto.component';
+
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -39,14 +44,13 @@ const routes: Routes = [
   { path: 'empresa/login', component: LoginComponent },
   { path: 'empresa/multimedia', component: MultimediaComponent },
   { path: 'empresa/principal', component: PrincipalComponent },
-  { path: 'empresa/registrar', component: RegistrarComponent },
   { path: 'empresa/registro', component: RegistroComponent },
   { path: 'empresa/videos', component: VideosComponent },
   { path: 'empresa/imagenes', component: ImagenesComponent },
   { path: 'empresa/otrosArchivos', component: OtrosArchivosComponent },
   { path: 'empresa/detalleArchivos/:id', component: DetallesArchivosComponent },
   { path: 'usuarios', component: PrincipalUsuariosComponent },
-  { path: 'usuarios/verProducto', component: VerProductoComponent },
+  { path: 'usuarios/verProducto/:id', component: VerProductoComponent },
   { path: 'usuarios/crearUsuario', component: CreacionUsuarioComponent },
   { path: 'usuarios/inicioUsuario', component: IniciarUsuarioComponent },
   { path: 'usuarios/usaurio/inicio', component: PrincipalUsuariosAutenticadoComponent },
@@ -62,7 +66,12 @@ const routes: Routes = [
   { path: 'admin/tema/:id', component: AdminDetallesTemaComponent },
   { path: 'admin/nuevoUsuario', component: AdminNuevoUsuarioComponent },
   { path: 'admin/nuevoPlan', component: AdminNuevoPlanComponent },
-  { path: 'admin/nuevoTema', component: AdminNuevoTemaComponent }
+  { path: 'admin/nuevoTema', component: AdminNuevoTemaComponent },
+  { path: 'empresa/Productos', component: ProductosComponent },
+  { path: 'empresa/VerProductos', component: VerProductosComponent },
+  { path: 'empresa/detalleProducto/:id', component: DetalleProductoComponent },
+  { path: 'empresa/categorias', component: CategoriasComponent },
+  { path: 'empresa/agregarProducto', component: CreacionProductoComponent },
 ];
 
 @NgModule({

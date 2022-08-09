@@ -19,7 +19,7 @@ export class DetallesArchivosComponent implements OnInit {
     this.seguridad()
     this.idArchivoURL()
   }
-  descarga:any
+  descarga: any
   tipo!: string
   idArchivo!: string
   detalles = {
@@ -42,14 +42,14 @@ export class DetallesArchivosComponent implements OnInit {
       this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
         if (res == null) {
           this.router.navigate(['/'])
-          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina', 'ERROR')
           window.localStorage.removeItem('empresa')
         }
       })
     }
   }
-  cerrarSesion(){
-    
+  cerrarSesion() {
+
     window.localStorage.removeItem('empresa')
     this.toastr.success('Cierre de sesión exitoso')
     this.router.navigate(['/empresa/login'])
@@ -61,7 +61,7 @@ export class DetallesArchivosComponent implements OnInit {
   jalarDetalles(idArchivo: string) {
     this.archivoServicio.detalles(idArchivo).subscribe((res) => {
       if (res == null) {
-        
+
         this.toastr.error('Esa página no contiene datos o no existe, no hay nada que hacer ahí', 'Acceso denegado')
         this.router.navigate(['/empresa/multimedia'])
       } else {
@@ -69,12 +69,12 @@ export class DetallesArchivosComponent implements OnInit {
           this.toastr.error('Esa página no contiene datos o no existe, no hay nada que hacer ahí', 'Acceso denegado')
           this.router.navigate(['/empresa/multimedia'])
         } else {
-          
+
           this.detalles.nombre = res[0].nombre
           this.detalles.archivo = res[0].archivo
-          this.descarga=this.getFileContent(res[0].archivo)
-          
-          this.detalles.shortcut=res[0].shortcut
+          this.descarga = this.getFileContent(res[0].archivo)
+
+          this.detalles.shortcut = res[0].shortcut
           if (!(res[0].tipo == 'mp4' || res[0].tipo == 'mov' || res[0].tipo == 'wmv' || res[0].tipo == 'avi' || res[0].tipo == 'mkv' || res[0].tipo == 'webm' || res[0].tipo == 'apng' || res[0].tipo == 'gif' || res[0].tipo == 'ico' || res[0].tipo == 'jpeg' || res[0].tipo == 'png' || res[0].tipo == 'svg')) {
             this.detalles.visualizar = 'https://media.istockphoto.com/vectors/file-folder-office-supply-icon-vector-id1182976811?k=20&m=1182976811&s=612x612&w=0&h=vV6IdJW0drWpPcvlen_pOa8jgw41mqdpcaZn-mxoYLg='
             this.tipo = res[0].tipo
@@ -92,7 +92,7 @@ export class DetallesArchivosComponent implements OnInit {
     })
   }
 
-  getFileContent(datos:string){
+  getFileContent(datos: string) {
     return this.sanitizer.bypassSecurityTrustUrl(datos)
   }
 
@@ -137,6 +137,21 @@ export class DetallesArchivosComponent implements OnInit {
   eliminar() {
     this.archivoServicio.eliminar(this.idArchivo, window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.toastr.success('Archivo eliminado con exito')
+
+
+      if (!(this.tipo == 'mp4' || this.tipo == 'mov' || this.tipo == 'wmv' || this.tipo == 'avi' || this.tipo == 'mkv' || this.tipo == 'webm' || this.tipo == 'apng' || this.tipo == 'gif' || this.tipo == 'ico' || this.tipo == 'jpeg' || this.tipo == 'png' || this.tipo == 'svg')) {
+        this.detalles.visualizar = 'https://media.istockphoto.com/vectors/file-folder-office-supply-icon-vector-id1182976811?k=20&m=1182976811&s=612x612&w=0&h=vV6IdJW0drWpPcvlen_pOa8jgw41mqdpcaZn-mxoYLg='
+        this.tipo = 'otrosArchivos'
+      }
+      if (this.tipo == 'apng' || this.tipo == 'gif' || this.tipo == 'ico' || this.tipo == 'jpeg' || this.tipo == 'png' || this.tipo == 'svg') {
+        this.detalles.visualizar = this.archivo
+        this.tipo = 'imagenes'
+      }
+      if (this.tipo == 'mp4' || this.tipo == 'mov' || this.tipo == 'wmv' || this.tipo == 'avi' || this.tipo == 'mkv' || this.tipo == 'webm') {
+        this.detalles.visualizar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa_dntwmphiLeJafmYwujdbtYtpkbjchIMZA&usqp=CAU"
+        this.tipo = 'videos'
+      }
+
       this.router.navigate(['/empresa/' + this.tipo])
       window.location.href = '/empresa/' + this.tipo
     })

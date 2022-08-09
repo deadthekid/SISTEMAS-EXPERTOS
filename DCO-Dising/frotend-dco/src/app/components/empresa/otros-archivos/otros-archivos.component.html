@@ -1,17 +1,29 @@
 <div class="contenedor">
-    <div class="cabeza">
-        <nav class="navbar cabeza">
-            <div class="container">
-                <a class="navbar-brand" href="/empresa/principal">
-                    <img class="logo-img" src="../../../../assets/img/logo 2.png" alt="" width="100" height="100">
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            <div class="nav-l" style="text-align: center;">
+                <a class="navbar-brand" href="/empresa/principal" style="width: 50%;">
+                    <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
                 </a>
-                <div class="elementoNav"><a href="">Explorar</a></div>
-                <div class="elementoNav"><a href="/empresa/multimedia">Banco Multimedia</a></div>
-                <div class="elementoNav"><a href="/empresa/administrarPaginas">Páginas</a></div>
-                <div class="elementoNav"><a href="/empresa/productosYcategorias">Productos y Categorías</a></div>
-                <div class="elementoNav"><input class="btnCerrarSesion" type="button" value="Cerrar Sesión"></div>
             </div>
-        </nav>
+            <div class="nav-r">
+                <a href="">Explorar</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/multimedia">Banco Multimedia</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/administrarPaginas">Páginas</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/productosYcategorias">Productos y Categorías</a>
+            </div>
+            <div class="nav-r">
+                <div>
+                    <input class="btnCerrarSesion" type="button" value="Cerrar Sesión">
+                </div>
+            </div>
+        </div>
     </div>
     <div class="contenido">
         <div class="imagenes">
@@ -24,9 +36,10 @@
                     </div>
                 </div>
             </div>
-            <pagination-controls style="text-align: center;" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
-            </pagination-controls>
+            
         </div>
     </div>
+    <pagination-controls style="text-align: center; background-color: rgba(216, 246, 255, .50);" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
     <div class="pie"><br></div>
 </div>

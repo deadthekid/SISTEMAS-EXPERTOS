@@ -46,6 +46,9 @@ export class OtrosArchivosComponent implements OnInit {
       } catch (e) {
         this.toastr.error('No hay ninguna imagen valida disponible en la base de datos')
       }
+      if(this.otrosArchivos==undefined){
+        this.toastr.error('No hay archivos para mostrar')
+      }
     })
   }
   detalles(idArchivo: string) {

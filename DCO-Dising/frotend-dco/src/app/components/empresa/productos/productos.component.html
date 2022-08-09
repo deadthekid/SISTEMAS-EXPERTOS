@@ -27,19 +27,8 @@
     </div>
     <div class="contenido">
         <div class="botones">
-            <a href="/empresa/actualizarInfo"><input class="btnPrincipal" type="button" value="ACTULIZAR INFO"></a>
-
-            <a href="/empresa/administrarPaginas"><input class="btnPrincipal" type="button"
-                    value="ADMINISTRAR PAGINAS"></a>
-
-            <a href="/empresa/Productos"><input class="btnPrincipal" type="button"
-                    value="MANEJO DE PRODUCTOS"></a>
-
-            <a href="/empresa/multimedia"><input class="btnPrincipal" type="button"
-                    value="ADMINISTRAR BANCO MULTIMEDIA"></a>
-
-            <a href="/empresa/historial"><input class="btnPrincipal" type="button" value="HISTORIAL DE VENTAS"></a>
-            <a href="/empresa/categorias"><input class="btnPrincipal" type="button" value="CATEGORIAS"></a>
+            <a href="/empresa/agregarProducto"><input class="btnPrincipal" type="button" value="AGREGAR PRODUCTOS"></a>
+            <a href="/empresa/VerProductos"><input class="btnPrincipal" type="button" value="VER PRODUCTOS"></a>
         </div>
     </div>
     <img [src]="logo" alt="no disponible" class="logoEmpresa">
@@ -47,3 +36,20 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar archivo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
