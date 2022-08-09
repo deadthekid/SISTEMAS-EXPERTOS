@@ -15,22 +15,25 @@ export class VideosComponent implements OnInit {
   constructor(private router: Router, private toastr: ToastrService, private archivoServicio: archivoService, private empresaServicio: empresaService) { }
 
   ngOnInit(): void {
-    this.seguridad()
-    this.listaVideos()
+    if(this.seguridad()) this.listaVideos()
   }
   seguridad() {
+    let valido=true
     if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
       this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+      valido=false
     } else {
       this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
         if (res == null) {
           this.router.navigate(['/'])
           this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
           window.localStorage.removeItem('empresa')
+          valido=false
         }
       })
     }
+    return valido
   }
   cerrarSesion(){
     console.log('dio click en cerrar sesion')

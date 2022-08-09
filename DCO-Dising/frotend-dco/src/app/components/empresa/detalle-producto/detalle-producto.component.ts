@@ -39,8 +39,28 @@ export class DetalleProductoComponent implements OnInit {
   uploadedFiles!: Array<File>;
   categorias = []
   ngOnInit(): void {
-    this.obtenerProducto();
-    this.selectCategorias()
+    if (this.seguridad()) {
+      this.obtenerProducto();
+      this.selectCategorias()
+    }
+  }
+  seguridad() {
+    let valido = true
+    if (!window.localStorage.getItem('empresa')) {
+      this.router.navigate(['/'])
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+      valido = false
+    } else {
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina', 'ERROR')
+          window.localStorage.removeItem('empresa')
+          valido = false
+        }
+      })
+    }
+    return valido
   }
   selectCategorias() {
     this.empresaServicio.getCategorias(window.localStorage.getItem('empresa')!).subscribe((res) => {
@@ -93,22 +113,29 @@ export class DetalleProductoComponent implements OnInit {
       this.img = this.archivo
     }
     let infoActualizar = {
-        nombre:this.productoForm.get('nombre')?.value,
-        precio:this.productoForm.get('precio')?.value,
-        categoria:this.productoForm.get('categoria')?.value,
-        descripcion:this.productoForm.get('descripcion')?.value,
-        img: this.img,
-        idProducto: this.id 
+      nombre: this.productoForm.get('nombre')?.value,
+      precio: this.productoForm.get('precio')?.value,
+      categoria: this.productoForm.get('categoria')?.value,
+      descripcion: this.productoForm.get('descripcion')?.value,
+      img: this.img,
+      idProducto: this.id
     }
-    this.empresaServicio.actualizarProducto(infoActualizar).subscribe((res)=>{
+    this.empresaServicio.actualizarProducto(infoActualizar).subscribe((res) => {
       this.obtenerProducto()
-      this.toastr.success('Producto actualizado con exito','Exito')
+      this.toastr.success('Producto actualizado con exito', 'Exito')
     })
   }
-  eliminar(){
-    this.empresaServicio.eliminarProducto(this.id!,window.localStorage.getItem('empresa')!).subscribe((res)=>{
-      this.toastr.success('Producto eliminado de forma exitosa','Exito')
+  eliminar() {
+    this.empresaServicio.eliminarProducto(this.id!, window.localStorage.getItem('empresa')!).subscribe((res) => {
+      this.toastr.success('Producto eliminado de forma exitosa', 'Exito')
       this.router.navigate(['/empresa/VerProductos'])
     })
+  }
+  cerrarSesion() {
+
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('empresa')
+    this.router.navigate(['/empresa/login'])
+
   }
 }

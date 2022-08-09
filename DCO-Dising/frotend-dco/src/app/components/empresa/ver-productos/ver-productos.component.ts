@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { empresaService } from 'src/app/services/empresa.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-productos',
@@ -10,10 +11,28 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class VerProductosComponent implements OnInit {
 
-  constructor(private empresaServicio: empresaService, private toastr: ToastrService,) { }
+  constructor(private empresaServicio: empresaService, private toastr: ToastrService,  private router: Router,) { }
 
   ngOnInit(): void {
-    this.obtenerProductos();
+    if(this.seguridad()) this.obtenerProductos();
+  }
+  seguridad() {
+    let valido=true
+    if (!window.localStorage.getItem('empresa')) {
+      this.router.navigate(['/'])
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+      valido=false
+    } else {
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          window.localStorage.removeItem('empresa')
+          valido=false
+        }
+      })
+    }
+    return valido
   }
   listProductos: Producto[] = [];
   obtenerProductos() {
@@ -27,5 +46,12 @@ export class VerProductosComponent implements OnInit {
     }, error => {
       console.log(error);
     })
+  }
+  cerrarSesion(){
+    
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('empresa')
+    this.router.navigate(['/empresa/login'])
+    
   }
 }
