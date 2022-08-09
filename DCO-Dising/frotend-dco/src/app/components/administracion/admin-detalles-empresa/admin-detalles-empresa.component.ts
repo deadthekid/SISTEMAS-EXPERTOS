@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { empresaService } from 'src/app/services/empresa.service';
 
 @Component({
@@ -15,14 +16,16 @@ export class AdminDetallesEmpresaComponent implements OnInit {
     nombre: '',
     _id:'',
     correo: '',
-    estado: 'Activo',
+    activo: Boolean,
     descripcion: '',
     logo:''
   };
 
   constructor(
     private route: ActivatedRoute,
-    private empresaService: empresaService
+    private empresaService: empresaService,
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +39,38 @@ export class AdminDetallesEmpresaComponent implements OnInit {
         console.log(data.mensaje);
         this.datosEmpresa = data.empresa;
         this.logoEmpresa();
+      }else{
+        console.log(data.mensaje);
+      }
+    }, error=>{
+      console.log(error);
+    });
+  }
+
+  bloquearEmpresa(){
+    if(this.datosEmpresa.activo!){
+      this.empresaService.bloquearEmpresa({'id':this.idEmpresa}).subscribe(data=>{
+        if(data.acceso){
+          console.log(data.mensaje);
+          this.toastr.success('Empresa bloqueada exitosamente');
+          this.getEmpresa();
+        }else{
+          console.log(data.mensaje);
+        }
+      }, error=>{
+        console.log(error);
+      });
+    }else{
+      this.toastr.error('La empresa ya se encuentra bloqueada');
+    }
+  }
+
+  eliminarEmpresa(){
+    this.empresaService.delEmpresa(this.idEmpresa).subscribe(data=>{
+      if(data.acceso){
+        console.log(data.mensaje);
+        this.toastr.success('Empresa eliminada exitosamente');
+        this.router.navigate(['/admin/empresas']);
       }else{
         console.log(data.mensaje);
       }

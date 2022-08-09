@@ -34,6 +34,10 @@ const empresa = mongoose.Schema({
     },
     categorias: {
         type: []
+    },
+    activo:{
+        type:Boolean,
+        default:true
     }
 })
 

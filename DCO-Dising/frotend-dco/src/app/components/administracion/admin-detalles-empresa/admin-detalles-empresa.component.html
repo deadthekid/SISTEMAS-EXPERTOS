@@ -27,7 +27,8 @@
                   </tr>
                   <tr>
                     <td scope="row">Estado</td>
-                    <td>{{datosEmpresa.estado}}</td>
+                    <td *ngIf="datosEmpresa.activo">Activo</td>
+                    <td *ngIf="!datosEmpresa.activo">Bloqueado</td>
                   </tr>
                   <tr>
                     <td scope="row">Descripción</td>
@@ -43,8 +44,8 @@
         </div>
     </div>
     <div class="row boton justify-content-center">
-        <button class="btn btn-success btnNuevo">Eliminar</button>
-        <button class="btn btn-success btnNuevo">Bloquear</button>
+        <button class="btn btn-success btnNuevo" (click)="eliminarEmpresa()">Eliminar</button>
+        <button class="btn btn-success btnNuevo" (click)="bloquearEmpresa()">Bloquear</button>
     </div>
 </div>
 <div class="pie"><br></div>
