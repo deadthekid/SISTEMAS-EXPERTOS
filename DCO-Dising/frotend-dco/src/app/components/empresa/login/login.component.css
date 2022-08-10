@@ -1,6 +1,7 @@
 .cabeza {
     background-color: #184E5D;
     flex: 1;
+    text-align: center;
 }
 
 .pie {

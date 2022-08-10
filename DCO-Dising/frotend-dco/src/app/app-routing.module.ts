@@ -35,6 +35,8 @@ import { VerProductosComponent } from './components/empresa/ver-productos/ver-pr
 import { DetalleProductoComponent } from './components/empresa/detalle-producto/detalle-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
 import { CreacionProductoComponent } from './components/empresa/creacion-producto/creacion-producto.component';
+import { PlanesComponent } from './components/planes/planes.component';
+import { TiendasComponent } from './components/tiendas/tiendas.component';
 
 
 const routes: Routes = [
@@ -72,6 +74,8 @@ const routes: Routes = [
   { path: 'empresa/detalleProducto/:id', component: DetalleProductoComponent },
   { path: 'empresa/categorias', component: CategoriasComponent },
   { path: 'empresa/agregarProducto', component: CreacionProductoComponent },
+  { path: 'Planes', component: PlanesComponent },
+  { path: 'Tiendas', component: TiendasComponent },
 ];
 
 @NgModule({

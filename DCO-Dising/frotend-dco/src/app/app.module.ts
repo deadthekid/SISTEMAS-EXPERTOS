@@ -45,6 +45,8 @@ import { CategoriasComponent } from './components/empresa/categorias/categorias.
 import { ProductosComponent } from './components/empresa/productos/productos.component';
 import { VerProductosComponent } from './components/empresa/ver-productos/ver-productos.component';
 import { DetalleProductoComponent } from './components/empresa/detalle-producto/detalle-producto.component';
+import { PlanesComponent } from './components/planes/planes.component';
+import { TiendasComponent } from './components/tiendas/tiendas.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { DetalleProductoComponent } from './components/empresa/detalle-producto/
     CategoriasComponent,
     ProductosComponent,
     VerProductosComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    PlanesComponent,
+    TiendasComponent
   ],
   imports: [
     BrowserModule,

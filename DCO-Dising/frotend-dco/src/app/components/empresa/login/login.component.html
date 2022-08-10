@@ -1,9 +1,15 @@
 <div class="contenedor">
-    <div class="cabeza"></div>
+    <div class="cabeza">
+        <a class="navbar-brand" href="/" style="width: 50%;">
+            <img class="logoNav" src="./assets/logo-lateral.png" style="width: 8%;"><img>
+        </a>
+    </div>
     <div class="nav"></div>
     <div class="contenido">
         <form class="formLogin" [formGroup]="infoLogin">
-            <div class="titulo"><h5>Iniciar Sesión</h5></div>
+            <div class="titulo">
+                <h5>Iniciar Sesión</h5>
+            </div>
             <br>
             <div class="datosEntrada">
                 <input class="entrada" type="email" placeholder="correo electrónico" formControlName="correo">
