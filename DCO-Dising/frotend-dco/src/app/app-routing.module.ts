@@ -33,6 +33,8 @@ import { AdminNuevoPlanComponent } from './components/administracion/admin-nuevo
 import { AdminNuevoTemaComponent } from './components/administracion/admin-nuevo-tema/admin-nuevo-tema.component';
 import { CreacionProductoComponent } from './components/Usuarios/creacion-producto/creacion-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
+import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-producto-autenticado/ver-producto-autenticado.component';
+import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/realizar-compra.component';
 
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
@@ -54,6 +56,8 @@ const routes: Routes = [
   {path :'usuarios/inicioUsuario', component:IniciarUsuarioComponent},
   {path :'usuarios/usaurio/inicio', component:PrincipalUsuariosAutenticadoComponent},
   {path :'usuarios/usaurio/producto', component:CreacionProductoComponent},
+  {path :'usuarios/ver-producto/:id', component:VerProductoAutenticadoComponent},
+  {path :'usuarios/pago/realizar-compra', component:RealizarCompraComponent},
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empresas', component: AdminEmpresasComponent },

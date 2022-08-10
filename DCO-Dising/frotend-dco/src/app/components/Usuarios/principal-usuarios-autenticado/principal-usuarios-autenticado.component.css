@@ -105,6 +105,7 @@
     align-content: center;
     background-color: #ECFBFF;
     border-color: #ECFBFF;
+    height: 46px;
 }
 
 .buscador-btn:hover{
@@ -135,6 +136,28 @@
     flex: 1;
     height: 25px;
     width: 50%;
+}
+
+.correccion-contenedor-r{
+    width: 70%;
+    height: 20%;
+    color: #ECFBFF!important;
+}
+
+.boton-comprar{
+    background-color: #184E5D;
+    color: #ECFBFF;
+}
+
+.correccion-btn{
+    position: absolute;
+    width: 70px;
+    background-color: #184E5D!important;
+    border: none;
+}
+
+.correccion-btn:focus{
+    border-color: #ECFBFF;
 }
 
 .svg{
@@ -191,6 +214,12 @@ a:link ,a:visited ,a:active{
     cursor: pointer;
 }
 
+.imagen-back{
+    background-image: url("/assets/fondo-targetas.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 .img-tarjeta{
     background-color: red;

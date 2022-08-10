@@ -12,7 +12,7 @@
                     <h2 class="titulo">Iniciar Sesión</h2>
                 </div>
                 <div class="cuerpo-formulario">
-                    <form class="formulario-principal" [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
+                    <form class="formulario-principal" [formGroup]="usuarioForm" (ngSubmit)="login()">
                         
                         <div class="entrada-contenedor">
                             <input class="entradat" formControlName="email" type="email" placeholder="Corrreo Electronico">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="entrada-contenedor">
-                            <input class="entradat" formControlName="contraseña" type="password" placeholder="Contraseña">
+                            <input class="entradat" formControlName="contrasenia" type="password" placeholder="Contraseña">
                             <div class="mensaje-err-1" *ngIf="usuarioForm.get('contraseña')?.hasError('required')&&usuarioForm.get('contraseña')?.touched">
                                 <span>La contraseña<strong> es obligatoria</strong></span>
                             </div>
@@ -30,7 +30,7 @@
                             <a class="subtitulo" href="usuarios/crearUsuario">¿Eres Nuevo?</a>
                         </div>
                         <div class="entrada-contenedor">
-                            <button  type="submit" [hidden]="usuarioForm.invalid" class="btn-formulario">Registrarse</button>
+                            <button   type="submit" [disabled]="usuarioForm.invalid" class="btn-formulario">Registrarse</button>
                         </div>
                         
                     </form>
