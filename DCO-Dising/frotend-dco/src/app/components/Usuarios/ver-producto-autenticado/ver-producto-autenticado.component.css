@@ -85,6 +85,10 @@
     
 }
 
+.tamaño{
+    height: 46px!important;
+}
+
 .buscador-btn{
     width: 100%;
     text-align: center;
@@ -93,7 +97,6 @@
     align-content: center;
     background-color: #ECFBFF;
     border-color: #ECFBFF;
-    height: 46px;
 }
 
 .buscador-btn:hover{
@@ -224,7 +227,11 @@ path{
     background-color: white;
     color: #003A4A;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-direction: column;
+    height: 100%!important;
+    width: 100%;
     box-shadow: -2px 2px 14px #d4d4d4;
 
 }
@@ -258,6 +265,22 @@ path{
 .comentario-input{
     width: 100%;
     height: 100%;
+}
+.agregar{
+    position: relative;
+    color: black;
+    background-color: #184E5D;
+    margin-left: auto;
+    width: 25%;
+    height: 20%;
+}
+
+.boton-agregar{
+    border-radius: 0!important;
+    width: 100%;
+    height: 100%;
+    background-color: #184E5D;
+    color: #ECFBFF;
 }
 
 .comentario-input:focus-visible{

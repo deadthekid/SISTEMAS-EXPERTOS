@@ -15,4 +15,8 @@ export class UsuarioService {
     return this.http.post(this.url,usuario);
   }
 
+  login(infornacionLogin: object): Observable<any>{
+    return this.http.post(this.url+"/login/",infornacionLogin)
+}
+
 }

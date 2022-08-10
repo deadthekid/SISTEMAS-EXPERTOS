@@ -42,11 +42,16 @@ import { AdminDetallesEmpresaComponent } from './components/administracion/admin
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CreacionProductoComponent } from './components/empresa/creacion-producto/creacion-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
+
 import { ProductosComponent } from './components/empresa/productos/productos.component';
 import { VerProductosComponent } from './components/empresa/ver-productos/ver-productos.component';
 import { DetalleProductoComponent } from './components/empresa/detalle-producto/detalle-producto.component';
 import { PlanesComponent } from './components/planes/planes.component';
 import { TiendasComponent } from './components/tiendas/tiendas.component';
+
+import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-producto-autenticado/ver-producto-autenticado.component';
+import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/realizar-compra.component';
+
 
 @NgModule({
   declarations: [
@@ -83,11 +88,16 @@ import { TiendasComponent } from './components/tiendas/tiendas.component';
     LandingPageComponent,
     CreacionProductoComponent,
     CategoriasComponent,
+
     ProductosComponent,
     VerProductosComponent,
     DetalleProductoComponent,
     PlanesComponent,
     TiendasComponent
+
+    VerProductoAutenticadoComponent,
+    RealizarCompraComponent,
+
   ],
   imports: [
     BrowserModule,
