@@ -20,4 +20,16 @@ export class archivoService {
     listaVideos(idEmpresa: string): Observable<any>{
         return this.http.get(this.url+'/listaVideos/'+idEmpresa)
     }
+    listaOtrosArchivos(idEmpresa: string): Observable<any>{
+        return this.http.get(this.url+'/listaOtrosArchivos/'+idEmpresa)
+    }
+    detalles(idArchivo: string):Observable<any>{
+        return this.http.get(this.url+'/detallesArchivos/'+idArchivo)
+    }
+    actualizar(archivo: object, idArchivo: string): Observable<any> {
+        return this.http.post(this.url + "/actualizarArchivo/"+idArchivo, archivo)
+    }
+    eliminar(idArchivo: string, idEmpresa: string): Observable<any>{
+        return this.http.delete(this.url+`/eliminarArchivo/?idArchivo=${idArchivo}&idEmpresa=${idEmpresa}`)
+    }
 }

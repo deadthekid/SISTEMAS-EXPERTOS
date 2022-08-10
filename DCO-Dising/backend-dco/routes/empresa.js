@@ -33,5 +33,12 @@ router.delete('/delCategorias',empresaController.delCategorias)
 router.post('/subirArchivo',empresaController.subirArchivo)
 router.get('/listaImagenes/:id',empresaController.listaImagenes)
 router.get('/listaVideos/:id',empresaController.listaVideos)
-
+router.get('/listaOtrosArchivos/:id',empresaController.listaOtrosArchivos)
+router.get('/detallesArchivos/:id',empresaController.detallesArchivos)
+router.post('/actualizarArchivo/:id',empresaController.actualizarArchivo)
+router.delete('/eliminarArchivo',empresaController.eliminarArchivo)
+router.get('/seguridad/:id',empresaController.seguridad)
+router.get('/getProductos/:id',empresaController.getProductos)
+router.put('/actualizarProducto',empresaController.actualizarProducto)
+router.delete('/eliminarProducto',empresaController.eliminarProducto)
 module.exports=router

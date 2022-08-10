@@ -36,9 +36,8 @@ const empresa = mongoose.Schema({
         type: []
     },
     activo:{
-        type:Boolean,
-        default:true
-    }
+        type: Boolean
+    }    
 })
 
 module.exports = mongoose.model('empresa', empresa)

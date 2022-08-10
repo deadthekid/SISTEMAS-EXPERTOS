@@ -1,10 +1,38 @@
-<div class="contenido">
-    <div class="botones">
-        <a href="/usuarios"><input class="btnPrincipal" type="button" value="USUARIOS"></a>
-
-        <a href="/empresa/login"><input class="btnPrincipal" type="button" value="EMPRESAS"></a>
-
-        <a href="/admin/login"><input class="btnPrincipal" type="button" value="ADMINISTRACION"></a>
+<div class="contenedor">
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            <div class="nav-l" style="text-align: center;">
+                <a class="navbar-brand" href="/" style="width: 50%;">
+                    <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
+                </a>
+            </div>
+            <div class="nav-r">
+                <a href="/">Inicio</a>
+            </div>
+            <div class="nav-r">
+                <a href="/planes/">Nuestros Planes</a>
+            </div>
+            <div class="nav-r">
+                <a href="/tiendas/">Tiendas</a>
+            </div>
+            <div class="nav-r">
+                <a href="/usuarios/inicioUsuario">¿Cliente? Pase por acá</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/login">¿Empresa? Vengase pa´ca</a>
+            </div>
+            <div class="nav-r">
+                <a href="/admin/login">¿Admin? Tu ven por acá</a>
+            </div>
+            <div class="nav-r" *ngIf="usuario">
+                <div>
+                    <input class="btnCerrarSesion" type="button" value="Cerrar Sesión">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenido">
 
     </div>
+    <div class="pie"><br></div>
 </div>

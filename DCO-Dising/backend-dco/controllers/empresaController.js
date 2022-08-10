@@ -1,5 +1,7 @@
 const Empresa = require('../models/empresaModel');
 const Archivo = require('../models/archivoModel')
+const Productos = require('../models/Producto');
+const Producto = require('../models/Producto');
 
 exports.agregar = async (req, res) => {
     try {
@@ -103,6 +105,17 @@ exports.login = async (req, res) => {
         res.send(e)
     }
 }
+exports.seguridad = async (req, res) => {
+    const idEmpresa = req.params.id
+    try {
+        let empresa = await Empresa.find({ "_id": idEmpresa })
+        res.send(true)
+        res.end()
+    } catch (e) {
+        res.send(null)
+        res.end()
+    }
+}
 
 exports.actualizarInfo = async (req, res) => {
     const { body } = req
@@ -125,101 +138,270 @@ exports.actualizarInfo = async (req, res) => {
 }
 
 exports.rellenarInfo = async (req, res) => {
-    const id = req.params.id
-    const empresa = await Empresa.findById({ '_id': id })
-    res.send(empresa)
-    res.end()
+    try {
+        const id = req.params.id
+        const empresa = await Empresa.findById({ '_id': id })
+        res.send(empresa)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 exports.logo = async (req, res) => {
-    const id = req.params.id
+    try {
+        const id = req.params.id
 
-    let logo = await Empresa.find({ "_id": id }, { "logo": 1 })
-    res.send(logo)
-    res.end()
+        let logo = await Empresa.find({ "_id": id }, { "logo": 1 })
+        res.send(logo)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 
 exports.aggCategoria = async (req, res) => {
-    const { idEmpresa, categoria } = req.body
-    let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
+    try {
+        const { idEmpresa, categoria } = req.body
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
 
-    let categorias = empresa[0].categorias
-    categorias.push(categoria)
+        let categorias = empresa[0].categorias
+        categorias.push(categoria)
 
-    empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
-    res.send(empresa)
-    res.end()
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
+        res.send(empresa)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 
 exports.getCategorias = async (req, res) => {
-    const idEmpresa = req.params.id
-    let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
-    res.send(empresa)
-    res.end()
+    try {
+        const idEmpresa = req.params.id
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
+        res.send(empresa)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 exports.updCategorias = async (req, res) => {
-    const { categoria, idEmpresa, seleccionado } = req.body
-    let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
-    let categorias = empresa[0].categorias
-    let indice = categorias.indexOf(seleccionado)
-    categorias.splice(indice, 1)
-    categorias.push(categoria)
+    try {
+        const { categoria, idEmpresa, seleccionado } = req.body
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
+        let categorias = empresa[0].categorias
+        let indice = categorias.indexOf(seleccionado)
+        categorias.splice(indice, 1)
+        categorias.push(categoria)
 
-    empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
-    res.send(empresa)
-    res.end()
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
+        res.send(empresa)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 exports.delCategorias = async (req, res) => {
-    const { idEmpresa, categoria } = req.query
+    try {
+        const { idEmpresa, categoria } = req.query
 
-    let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
-    let categorias = empresa[0].categorias
-    let indice = categorias.indexOf(categoria)
-    categorias.splice(indice, 1)
-    
-    empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
-    res.send(empresa)
-    res.end()
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "categorias": 1 })
+        let categorias = empresa[0].categorias
+        let indice = categorias.indexOf(categoria)
+        categorias.splice(indice, 1)
+
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'categorias': categorias }, { new: true })
+        res.send(empresa)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 exports.subirArchivo = async (req, res) => {
-    const { idEmpresa } = req.body
-    const archivo = new Archivo(req.body)
-    
-    archivo.save()
-    let empresa = await Empresa.find({ '_id': idEmpresa }, { 'bancoMultimedia': 1 })
-    let bancoMultimedia = empresa[0].bancoMultimedia
-
-    bancoMultimedia.push(archivo._id)
-
-    empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'bancoMultimedia': bancoMultimedia }, { new: true })
+    try {
+        const { idEmpresa } = req.body
+        const archivo = new Archivo(req.body)
 
 
-    res.send(empresa)
-    res.end()
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { 'bancoMultimedia': 1 })
+        let bancoMultimedia = empresa[0].bancoMultimedia
+        console.log(bancoMultimedia.length)
+
+        archivo.shortcut = bancoMultimedia.length + '-' + archivo.nombre
+        archivo.save()
+        bancoMultimedia.push(archivo._id)
+
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'bancoMultimedia': bancoMultimedia }, { new: true })
+
+        res.send(empresa)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 exports.listaImagenes = async (req, res) => {
-    const idEmpresa = req.params.id
-    const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
-    const listaImagenes = []
-    archivos.forEach(archivo => {
-        if (archivo.tipo == 'apng' || archivo.tipo == 'gif' || archivo.tipo == 'ico' || archivo.tipo == 'jpeg' || archivo.tipo == 'png' || archivo.tipo == 'svg') {
-            listaImagenes.push(archivo)
-            
-        }
-    });
-    
-    res.send(listaImagenes)
-    res.end()
+    try {
+        const idEmpresa = req.params.id
+        const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
+        const listaImagenes = []
+        archivos.forEach(archivo => {
+            if (archivo.tipo == 'apng' || archivo.tipo == 'gif' || archivo.tipo == 'ico' || archivo.tipo == 'jpeg' || archivo.tipo == 'png' || archivo.tipo == 'svg') {
+                listaImagenes.push(archivo)
+            }
+        });
+
+        res.send(listaImagenes)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
 }
 exports.listaVideos = async (req, res) => {
-    const idEmpresa = req.params.id
-    const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
-    const listaVideos = []
-    archivos.forEach(archivo => {
-        if (archivo.tipo == 'mp4' || archivo.tipo == 'mov' || archivo.tipo == 'wmv' || archivo.tipo == 'avi' || archivo.tipo == 'mkv' || archivo.tipo == 'webm') {
-            listaVideos.push(archivo)
+    try {
+        const idEmpresa = req.params.id
+        const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
+        const listaVideos = []
+        archivos.forEach(archivo => {
+            if (archivo.tipo == 'mp4' || archivo.tipo == 'mov' || archivo.tipo == 'wmv' || archivo.tipo == 'avi' || archivo.tipo == 'mkv' || archivo.tipo == 'webm') {
+                listaVideos.push(archivo)
+            }
+        });
+
+        res.send(listaVideos)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.listaOtrosArchivos = async (req, res) => {
+    try {
+        const idEmpresa = req.params.id
+        const archivos = await Archivo.find({ 'idEmpresa': idEmpresa })
+        const listaOtrosAArchivos = []
+        archivos.forEach(archivo => {
+            if (!(archivo.tipo == 'mp4' || archivo.tipo == 'mov' || archivo.tipo == 'wmv' || archivo.tipo == 'avi' || archivo.tipo == 'mkv' || archivo.tipo == 'webm' || archivo.tipo == 'apng' || archivo.tipo == 'gif' || archivo.tipo == 'ico' || archivo.tipo == 'jpeg' || archivo.tipo == 'png' || archivo.tipo == 'svg')) {
+                listaOtrosAArchivos.push(archivo)
+            }
+        });
+
+        res.send(listaOtrosAArchivos)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.detallesArchivos = async (req, res) => {
+    try {
+        const idArchivo = req.params.id
+        const archivo = await Archivo.find({ '_id': idArchivo })
+        if (archivo.length == 0) {
+            res.send(null)
+        } else {
+            res.send(archivo)
+            res.end()
         }
-    });
-    
-    res.send(listaVideos)
-    res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+
+}
+exports.actualizarArchivo = async (req, res) => {
+    try {
+        const idArchivo = req.params.id
+        const { tipo, nombre, tamano, archivo } = req.body
+
+        let viejo = await Archivo.find({ '_id': idArchivo })
+        viejo = await Archivo.findByIdAndUpdate({ _id: idArchivo }, {
+            'tipo': tipo,
+            'nombre': nombre,
+            'tamano': tamano,
+            'archivo': archivo
+        }, { new: true })
+        res.send(viejo)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.eliminarArchivo = async (req, res) => {
+    try {
+        const { idEmpresa, idArchivo } = req.query
+
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "bancoMultimedia": 1 })
+        let bancoMultimedia = empresa[0].bancoMultimedia
+        let indice = bancoMultimedia.indexOf(idArchivo)
+
+        bancoMultimedia.splice(indice, 1)
+
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'bancoMultimedia': bancoMultimedia }, { new: true })
+
+        let borrado = await Archivo.remove({ '_id': idArchivo })
+        res.send(borrado)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.getProductos = async (req, res) => {
+    try {
+        const productos = await Producto.find({ 'empresa': req.params.id })
+        res.send(productos)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.actualizarProducto = async (req, res) => {
+    try {
+        const { nombre,precio,categoria,descripcion,img,idProducto } = req.body
+        let producto= await Producto.findByIdAndUpdate({_id:idProducto},{
+            'nombre': nombre,
+            'precio':precio,
+            'categoria':categoria,
+            'descripcion':descripcion,
+            'img':img
+        })
+        res.send(producto)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.eliminarProducto= async (req,res)=>{
+    try{
+        const {idProducto, idEmpresa}=req.query
+        console.log(idProducto)
+        
+        
+        let empresa = await Empresa.find({ '_id': idEmpresa }, { "productos": 1 })
+        let productos = empresa[0].productos
+        let indice = productos.indexOf(idProducto)
+
+        productos.splice(indice, 1)
+
+        empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'productos': productos }, { new: true })
+        
+        let producto= await Producto.remove({ '_id': idProducto })
+
+        res.send(producto)
+        res.end()
+    }catch(e){
+        res.send(e)
+        res-end()
+    }
 }

@@ -22,23 +22,39 @@ export class MultimediaComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.seguridad()
-    this.logoEmpresa()
+    if(this.seguridad()) this.logoEmpresa()
   }
   seguridad() {
-    if (!window.localStorage.getItem('usuario')) {
+    let valido=true
+    if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
-      this.toastr.error('Necesita ingresar con una cuenta para ingresar a esa pagina')
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+      valido=false
+    } else {
+      this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
+        if (res == null) {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          window.localStorage.removeItem('empresa')
+          valido=false
+        }
+      })
     }
+    return valido
+  }
+  cerrarSesion() {
+    window.localStorage.removeItem('empresa')
+    this.toastr.success('Cierre de sesión exitoso')
+    this.router.navigate(['/empresa/login'])
   }
   logoEmpresa() {
-    this.empresaServicio.logo(window.localStorage.getItem('usuario')!).subscribe((res) => {
+    this.empresaServicio.logo(window.localStorage.getItem('empresa')!).subscribe((res) => {
       this.logo = res[0].logo
     })
   }
   subir(element: any) {
     this.uploadedFiles = element.target.files;
-    
+
 
     //previsualizacion de la imagen que se subira y creacion del b64 que se guardará para generar el logo o cualquier archivo que se quiera subir
 
@@ -51,29 +67,34 @@ export class MultimediaComponent implements OnInit {
     } else {
       const reader = new FileReader()
       reader.onload = () => this.archivo = reader.result as string
-      reader.onload = () => this.archivo2 = reader.result as string
       reader.readAsDataURL(this.uploadedFiles[0])
+      const reader2 = new FileReader()
+      reader2.onload = () => this.archivo2 = reader2.result as string
+      reader2.readAsDataURL(this.uploadedFiles[0])
     }
 
-
   }
+
   agregar() {
     let infoArchivo = {
       tipo: this.uploadedFiles[0].type.split('/')[1],
       nombre: this.uploadedFiles[0].name,
       tamano: this.uploadedFiles[0].size,
       archivo: '',
-      idEmpresa: window.localStorage.getItem('usuario')
+      idEmpresa: window.localStorage.getItem('empresa'),
+      shortcut: ''
     }
-    if (infoArchivo.tipo != 'APNG' && infoArchivo.tipo != 'GIF' && infoArchivo.tipo != 'ICO' && infoArchivo.tipo != 'JPEG' && infoArchivo.tipo != 'PNG' && infoArchivo.tipo != 'SVG') {
-      console.log('ingreso algo que no es imagen')
+    //4mb pasados a bytes
+    if (infoArchivo.tamano > (10 * 1024 * 1024)) {
+      this.toastr.error('Tamaño maximo de archivos: 4mb', 'Tamaño excedido')
+    } else {
+      infoArchivo.archivo = this.archivo
+      this.archivoServicio.agregar(infoArchivo).subscribe((res) => {
+        this.toastr.success('Archivo agregado de forma exitosa')
+        this.infoArchivo.get('archivo')?.setValue('')
+      })
     }
-    infoArchivo.archivo=this.archivo2
-    
-    this.archivoServicio.agregar(infoArchivo).subscribe((res) => {
-      this.toastr.success('Archivo agregado de forma exitosa')
-      this.infoArchivo.get('archivo')?.setValue('')
-    })
+
   }
 
 

@@ -88,3 +88,23 @@ exports.eliminarUsuario = async(req,res)=>{
     }
 }
 
+exports.loginUsuario = async (req, res) => {
+    const { email, contrasenia } = req.body
+    console.log(req.body);
+    console.log(email,contrasenia)
+    try {
+        let usuario = await Usuario.find({ "correo": email, "contrasenia": contrasenia }, { "correo": 1, "contrasenia": 1 })
+
+        if (usuario[0]) {
+
+            res.send(usuario)
+        } else {
+
+            res.send(false)
+        }
+        //res.send(empresa)
+    } catch (e) {
+
+        res.send(e)
+    }
+}

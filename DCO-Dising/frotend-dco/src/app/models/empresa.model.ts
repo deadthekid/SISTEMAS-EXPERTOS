@@ -9,9 +9,10 @@ export class Empresa {
     bancoMultimedia: any;
     pagina: any;
     productos: any;
-    categorias: any
+    categorias: any;
+    activo: boolean=true
 
-    constructor(nombre: string, correo: string, descripcion: string,logo: string, contrasena: string, plan: string, bancoMultimedia: any, pagina: any, productos: any, categorias: any
+    constructor(nombre: string, correo: string, descripcion: string,logo: string, contrasena: string, plan: string, bancoMultimedia: any, pagina: any, productos: any, categorias: any, activo: boolean
     ) {
         this.nombre = nombre
         this.correo = correo
@@ -23,5 +24,6 @@ export class Empresa {
         this.pagina = pagina
         this.productos = productos
         this.categorias=categorias
+        this.activo=activo
     }
 }

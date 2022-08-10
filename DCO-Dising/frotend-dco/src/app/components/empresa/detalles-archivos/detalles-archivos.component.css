@@ -1,11 +1,55 @@
-.cabeza {
+.contenedor-nav {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+.navegacion {
     background-color: #184E5D;
-    text-align: center;
+    flex: 1;
+}
+
+
+.nav-l {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    height: 88%;
+    width: 42%;
+}
+
+.nav-c {
+    flex: 2.7;
+    background-color: #184E5D;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-r {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: larger;
+    color: #ECFBFF;
 }
 
 .pie {
     background-color: #184E5D;
-    flex: 1;
+    height: 3%;
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: #ECFBFF;
 }
 
 .contenedor {
@@ -43,18 +87,14 @@
     width: 100%;
 }
 
-.elementoNav {
-    width: 10%;
-}
 
 .detalles {
     display: grid;
     width: 80%;
     grid-template-areas:
-        "imagen imagen nombre"
-        "imagen imagen fecha"
-        ". shortcut ."
-        "actualizar . eliminar";
+        "imagen nombre"
+        "imagen shortcut"
+        "actualizar eliminar";
 
     text-align: center;
     place-items: center;
@@ -65,34 +105,55 @@
     grid-area: imagen;
 }
 
-#imagen {}
+#imagen {
+    width: 500px;
+}
 
 .nombre {
     grid-area: nombre;
+
+
+
 }
 
-#nombre {}
-
-.fecha {
-    grid-area: fecha;
+#nombre {
+    border: 1px black solid;
+    border-radius: 7px;
+    padding: 15px;
+    width: 400px;
+    text-align: left;
 }
-
-#fecha {}
 
 .shortcut {
     grid-area: shortcut;
 }
 
-#shortcut {}
+#shortcut {
+    border: 1px black solid;
+    border-radius: 7px;
+    padding: 15px;
+    width: 400px;
+    text-align: left;
+}
 
 .actualizar {
     grid-area: actualizar;
 }
 
-#actualizar {}
-
 .eliminar {
     grid-area: eliminar;
 }
 
-#eliminar {}
+.botones {
+    background-color: #184E5D;
+    border-radius: 7px;
+    color: white;
+    width: 200px;
+}
+
+.visualizacion {
+
+    width: 400px;
+    align-self: center;
+
+}
