@@ -38,7 +38,8 @@ export class RegistroComponent implements OnInit {
       bancoMultimedia: [],
       pagina: [],
       productos: [],
-      categorias: []
+      categorias: [],
+      activo: true
     }
     console.log("empresa: ",empresa)
     this._empresaServicio.agregar(empresa).subscribe(data=>{

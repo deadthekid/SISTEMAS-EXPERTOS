@@ -16,6 +16,9 @@ const archivo = mongoose.Schema({
     idEmpresa: {
         type: String
     },
+    shortcut: {
+        type: String
+    }
 })
 
 module.exports = mongoose.model('archivo', archivo)

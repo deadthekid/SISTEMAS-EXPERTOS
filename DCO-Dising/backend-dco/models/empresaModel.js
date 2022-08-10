@@ -34,7 +34,10 @@ const empresa = mongoose.Schema({
     },
     categorias: {
         type: []
-    }
+    },
+    activo:{
+        type: Boolean
+    }    
 })
 
 module.exports = mongoose.model('empresa', empresa)

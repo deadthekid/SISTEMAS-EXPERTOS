@@ -28,25 +28,20 @@
                                 <input type="text" placeholder="nombre" formControlName="nombre" class="entradat">
                             </div>
                             <div class="mt-2 anchoMax">
-                                <input type="number" placeholder="precio" formControlName="precio" class="entradat">
-                            </div>
-                            
-                            <div class="mt-2 anchoMax" >
-                                <input type="text" placeholder="empresa" formControlName="empresa" class="entradat">
+                                <input type="number" placeholder="precio" formControlName="precio" class="entradat" min="0">
                             </div>
                             <div class="mt-2" style="width: 100%;">
                                 <label class="text-center">Seleccione una categoria</label>
-                                <select class="form-select entradat" placeholder="categoria" formControlName="categoria" aria-label="Default select example">
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select entradat" placeholder="categoria"formControlName="categoria" aria-label="Default select example">
+                                    <option value=""> </option>
+                                    <option *ngFor="let cat of categorias"  [value]="cat">{{cat}}</option>
                                   </select>
                             </div>
                             <div class="area-texto">
                                 <textarea class="area-texto" id="w3review" name="w3review"formControlName="descripcion" rows="4" cols="50"></textarea>
                             </div>
                             <div class="btni">
-                                <input type="button" class="btn-formulario rounded-pill" value="PUBLICAR" (click)="agregarUsuario($event)">
+                                <input type="button" class="btn-formulario rounded-pill" value="PUBLICAR" (click)="agregarProducto($event)">
                             </div>
                         </div>
                         

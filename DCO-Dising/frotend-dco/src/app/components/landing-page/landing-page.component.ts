@@ -11,5 +11,5 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  usuario=window.localStorage.getItem('usuario')
 }

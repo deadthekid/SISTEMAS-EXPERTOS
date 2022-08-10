@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this._empresaServicio.login(login).subscribe(data => {
       if (data) {
         this.toastr.success('Ingreso de forma exitosa', 'Bienvenido');
-        window.localStorage.setItem('usuario', data[0]._id )
+        window.localStorage.setItem('empresa', data[0]._id )
 
         this.router.navigate(['/empresa/principal'])
       }else{
