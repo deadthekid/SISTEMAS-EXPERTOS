@@ -2,18 +2,18 @@
     <div class="cabeza"></div>
     <div class="nav"></div>
     <div class="contenido">
-        <form class="formLogin">
+        <form class="formLogin" [formGroup]="formLogin">
             <div class="titulo"><h5>Iniciar Sesión</h5></div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="email" placeholder="correo electrónico">
+                <input class="entrada" type="email" placeholder="correo electrónico" formControlName="correo">
             </div>
             <br>
             <div class="datosEntrada">
-                <input class="entrada" type="password" placeholder="contraseña">
+                <input class="entrada" type="password" placeholder="contraseña" formControlName="contrasena">
             </div>
             <br>
-            <button class="btnLogin" type="submit" routerLink="/admin/home">INGRESAR</button>
+            <button class="btnLogin" type="submit" (click)="login()">INGRESAR</button>
         </form>
         <img src="../../../../assets/img/logo1.png" alt="" class="logo">
     </div>

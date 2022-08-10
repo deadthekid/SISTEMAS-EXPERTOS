@@ -19,32 +19,33 @@
                   </tr>
                   <tr>
                     <td scope="row">ID</td>
-                    <td>{{datosEmpresa.id}}</td>
+                    <td>{{datosEmpresa._id}}</td>
                   </tr>
                   <tr>
                     <td scope="row">Correo Electrónico</td>
-                    <td>{{datosEmpresa.email}}</td>
+                    <td>{{datosEmpresa.correo}}</td>
                   </tr>
                   <tr>
                     <td scope="row">Estado</td>
-                    <td>{{datosEmpresa.estado}}</td>
+                    <td *ngIf="datosEmpresa.activo">Activo</td>
+                    <td *ngIf="!datosEmpresa.activo">Bloqueado</td>
                   </tr>
                   <tr>
-                    <td scope="row">Dirección</td>
-                    <td>{{datosEmpresa.direccion}}</td>
+                    <td scope="row">Descripción</td>
+                    <td>{{datosEmpresa.descripcion}}</td>
                   </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-5 justify-content-center">
             <div class="row justify-content-center">
-                <img class="fotoPerfil" src="../../../../assets/img/empresa-base.png" alt="">
+                <img class="fotoPerfil" src={{datosEmpresa.logo}} alt="">
             </div>
         </div>
     </div>
     <div class="row boton justify-content-center">
-        <button class="btn btn-success btnNuevo">Editar</button>
-        <button class="btn btn-success btnNuevo">Bloquear</button>
+        <button class="btn btn-success btnNuevo" (click)="eliminarEmpresa()">Eliminar</button>
+        <button class="btn btn-success btnNuevo" (click)="bloquearEmpresa()">Bloquear</button>
     </div>
 </div>
 <div class="pie"><br></div>

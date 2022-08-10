@@ -53,4 +53,16 @@ export class empresaService {
     eliminarProducto(idProducto: string, idEmpresa:string):Observable<any>{
         return this.http.delete(this.url+`/eliminarProducto/?idProducto=${idProducto}&idEmpresa=${idEmpresa}`)
     }
+    getEmpresas(): Observable<any>{
+        return this.http.get(this.url+'/listaEmpresas');
+    }
+    getEmpresa( id : String): Observable<any>{
+        return this.http.get(this.url+`/empresa/${id}`);
+    }
+    bloquearEmpresa(id: Object): Observable<any>{
+        return this.http.put(this.url+'/bloquearEmpresa',id);
+    }
+    delEmpresa (idEmpresa: string): Observable<any>{
+        return this.http.delete(this.url+`/eliminarEmpresa/${idEmpresa}`)
+    }
 }

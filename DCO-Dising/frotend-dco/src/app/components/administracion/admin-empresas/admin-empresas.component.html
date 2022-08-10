@@ -8,46 +8,18 @@
                     <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tipo de plan</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">2001</th>
-                            <td>Empresa 1</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2023</th>
-                            <td>Empresa 23</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2045</th>
-                            <td>Empresa 45</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2034</th>
-                            <td>Empresa 34</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2022</th>
-                            <td>Empresa 22</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2122</th>
-                            <td>Empresa 122</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2102</th>
-                            <td>Empresa 102</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/1">Detalles</button></td>
+                          <tr *ngFor="let empresa of listaEmpresas">
+                            <th scope="row">{{empresa.nombre}}</th>
+                            <td>{{empresa._id}}</td>
+                            <td>{{empresa.plan}}</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/empresa/{{empresa._id}}">Detalles</button></td>
                           </tr>
                         </tbody>
                       </table>

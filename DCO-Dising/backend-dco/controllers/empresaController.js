@@ -17,6 +17,66 @@ exports.agregar = async (req, res) => {
     }
 }
 
+exports.listar = async (req, res) => {
+    try {
+       let empresas = await Empresa.find();
+       if(empresas.length>0){
+            res.send({mensaje:"empresas encontrados",listaEmpresas:empresas,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraron empresas",acceso:0});
+        }
+    } catch(error){
+        console.log(error);
+        req.status(500).send('Hubo un error');
+    }
+}
+
+exports.obtenerEmpresa = async(req,res)=>{
+    try{
+        let empresa = await Empresa.findById(req.params.id);
+        if(empresa){
+            res.send({mensaje:"empresa encontrada",empresa:empresa,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraro la empresa",acceso:0});
+        }
+
+    }catch(error){
+        console.log(error);
+        req.status(500).send('Hubo un error');
+    }
+}
+
+exports.bloquearEmpresa = async(req, res)=>{
+    const { id } = req.body;
+    try {
+        let empresa = await Empresa.findByIdAndUpdate({ _id: id }, {
+            'activo': false
+        }, { new: true })
+        if(empresa){
+            res.send({mensaje:"empresa bloqueada",empresa:empresa,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraro la empresa",acceso:0});
+        }
+    } catch (error) {
+        console.log(error);
+        req.status(500).send('Hubo un error');
+    }
+}
+
+exports.eliminarEmpresa = async(req, res)=>{
+    try {
+        let empresa = await Empresa.findByIdAndRemove(req.params.id);
+        if(empresa){
+            res.send({mensaje:"empresa eliminada",empresa:empresa,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraro la empresa",acceso:0});
+        }
+        
+    } catch (error) {
+        
+    }
+}
+
 exports.obtener = async (req, res) => {
     try {
         let empresa = await Empresa.find({ 'correo': req.params.id }, { "correo": 1 })
