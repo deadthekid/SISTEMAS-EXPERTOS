@@ -88,13 +88,11 @@ import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/r
     LandingPageComponent,
     CreacionProductoComponent,
     CategoriasComponent,
-
     ProductosComponent,
     VerProductosComponent,
     DetalleProductoComponent,
     PlanesComponent,
-    TiendasComponent
-
+    TiendasComponent,
     VerProductoAutenticadoComponent,
     RealizarCompraComponent,
 

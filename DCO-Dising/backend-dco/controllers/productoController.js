@@ -23,7 +23,8 @@ exports.subirProducto = async (req, res) => {
         res.end()
     } catch (e) {
         console.log(e);
-        res.status(500).send('Hubo un error')
+        res.send(error)
+        res.end()
     }
 }
 
@@ -33,13 +34,16 @@ exports.obtenerProducto = async (req, res) => {
 
         if (!producto) {
             res.status(404).json({ msg: 'No existe el producto' })
+            res.end()
+        }else{
+            res.json(producto);
+            res.end()
         }
-
-        res.json(producto);
 
     } catch (error) {
         console.log(error);
-        req.status(500).send('Hubo un error');
+        res.send(error)
+        res.end()
     }
 }
 
@@ -51,6 +55,7 @@ exports.obtenerProductos = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        req.status(500).send('Hubo un error');
+        res.send(error)
+        res.end()
     }
 }

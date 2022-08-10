@@ -34,7 +34,6 @@ import { ProductosComponent } from './components/empresa/productos/productos.com
 import { VerProductosComponent } from './components/empresa/ver-productos/ver-productos.component';
 import { DetalleProductoComponent } from './components/empresa/detalle-producto/detalle-producto.component';
 import { CategoriasComponent } from './components/empresa/categorias/categorias.component';
-
 import { CreacionProductoComponent } from './components/empresa/creacion-producto/creacion-producto.component';
 import { PlanesComponent } from './components/planes/planes.component';
 import { TiendasComponent } from './components/tiendas/tiendas.component';
@@ -58,32 +57,11 @@ const routes: Routes = [
   { path: 'usuarios/crearUsuario', component: CreacionUsuarioComponent },
   { path: 'usuarios/inicioUsuario', component: IniciarUsuarioComponent },
   { path: 'usuarios/usaurio/inicio', component: PrincipalUsuariosAutenticadoComponent },
-
-
-
-const routes: Routes = [
-  { path: '', component:LandingPageComponent },
-  {path: 'empresa/actualizarInfo',component:ActualizarInfoComponent},
-  {path: 'empresa/historial',component:HistorialComponent},
-  {path: 'empresa/login',component:LoginComponent},
-  {path: 'empresa/multimedia',component:MultimediaComponent},
-  {path: 'empresa/principal',component:PrincipalComponent},
-  {path: 'empresa/registrar',component:RegistrarComponent},
-  {path: 'empresa/registro',component:RegistroComponent},
-  {path: 'empresa/videos',component:VideosComponent},
-  {path: 'empresa/imagenes',component:ImagenesComponent},
-  {path: 'empresa/otrosArchivos',component:OtrosArchivosComponent},
-  {path: 'empresa/detalleArchivos/:id',component:DetallesArchivosComponent},
-  {path: 'empresa/categorias',component:CategoriasComponent},
-  {path :'usuarios', component:PrincipalUsuariosComponent},
-  {path :'usuarios/verProducto/:id', component:VerProductoComponent},
-  {path :'usuarios/crearUsuario', component:CreacionUsuarioComponent},
-  {path :'usuarios/inicioUsuario', component:IniciarUsuarioComponent},
-  {path :'usuarios/usaurio/inicio', component:PrincipalUsuariosAutenticadoComponent},
-  {path :'usuarios/usaurio/producto', component:CreacionProductoComponent},
-  {path :'usuarios/ver-producto/:id', component:VerProductoAutenticadoComponent},
-  {path :'usuarios/pago/realizar-compra', component:RealizarCompraComponent},
-
+  { path: '', component: LandingPageComponent },
+  { path: 'empresa/categorias', component: CategoriasComponent },
+  { path: 'usuarios/usaurio/producto', component: CreacionProductoComponent },
+  { path: 'usuarios/ver-producto/:id', component: VerProductoAutenticadoComponent },
+  { path: 'usuarios/pago/realizar-compra', component: RealizarCompraComponent },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empresas', component: AdminEmpresasComponent },

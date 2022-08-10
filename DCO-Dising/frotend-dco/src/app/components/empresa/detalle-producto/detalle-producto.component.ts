@@ -72,6 +72,7 @@ export class DetalleProductoComponent implements OnInit {
     console.log("id", this.id)
     if (this.id !== null) {
       this._productoService.buscarProducto(this.id).subscribe(data => {
+        //console.log("aca",data)
         this.nombre = data.nombre;
         this.img = data.img;
         this.precio = data.precio;

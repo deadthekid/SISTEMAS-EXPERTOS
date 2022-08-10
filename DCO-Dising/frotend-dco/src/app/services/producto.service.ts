@@ -15,6 +15,7 @@ export class ProductoService {
     return this.http.post(this.url,producto);
     }
     buscarProducto (id: string): Observable<any> {
+      console.log(this.url+"/"+id)
     return this.http.get(this.url+"/"+id)
     }
 
