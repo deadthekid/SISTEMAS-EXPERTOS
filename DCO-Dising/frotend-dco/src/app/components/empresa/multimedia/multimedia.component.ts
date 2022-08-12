@@ -16,7 +16,7 @@ export class MultimediaComponent implements OnInit {
   archivo!: string;
   archivo2!: string;
   uploadedFiles!: Array<File>;
-
+  tamanoValido!:boolean
   infoArchivo = new FormGroup({
     archivo: new FormControl('', [Validators.required])
   })
@@ -72,7 +72,12 @@ export class MultimediaComponent implements OnInit {
       reader2.onload = () => this.archivo2 = reader2.result as string
       reader2.readAsDataURL(this.uploadedFiles[0])
     }
-
+    if(this.uploadedFiles[0].size>(10*1024*1024)){
+      this.toastr.error('Tamaño maximo de archivos: 10mb', 'Tamaño excedido')
+      this.tamanoValido=false
+    }else{
+      this.tamanoValido=true
+    }
   }
 
   agregar() {
@@ -84,10 +89,12 @@ export class MultimediaComponent implements OnInit {
       idEmpresa: window.localStorage.getItem('empresa'),
       shortcut: ''
     }
-    //4mb pasados a bytes
+    //10mb pasados a bytes
     if (infoArchivo.tamano > (10 * 1024 * 1024)) {
-      this.toastr.error('Tamaño maximo de archivos: 4mb', 'Tamaño excedido')
+      this.toastr.error('Tamaño maximo de archivos: 10mb', 'Tamaño excedido')
+      this.tamanoValido=false
     } else {
+      this.tamanoValido=true
       infoArchivo.archivo = this.archivo
       this.archivoServicio.agregar(infoArchivo).subscribe((res) => {
         this.toastr.success('Archivo agregado de forma exitosa')

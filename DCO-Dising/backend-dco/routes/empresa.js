@@ -41,4 +41,6 @@ router.get('/seguridad/:id',empresaController.seguridad)
 router.get('/getProductos/:id',empresaController.getProductos)
 router.put('/actualizarProducto',empresaController.actualizarProducto)
 router.delete('/eliminarProducto',empresaController.eliminarProducto)
+router.put('/desbloquearEmpresa',empresaController.desbloquearEmpresa)
+
 module.exports=router

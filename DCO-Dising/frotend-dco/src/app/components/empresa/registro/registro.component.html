@@ -33,9 +33,9 @@
                 <div>Seleccione su plan</div>
                 <select class="entrada" style="width: 190px;" formControlName="plan" (change)="changeSelect()">
                     <option selected>...</option>
-                    <option value="1">Caro</option>
-                    <option value="2">Mediano</option>
-                    <option value="3">Barato</option>
+                    <option value="1">Basico</option>
+                    <option value="2">Intermedio</option>
+                    <option value="3">Avanzado</option>
                 </select>
                 <div class="error" *ngIf="plan?.invalid && (plan?.dirty || plan?.touched)">Error, el campo es obligatorio</div>
             </div>

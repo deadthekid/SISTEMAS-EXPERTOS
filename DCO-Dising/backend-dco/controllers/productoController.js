@@ -33,7 +33,7 @@ exports.obtenerProducto = async (req, res) => {
         let producto = await Producto.findById(req.params.id);
 
         if (!producto) {
-            res.status(404).json({ msg: 'No existe el producto' })
+            res.send(null)
             res.end()
         }else{
             res.json(producto);

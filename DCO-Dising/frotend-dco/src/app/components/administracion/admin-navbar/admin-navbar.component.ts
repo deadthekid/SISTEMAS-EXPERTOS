@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin-navbar',
   templateUrl: './admin-navbar.component.html',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private toastr: ToastrService) { }
+  
 
   ngOnInit(): void {
+    
   }
-
+  
+  
+  cerrarSesion(){
+    console.log('dio click en cerrar sesion')
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('usuarioAdmin')
+    this.router.navigate(['/'])
+  }
 }
