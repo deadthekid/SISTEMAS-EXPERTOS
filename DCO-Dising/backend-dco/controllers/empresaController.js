@@ -8,8 +8,8 @@ exports.agregar = async (req, res) => {
         let empresa;
 
         empresa = new Empresa(req.body);
-
         await empresa.save();
+        console.log(empresa)
         res.send(empresa);
     } catch (e) {
 
@@ -19,43 +19,44 @@ exports.agregar = async (req, res) => {
 
 exports.listar = async (req, res) => {
     try {
-       let empresas = await Empresa.find();
-       if(empresas.length>0){
-            res.send({mensaje:"empresas encontrados",listaEmpresas:empresas,acceso:1});
-        }else{
-            res.send({mensaje:"no se encontraron empresas",acceso:0});
+        let empresas = await Empresa.find();
+        if (empresas.length > 0) {
+            res.send({ mensaje: "empresas encontrados", listaEmpresas: empresas, acceso: 1 });
+        } else {
+            res.send(false);
         }
-    } catch(error){
+        res.end()
+    } catch (error) {
         console.log(error);
         req.send('Hubo un error');
     }
 }
 
-exports.obtenerEmpresa = async(req,res)=>{
-    try{
+exports.obtenerEmpresa = async (req, res) => {
+    try {
         let empresa = await Empresa.findById(req.params.id);
-        if(empresa){
-            res.send({mensaje:"empresa encontrada",empresa:empresa,acceso:1});
-        }else{
-            res.send({mensaje:"no se encontraro la empresa",acceso:0});
+        if (empresa) {
+            res.send({ mensaje: "empresa encontrada", empresa: empresa, acceso: 1 });
+        } else {
+            res.send(false);
         }
-
-    }catch(error){
+        res.end()
+    } catch (error) {
         console.log(error);
         req.send('Hubo un error');
     }
 }
 
-exports.bloquearEmpresa = async(req, res)=>{
+exports.bloquearEmpresa = async (req, res) => {
     const { id } = req.body;
     try {
         let empresa = await Empresa.findByIdAndUpdate({ _id: id }, {
             'activo': false
         }, { new: true })
-        if(empresa){
-            res.send({mensaje:"empresa bloqueada",empresa:empresa,acceso:1});
-        }else{
-            res.send({mensaje:"no se encontraro la empresa",acceso:0});
+        if (empresa) {
+            res.send({ mensaje: "empresa bloqueada", empresa: empresa, acceso: 1 });
+        } else {
+            res.send(false);
         }
     } catch (error) {
         console.log(error);
@@ -63,17 +64,35 @@ exports.bloquearEmpresa = async(req, res)=>{
     }
 }
 
-exports.eliminarEmpresa = async(req, res)=>{
+exports.desbloquearEmpresa = async (req, res) => {
+    const { id } = req.body;
+    try {
+        let empresa = await Empresa.findByIdAndUpdate({ _id: id }, {
+            'activo': true
+        }, { new: true })
+        if (empresa) {
+            res.send({ mensaje: "empresa desbloqueada", empresa: empresa, acceso: 1 });
+        } else {
+            res.send(false);
+        }
+    } catch (error) {
+        console.log(error);
+        res.send(null);
+    }
+}
+
+exports.eliminarEmpresa = async (req, res) => {
     try {
         let empresa = await Empresa.findByIdAndRemove(req.params.id);
-        if(empresa){
-            res.send({mensaje:"empresa eliminada",empresa:empresa,acceso:1});
-        }else{
-            res.send({mensaje:"no se encontraro la empresa",acceso:0});
+        if (empresa) {
+            res.send({ mensaje: "empresa eliminada", empresa: empresa, acceso: 1 });
+        } else {
+            res.send(false);
         }
-        
+        res.end()
     } catch (error) {
-        
+        res.send(null)
+        res.end()
     }
 }
 
@@ -91,9 +110,8 @@ exports.obtener = async (req, res) => {
 exports.login = async (req, res) => {
     const { correo, contrasena } = req.body
     try {
-        let empresa = await Empresa.find({ "correo": correo, "contrasena": contrasena }, { "correo": 1, "contrasena": 1 })
+        let empresa = await Empresa.find({ "correo": correo, "contrasena": contrasena }, { "correo": 1, "contrasena": 1, "activo":1 },)
         if (empresa[0]) {
-
             res.send(empresa)
         } else {
 
@@ -104,6 +122,7 @@ exports.login = async (req, res) => {
 
         res.send(e)
     }
+    res.end()
 }
 exports.seguridad = async (req, res) => {
     const idEmpresa = req.params.id
@@ -367,13 +386,13 @@ exports.getProductos = async (req, res) => {
 }
 exports.actualizarProducto = async (req, res) => {
     try {
-        const { nombre,precio,categoria,descripcion,img,idProducto } = req.body
-        let producto= await Producto.findByIdAndUpdate({_id:idProducto},{
+        const { nombre, precio, categoria, descripcion, img, idProducto } = req.body
+        let producto = await Producto.findByIdAndUpdate({ _id: idProducto }, {
             'nombre': nombre,
-            'precio':precio,
-            'categoria':categoria,
-            'descripcion':descripcion,
-            'img':img
+            'precio': precio,
+            'categoria': categoria,
+            'descripcion': descripcion,
+            'img': img
         })
         res.send(producto)
         res.end()
@@ -382,12 +401,12 @@ exports.actualizarProducto = async (req, res) => {
         res.end()
     }
 }
-exports.eliminarProducto= async (req,res)=>{
-    try{
-        const {idProducto, idEmpresa}=req.query
+exports.eliminarProducto = async (req, res) => {
+    try {
+        const { idProducto, idEmpresa } = req.query
         console.log(idProducto)
-        
-        
+
+
         let empresa = await Empresa.find({ '_id': idEmpresa }, { "productos": 1 })
         let productos = empresa[0].productos
         let indice = productos.indexOf(idProducto)
@@ -395,13 +414,13 @@ exports.eliminarProducto= async (req,res)=>{
         productos.splice(indice, 1)
 
         empresa = await Empresa.findByIdAndUpdate({ _id: idEmpresa }, { 'productos': productos }, { new: true })
-        
-        let producto= await Producto.remove({ '_id': idProducto })
+
+        let producto = await Producto.remove({ '_id': idProducto })
 
         res.send(producto)
         res.end()
-    }catch(e){
+    } catch (e) {
         res.send(e)
-        res-end()
+        res - end()
     }
 }

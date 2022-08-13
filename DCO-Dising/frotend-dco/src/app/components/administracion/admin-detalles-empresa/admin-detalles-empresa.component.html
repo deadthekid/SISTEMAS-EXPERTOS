@@ -45,7 +45,8 @@
     </div>
     <div class="row boton justify-content-center">
         <button class="btn btn-success btnNuevo" (click)="eliminarEmpresa()">Eliminar</button>
-        <button class="btn btn-success btnNuevo" (click)="bloquearEmpresa()">Bloquear</button>
+        <button *ngIf="activo" class="btn btn-success btnNuevo" (click)="bloquearEmpresa()">Bloquear</button>
+        <button *ngIf="!activo" class="btn btn-success btnNuevo" (click)="desbloquearEmpresa()">Desbloquear</button>
     </div>
 </div>
 <div class="pie"><br></div>

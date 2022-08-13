@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Plan } from 'src/app/models/plan.model';
 import { AdminService } from 'src/app/services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-nuevo-plan',
@@ -21,15 +22,17 @@ export class AdminNuevoPlanComponent implements OnInit {
     ePersonalizados: new FormControl(false)
   });
 
-  constructor(
+constructor(
     private router : Router,
-    private adminService : AdminService,
-    private toastr : ToastrService
+    private adminServicio : AdminService,
+    private toastr : ToastrService,
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
 
+  ngOnInit(): void {
+    this.seguridad()
+  }
 
   nuevoPlan(){
     const PLAN : Plan = {
@@ -41,7 +44,7 @@ export class AdminNuevoPlanComponent implements OnInit {
       comision : this.formularioPlan.value.comision!
     }
     //console.log(PLAN);
-    this.adminService.nuevoPlan(PLAN).subscribe(data=>{
+    this.adminServicio.nuevoPlan(PLAN).subscribe(data=>{
       console.log(data.mensaje);
       this.toastr.success('El plan fue registrado con exito', 'Plan Registrado');
       this.router.navigate(['admin/planes'])
@@ -51,4 +54,24 @@ export class AdminNuevoPlanComponent implements OnInit {
     });
   }
 
+
+  seguridad() {
+    if (!window.localStorage.getItem('usuarioAdmin')) {
+      this.router.navigate(['/'])
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+    } else {
+      this.adminServicio.seguridad(window.localStorage.getItem('usuarioAdmin')!).subscribe((res) => {
+        if (res.name != "CastError") {
+          if (res == false) {
+            this.router.navigate(['/'])
+            this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+          }
+        } else {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+        }
+
+      })
+    }
+  }
 }

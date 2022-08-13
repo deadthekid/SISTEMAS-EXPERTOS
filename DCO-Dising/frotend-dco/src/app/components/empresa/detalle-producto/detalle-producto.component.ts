@@ -69,19 +69,24 @@ export class DetalleProductoComponent implements OnInit {
     })
   }
   obtenerProducto() {
-    console.log("id", this.id)
+
     if (this.id !== null) {
       this._productoService.buscarProducto(this.id).subscribe(data => {
-        //console.log("aca",data)
-        this.nombre = data.nombre;
-        this.img = data.img;
-        this.precio = data.precio;
-        this.descripcion = data.descripcion;
+        if (data != null) {
+          this.nombre = data.nombre;
+          this.img = data.img;
+          this.precio = data.precio;
+          this.descripcion = data.descripcion;
 
-        this.productoForm.get('nombre')?.setValue(data.nombre)
-        this.productoForm.get('precio')?.setValue(data.precio)
-        this.productoForm.get('categoria')?.setValue(data.categoria)
-        this.productoForm.get('descripcion')?.setValue(data.descripcion)
+          this.productoForm.get('nombre')?.setValue(data.nombre)
+          this.productoForm.get('precio')?.setValue(data.precio)
+          this.productoForm.get('categoria')?.setValue(data.categoria)
+          this.productoForm.get('descripcion')?.setValue(data.descripcion)
+        } else {
+          this.toastr.error('Esa página no contiene datos o no existe, no hay nada que hacer ahí', 'Acceso denegado')
+          this.router.navigate(['/empresa/Productos'])
+        }
+
       })
     }
   }
@@ -109,7 +114,6 @@ export class DetalleProductoComponent implements OnInit {
   }
   actualiar() {
     if (!this.archivo) {
-      console.log(this.img)
     } else {
       this.img = this.archivo
     }

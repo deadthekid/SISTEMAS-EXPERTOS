@@ -51,6 +51,13 @@ import { TiendasComponent } from './components/tiendas/tiendas.component';
 
 import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-producto-autenticado/ver-producto-autenticado.component';
 import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/realizar-compra.component';
+import { PaginaCreacionComponent } from './components/Usuarios/pagina-creacion/pagina-creacion.component';
+import { PipePipe } from './pipes/pipe.pipe';
+import { AdministrarPaginasComponent } from './components/empresa/administrar-paginas/administrar-paginas.component';
+import { VerPaginasComponent } from './components/empresa/ver-paginas/ver-paginas.component';
+import { DetallePaginaComponent } from './components/empresa/detalle-pagina/detalle-pagina.component';
+import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
+import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 
 
 @NgModule({
@@ -95,6 +102,13 @@ import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/r
     TiendasComponent,
     VerProductoAutenticadoComponent,
     RealizarCompraComponent,
+    PaginaCreacionComponent,
+    PipePipe,
+    AdministrarPaginasComponent,
+    VerPaginasComponent,
+    DetallePaginaComponent,
+    EditarPaginaComponent,
+    CrearPaginaComponent,
 
   ],
   imports: [

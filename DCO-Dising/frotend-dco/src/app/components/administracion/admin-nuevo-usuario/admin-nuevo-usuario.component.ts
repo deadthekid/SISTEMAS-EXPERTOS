@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-nuevo-usuario',
@@ -22,10 +23,32 @@ export class AdminNuevoUsuarioComponent implements OnInit {
   constructor(
     private usuarioService : UsuarioService,
     private router : Router,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private adminServicio: AdminService
   ) { }
 
   ngOnInit(): void {
+    this.seguridad()
+  }
+
+  seguridad() {
+    if (!window.localStorage.getItem('usuarioAdmin')) {
+      this.router.navigate(['/'])
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+    } else {
+      this.adminServicio.seguridad(window.localStorage.getItem('usuarioAdmin')!).subscribe((res) => {
+        if (res.name != "CastError") {
+          if (res == false) {
+            this.router.navigate(['/'])
+            this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+          }
+        } else {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+        }
+
+      })
+    }
   }
 
   agregarUsuario(){

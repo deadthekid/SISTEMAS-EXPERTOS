@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
+
 
 @Component({
   selector: 'app-admin-detalles-plan',
@@ -34,17 +35,19 @@ export class AdminDetallesPlanComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
-    private adminService : AdminService,
-    private toastr : ToastrService
+    private adminServicio : AdminService,
+    private toastr : ToastrService,
+    private router: Router
   ) { }
-
+  
   ngOnInit(): void {
+    this.seguridad();
     this.getPlan();
-  }
+    }
 
   getPlan(){
     this.idPlan = this.route.snapshot.paramMap.get('id')!;
-    this.adminService.obtenerPlan(this.idPlan).subscribe(data => {
+    this.adminServicio.obtenerPlan(this.idPlan).subscribe(data => {
       if(data.acceso){
         console.log(data.mensaje);
         this.datosPlan = data.plan;
@@ -74,7 +77,7 @@ export class AdminDetallesPlanComponent implements OnInit {
       comision : this.datosPlanNuevo.value.comision
     }
 
-    this.adminService.actualizarPlan(plan).subscribe( data => {
+    this.adminServicio.actualizarPlan(plan).subscribe( data => {
       if(data.acceso){
         this.toastr.success(data.mensaje);
         this.getPlan();
@@ -86,4 +89,23 @@ export class AdminDetallesPlanComponent implements OnInit {
     });
   }
 
+  seguridad() {
+    if (!window.localStorage.getItem('usuarioAdmin')) {
+      this.router.navigate(['/'])
+      this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+    } else {
+      this.adminServicio.seguridad(window.localStorage.getItem('usuarioAdmin')!).subscribe((res) => {
+        if (res.name != "CastError") {
+          if (res == false) {
+            this.router.navigate(['/'])
+            this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+          }
+        } else {
+          this.router.navigate(['/'])
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
+        }
+
+      })
+    }
+  }
 }
