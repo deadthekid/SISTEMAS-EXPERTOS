@@ -6,6 +6,7 @@ const adminController= require('../controllers/adminController')
 
 router.post('/login/',adminController.login);
 router.post('/nuevoPlan/',adminController.nuevoPlan);
+router.get('/planes/',adminController.listarPlanes);
 
 
 

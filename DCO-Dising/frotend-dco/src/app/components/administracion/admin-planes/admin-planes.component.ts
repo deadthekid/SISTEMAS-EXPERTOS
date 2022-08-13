@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-planes',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPlanesComponent implements OnInit {
 
-  constructor() { }
+  listaPlanes = [
+    {
+      nombre: '',
+      descripcion: '',
+      _id: ''
+    }
+  ]
+
+  constructor(
+    private adminService : AdminService
+  ) { }
 
   ngOnInit(): void {
+    this.obtenerPlanes();
+  }
+
+  obtenerPlanes(){
+    this.adminService.getPlanes().subscribe(data=>{
+      if(data.acceso){
+        console.log(data.mensaje);
+        this.listaPlanes = data.listaPlanes;
+        console.log(this.listaPlanes);
+      }
+    }, error=>{
+      console.log(error);
+    });
   }
 
 }

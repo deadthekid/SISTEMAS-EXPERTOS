@@ -25,4 +25,5 @@ export class AdminService {
     return this.http.post(this.url+"/nuevoPlan", infoPlan)
   }
 
+
 }

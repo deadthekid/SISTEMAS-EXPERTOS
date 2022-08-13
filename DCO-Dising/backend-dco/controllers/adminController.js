@@ -36,6 +36,20 @@ exports.nuevoPlan = async (req, res) => {
     }
 }
 
+//obtener lista de planes
+exports.listarPlanes = async (req, res) => {
+    try {
+        let planes = await Plan.find();
+        if(planes[0]){
+            res.send({mensaje:"planes encontrados",listaPlanes:planes,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraron planes",acceso:0});
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
 //creación de admin
 exports.crear = async (req,res)=>{
     try{
