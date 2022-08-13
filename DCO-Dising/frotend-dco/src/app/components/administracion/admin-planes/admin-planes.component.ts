@@ -29,7 +29,6 @@ export class AdminPlanesComponent implements OnInit {
       if(data.acceso){
         console.log(data.mensaje);
         this.listaPlanes = data.listaPlanes;
-        console.log(this.listaPlanes);
       }
     }, error=>{
       console.log(error);

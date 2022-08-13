@@ -42,7 +42,7 @@ export class AdminNuevoPlanComponent implements OnInit {
     }
     //console.log(PLAN);
     this.adminService.nuevoPlan(PLAN).subscribe(data=>{
-      console.log(data);
+      console.log(data.mensaje);
       this.toastr.success('El plan fue registrado con exito', 'Plan Registrado');
       this.router.navigate(['admin/planes'])
     }, error=>{

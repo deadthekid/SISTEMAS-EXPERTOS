@@ -27,7 +27,7 @@ exports.listar = async (req, res) => {
         }
     } catch(error){
         console.log(error);
-        req.status(500).send('Hubo un error');
+        req.send('Hubo un error');
     }
 }
 
@@ -42,7 +42,7 @@ exports.obtenerEmpresa = async(req,res)=>{
 
     }catch(error){
         console.log(error);
-        req.status(500).send('Hubo un error');
+        req.send('Hubo un error');
     }
 }
 
@@ -59,7 +59,7 @@ exports.bloquearEmpresa = async(req, res)=>{
         }
     } catch (error) {
         console.log(error);
-        req.status(500).send('Hubo un error');
+        req.send('Hubo un error');
     }
 }
 

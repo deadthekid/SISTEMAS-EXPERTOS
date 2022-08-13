@@ -50,6 +50,43 @@ exports.listarPlanes = async (req, res) => {
     }
 }
 
+//obtener detalles plan
+exports.obtenerPlan = async (req, res) => {
+    try {
+        let plan = await Plan.findById(req.params.id);
+        if(plan){
+            res.send({mensaje:"plan encontrado",plan:plan,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraro el plan",acceso:0});
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+//actualizar datos de plan
+exports.actualizarPlan = async (req, res) => {
+    try {
+        const {id, nombre, descripcion, maxPaginas, maxArchivos, ePersonalizados, comision} = req.body
+        let plan = await Plan.findById(id);
+        if(plan){
+            plan = await Plan.findOneAndUpdate({ _id : id }, {
+                'nombre' : nombre,
+                'descripcion' : descripcion,
+                'maxPaginas' : maxPaginas,
+                'maxArchivos' : maxArchivos,
+                'ePersonalizados' : ePersonalizados,
+                'comision' : comision
+            }, { new:true } );
+            res.send({mensaje:"plan actualizado",acceso:1});
+        }else{
+            res.send({mensaje:"no se encontro el plan",acceso:0});
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
 //creación de admin
 exports.crear = async (req,res)=>{
     try{
@@ -61,6 +98,6 @@ exports.crear = async (req,res)=>{
 
     } catch(error){
         console.log(error);
-        res.status(500).send('Hubo un error')
+        res.send('Hubo un error')
     }
 }
