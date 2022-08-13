@@ -39,6 +39,7 @@ import { PlanesComponent } from './components/planes/planes.component';
 import { TiendasComponent } from './components/tiendas/tiendas.component';
 import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-producto-autenticado/ver-producto-autenticado.component';
 import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/realizar-compra.component';
+import { PaginaCreacionComponent } from './components/Usuarios/pagina-creacion/pagina-creacion.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -62,6 +63,7 @@ const routes: Routes = [
   { path: 'usuarios/usaurio/producto', component: CreacionProductoComponent },
   { path: 'usuarios/ver-producto/:id', component: VerProductoAutenticadoComponent },
   { path: 'usuarios/pago/realizar-compra', component: RealizarCompraComponent },
+  { path: 'usuarios/crearPagina', component: PaginaCreacionComponent },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empresas', component: AdminEmpresasComponent },
