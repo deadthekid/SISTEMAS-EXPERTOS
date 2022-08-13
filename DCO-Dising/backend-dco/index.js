@@ -28,6 +28,7 @@ app.use('/api/usuarios',require('./routes/usuario'));
 app.use('/api/productos',require('./routes/producto'));
 app.use('/empresa/',require('./routes/empresa'));
 app.use('/admin/',require('./routes/admin'));
+app.use('/api/paginas',require('./routes/pagina'));
 
 
 app.listen(4000, () => {
