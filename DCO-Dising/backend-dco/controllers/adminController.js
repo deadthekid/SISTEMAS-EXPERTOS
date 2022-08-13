@@ -1,3 +1,4 @@
+const Plan = require("../models/Plan");
 const Usuario = require("../models/Usuario");
 
 
@@ -19,6 +20,19 @@ exports.login = async (req, res) => {
     } catch (e) {
 
         res.send(e)
+    }
+}
+
+//crear Plan
+exports.nuevoPlan = async (req, res) => {
+    try {
+        let plan;
+        plan = new Plan(req.body);
+
+        await plan.save();
+        res.send(plan);
+    } catch (error) {
+        res.send(error);
     }
 }
 

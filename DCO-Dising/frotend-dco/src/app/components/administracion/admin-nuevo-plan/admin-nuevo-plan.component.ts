@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Plan } from 'src/app/models/plan.model';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-nuevo-plan',
@@ -10,13 +14,41 @@ export class AdminNuevoPlanComponent implements OnInit {
 
   formularioPlan = new FormGroup({
     nombre: new FormControl(''),
-    id: new FormControl(''),
-    desc: new FormControl('')
+    desc: new FormControl(''),
+    maxP: new FormControl(0),
+    maxA: new FormControl(0),
+    comision: new FormControl(0),
+    ePersonalizados: new FormControl(false)
   });
 
-  constructor() { }
+  constructor(
+    private router : Router,
+    private adminService : AdminService,
+    private toastr : ToastrService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+
+  nuevoPlan(){
+    const PLAN : Plan = {
+      nombre : this.formularioPlan.value.nombre!,
+      descripcion : this.formularioPlan.value.desc!,
+      maxArchivos : this.formularioPlan.value.maxA!,
+      maxPaginas : this.formularioPlan.value.maxP!,
+      ePersonalizados : this.formularioPlan.value.ePersonalizados!,
+      comision : this.formularioPlan.value.comision!
+    }
+    //console.log(PLAN);
+    this.adminService.nuevoPlan(PLAN).subscribe(data=>{
+      console.log(data);
+      this.toastr.success('El plan fue registrado con exito', 'Plan Registrado');
+      this.router.navigate(['admin/planes'])
+    }, error=>{
+      console.log(error);
+      this.formularioPlan.reset();
+    });
   }
 
 }

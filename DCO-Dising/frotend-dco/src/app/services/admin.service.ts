@@ -21,4 +21,8 @@ export class AdminService {
     return this.http.get(this.url+"/planes")
   }
 
+  nuevoPlan(infoPlan: object): Observable<any>{
+    return this.http.post(this.url+"/nuevoPlan", infoPlan)
+  }
+
 }
