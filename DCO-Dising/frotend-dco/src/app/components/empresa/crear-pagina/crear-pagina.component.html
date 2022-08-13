@@ -1,0 +1,54 @@
+<div class="contenedor">
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            <div class="nav-l" style="text-align: center;">
+                <a class="navbar-brand" href="/empresa/principal" style="width: 50%;">
+                    <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
+                </a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/categorias">Categorías</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/multimedia">Banco Multimedia</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/administrarPaginas">Páginas</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/Productos">Productos</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/historial">Historial</a>
+            </div>
+            <div class="nav-r">
+                <div>
+                    <input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenido">
+        <div>
+            <h4>¿Cómo desea crear su página?</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (select)="conAyuda()" (change)="conAyuda()">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Con ayuda
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (select)="sinAyuda()" (change)="sinAyuda()">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Sin ayuda
+                </label>
+              </div>
+        </div>
+        <div>
+            <div class="visualizar" *ngIf="verificarAyuda">
+                <iframe [srcdoc]="html" frameborder="0" [style]="estilo"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="pie"><br></div>
+</div>

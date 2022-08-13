@@ -22,7 +22,8 @@ export class AdminDetallesEmpresaComponent implements OnInit {
     descripcion: '',
     logo: ''
   };
-  activo:any
+  activo:any  
+
   constructor(
     private route: ActivatedRoute,
     private empresaService: empresaService,
