@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Plan } from 'src/app/models/plan.model';
 import { AdminService } from 'src/app/services/admin.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-nuevo-plan',
@@ -25,8 +24,7 @@ export class AdminNuevoPlanComponent implements OnInit {
 constructor(
     private router : Router,
     private adminServicio : AdminService,
-    private toastr : ToastrService,
-    private router: Router
+    private toastr : ToastrService
   ) { }
 
 

@@ -38,6 +38,7 @@ export class AdminPlanesComponent implements OnInit {
     }, error=>{
       console.log(error);
     });
+  }
 
   seguridad() {
     if (!window.localStorage.getItem('usuarioAdmin')) {
