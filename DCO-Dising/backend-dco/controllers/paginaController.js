@@ -45,7 +45,7 @@ exports.actualizarPagina = async(req,res)=>{
 
 exports.obtenerPagina = async(req,res)=>{
     try {
-        let pagina = await Pagina.findById(req.params.id);
+        let pagina = await Pagina.findOne({empresaId: req.params.id});
         
         if (!pagina) {
             res.status(404).json({ msg: 'No existe el producto' })

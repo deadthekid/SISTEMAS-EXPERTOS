@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/empresa/login/login.component';
@@ -58,6 +60,7 @@ import { VerPaginasComponent } from './components/empresa/ver-paginas/ver-pagina
 import { DetallePaginaComponent } from './components/empresa/detalle-pagina/detalle-pagina.component';
 import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
+import { PaginaVerCreacionComponent } from './components/Usuarios/pagina-ver-creacion/pagina-ver-creacion.component';
 
 
 @NgModule({
@@ -109,6 +112,7 @@ import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pa
     DetallePaginaComponent,
     EditarPaginaComponent,
     CrearPaginaComponent,
+    PaginaVerCreacionComponent,
 
   ],
   imports: [
@@ -119,6 +123,7 @@ import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pa
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

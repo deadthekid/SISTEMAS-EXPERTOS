@@ -45,6 +45,7 @@ import { VerPaginasComponent } from './components/empresa/ver-paginas/ver-pagina
 import { DetallePaginaComponent } from './components/empresa/detalle-pagina/detalle-pagina.component';
 import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
+import { PaginaVerCreacionComponent } from './components/Usuarios/pagina-ver-creacion/pagina-ver-creacion.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -69,6 +70,7 @@ const routes: Routes = [
   { path: 'usuarios/ver-producto/:id', component: VerProductoAutenticadoComponent },
   { path: 'usuarios/pago/realizar-compra', component: RealizarCompraComponent },
   { path: 'usuarios/crearPagina', component: PaginaCreacionComponent },
+  { path: 'usuarios/verPagina', component: PaginaVerCreacionComponent },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empresas', component: AdminEmpresasComponent },
