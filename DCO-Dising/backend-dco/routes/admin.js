@@ -5,7 +5,11 @@ const adminController= require('../controllers/adminController')
 
 
 router.post('/login/',adminController.login);
-router.get('/seguridad/:id',adminController.seguridad)
+router.post('/nuevoPlan/',adminController.nuevoPlan);
+router.get('/planes/',adminController.listarPlanes);
+router.get('/:id',adminController.obtenerPlan);
+router.put('/plan/actualizar/',adminController.actualizarPlan);
+router.get('/seguridad/:id',adminController.seguridad);
 
 
 //Creacion de admins

@@ -28,8 +28,7 @@ exports.listar = async (req, res) => {
         res.end()
     } catch (error) {
         console.log(error);
-        res.send(null);
-        res.end()
+        req.send('Hubo un error');
     }
 }
 
@@ -44,8 +43,7 @@ exports.obtenerEmpresa = async (req, res) => {
         res.end()
     } catch (error) {
         console.log(error);
-        res.send(null);
-        res.end()
+        req.send('Hubo un error');
     }
 }
 
@@ -62,9 +60,10 @@ exports.bloquearEmpresa = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        res.send(null);
+        req.send('Hubo un error');
     }
 }
+
 exports.desbloquearEmpresa = async (req, res) => {
     const { id } = req.body;
     try {

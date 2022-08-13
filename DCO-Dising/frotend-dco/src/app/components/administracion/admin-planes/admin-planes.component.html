@@ -10,24 +10,16 @@
                           <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">descripcion</th>
                             <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">3001</th>
-                            <td>Plan Basico</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/plan/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3002</th>
-                            <td>Plan Intermedio</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/plan/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3004</th>
-                            <td>Plan Avanzado</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/plan/1">Detalles</button></td>
+                          <tr *ngFor="let plan of listaPlanes">
+                            <th scope="row">{{plan._id}}</th>
+                            <td>{{plan.nombre}}</td>
+                            <td>{{plan.descripcion}}</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/plan/{{plan._id}}">Detalles</button></td>
                           </tr>
                         </tbody>
                       </table>

@@ -24,4 +24,17 @@ export class AdminService {
     return this.http.get(this.url+"/seguridad/"+idUsuario)
   }
 
+  nuevoPlan(infoPlan: object): Observable<any>{
+    return this.http.post(this.url+"/nuevoPlan", infoPlan)
+  }
+
+  obtenerPlan( id : String): Observable<any>{
+    return this.http.get(this.url+`/${id}`);
+  }
+
+  actualizarPlan(informacion: object): Observable<any>{
+    return this.http.put(this.url+"/plan/actualizar/",informacion)
+  }
+
+
 }

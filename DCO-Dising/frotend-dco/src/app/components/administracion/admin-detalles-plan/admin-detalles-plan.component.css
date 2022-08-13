@@ -1,0 +1,35 @@
+.contenido {
+    height: 60vh;
+}
+
+.titulo {
+    height: 10vh;
+    padding-top: 3vh;
+    padding-left: 9vh;
+}
+
+.datosPlan {
+    padding-top: 2vh;
+    padding-left: 40vh;
+    padding-right: 30vh;
+}
+
+.boton {
+    height: 10vh;
+}
+
+.btnPlan {
+    width: 10%;
+    height: 60%;
+}
+
+.fotoPerfil {
+    margin-top: 3vh;
+    height: 300px;
+    width:  300px;
+}
+
+.pie {
+    background-color: #184E5D;
+    flex: 1;
+}

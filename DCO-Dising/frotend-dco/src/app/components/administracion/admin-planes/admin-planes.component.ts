@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-admin-planes',
   templateUrl: './admin-planes.component.html',
@@ -9,11 +10,34 @@ import { Router } from '@angular/router';
 })
 export class AdminPlanesComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService, private adminServicio: AdminService) { }
+  listaPlanes = [
+    {
+      nombre: '',
+      descripcion: '',
+      _id: ''
+    }
+  ]
+
+  constructor(
+    private router: Router, 
+    private toastr: ToastrService, 
+    private adminServicio: AdminService
+  ) { }
 
   ngOnInit(): void {
-    this.seguridad()
+    this.obtenerPlanes();
+    this.seguridad();
   }
+
+  obtenerPlanes(){
+    this.adminServicio.getPlanes().subscribe(data=>{
+      if(data.acceso){
+        console.log(data.mensaje);
+        this.listaPlanes = data.listaPlanes;
+      }
+    }, error=>{
+      console.log(error);
+    });
 
   seguridad() {
     if (!window.localStorage.getItem('usuarioAdmin')) {
