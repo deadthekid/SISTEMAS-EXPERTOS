@@ -39,6 +39,11 @@ import { PlanesComponent } from './components/planes/planes.component';
 import { TiendasComponent } from './components/tiendas/tiendas.component';
 import { VerProductoAutenticadoComponent } from './components/Usuarios/ver-producto-autenticado/ver-producto-autenticado.component';
 import { RealizarCompraComponent } from './components/Usuarios/realizar-compra/realizar-compra.component';
+import { AdministrarPaginasComponent } from './components/empresa/administrar-paginas/administrar-paginas.component';
+import { VerPaginasComponent } from './components/empresa/ver-paginas/ver-paginas.component';
+import { DetallePaginaComponent } from './components/empresa/detalle-pagina/detalle-pagina.component';
+import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
+import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -82,6 +87,11 @@ const routes: Routes = [
   { path: 'empresa/agregarProducto', component: CreacionProductoComponent },
   { path: 'Planes', component: PlanesComponent },
   { path: 'Tiendas', component: TiendasComponent },
+  { path: 'empresa/administrarPaginas', component: AdministrarPaginasComponent },
+  {path: 'empresa/VerPaginas', component: VerPaginasComponent},
+  {path: 'empresa/DetallePagina/:id', component: DetallePaginaComponent},
+  {path: 'empresa/EditarPagina/:id', component: EditarPaginaComponent},
+  {path: 'empresa/CrearPagina', component: CrearPaginaComponent}  ,
 ];
 
 @NgModule({
