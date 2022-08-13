@@ -20,5 +20,8 @@ export class AdminService {
   getPlanes(): Observable<any>{
     return this.http.get(this.url+"/planes")
   }
+  seguridad(idUsuario: string):Observable<any>{
+    return this.http.get(this.url+"/seguridad/"+idUsuario)
+  }
 
 }
