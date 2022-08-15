@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log(this.infoLogin)
     let login = this.infoLogin.value
     this._empresaServicio.login(login).subscribe(data => {
       if (data) {

@@ -1,8 +1,9 @@
 const Empresa = require('../models/empresaModel');
 const Archivo = require('../models/archivoModel')
-const Productos = require('../models/Producto');
 const Producto = require('../models/Producto');
 const Plan = require('../models/Plan');
+const Venta = require('../models/ventaModel')
+
 
 exports.agregar = async (req, res) => {
     try {
@@ -119,7 +120,7 @@ exports.obtener = async (req, res) => {
 exports.login = async (req, res) => {
     const { correo, contrasena } = req.body
     try {
-        let empresa = await Empresa.find({ "correo": correo, "contrasena": contrasena }, { "correo": 1, "contrasena": 1, "activo":1 },)
+        let empresa = await Empresa.find({ "correo": correo, "contrasena": contrasena }, { "correo": 1, "contrasena": 1, "activo": 1 },)
         if (empresa[0]) {
             res.send(empresa)
         } else {
@@ -431,5 +432,38 @@ exports.eliminarProducto = async (req, res) => {
     } catch (e) {
         res.send(e)
         res - end()
+    }
+}
+exports.venta = async (req, res) => {
+    try {
+        const venta = {
+            idProducto: req.body.idProducto,
+            idComprador: req.body.idComprador,
+            idEmpresa: '',
+            nombre: req.body.nombre,
+            precio: req.body.precio,
+            fecha: Date.now(),
+        }
+        const producto= await Producto.findById({'_id':req.body.idProducto},{'empresa':1})
+        venta.idEmpresa=producto.empresa
+        
+        const guardar = new Venta(venta)
+        guardar.save()
+        res.send(guardar)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.historial=async(req,res)=>{
+    try{
+        let idEmpresa=req.params.id
+        const historial= await Venta.find({'idEmpresa':idEmpresa})
+        console.log(historial)
+        res.send(historial)
+    }catch(e){
+        res.send(e)
+        res.end()
     }
 }

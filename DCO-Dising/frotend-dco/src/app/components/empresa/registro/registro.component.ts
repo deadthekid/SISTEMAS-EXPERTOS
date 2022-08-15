@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Empresa } from 'src/app/models/empresa.model';
 import { ToastrService } from 'ngx-toastr';
-import { empresaService } from 'src/app/services/empresa.service'; 
+import { empresaService } from 'src/app/services/empresa.service';
 import { Router } from '@angular/router';
+import { AdminService } from '../../../services/admin.service'
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -17,14 +18,16 @@ export class RegistroComponent implements OnInit {
     plan: new FormControl('', [Validators.required]),
     termino: new FormControl(false, [Validators.requiredTrue])
   })
-  existe: boolean=false
+  existe: boolean = false
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    private _empresaServicio: empresaService
+    private _empresaServicio: empresaService,
+    private adminServicio: AdminService
   ) { }
 
   ngOnInit(): void {
+    this.selectPlanes()
   }
 
   registrar() {
@@ -41,35 +44,42 @@ export class RegistroComponent implements OnInit {
       categorias: [],
       activo: true
     }
-    console.log("empresa: ",empresa)
-    this._empresaServicio.agregar(empresa).subscribe(data=>{
-      this.toastr.success('Se registro de forma exitosa','Registro de empresa exitoso');
+    console.log("empresa: ", empresa)
+    this._empresaServicio.agregar(empresa).subscribe(data => {
+      this.toastr.success('Se registro de forma exitosa', 'Registro de empresa exitoso');
       this.router.navigate(['/empresa/login'])
       console.log(data)
-    },error=>{
+    }, error => {
       console.log(error);
       this.formulario.reset();
       this.toastr.error('Algo salio mal en el registro')
     })
   }
-  buscar(){
-    this._empresaServicio.buscar(this.correo?.value!).subscribe(data=>{
-      if(data[0]){
+  buscar() {
+    this._empresaServicio.buscar(this.correo?.value!).subscribe(data => {
+      if (data[0]) {
         this.toastr.error('Ese correo ya está en uso')
-        this.existe=true;
-      }else{
+        this.existe = true;
+      } else {
         this.registrar()
       }
-    },error=>{
+    }, error => {
       console.log(error)
       this.toastr.error('Algo salio mal en el registro')
     })
   }
-
+  planes: any
+  selectPlanes() {
+    this.adminServicio.getPlanes().subscribe((res) => {
+      this.planes=res.listaPlanes
+    })
+  }
 
   changeSelect() {
     if (this.plan?.value == "...") {
       this.plan.setValue('')
+    }else{
+      console.log(this.plan?.value)
     }
   }
   get nombre() {

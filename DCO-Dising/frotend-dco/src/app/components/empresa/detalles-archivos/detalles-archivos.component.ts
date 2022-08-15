@@ -16,7 +16,7 @@ export class DetallesArchivosComponent implements OnInit {
   constructor(private router: Router, private toastr: ToastrService, private archivoServicio: archivoService, private empresaServicio: empresaService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    if(this.seguridad()) this.idArchivoURL()
+    if (this.seguridad()) this.idArchivoURL()
   }
   descarga: any
   tipo!: string
@@ -33,19 +33,20 @@ export class DetallesArchivosComponent implements OnInit {
   infoArchivo = new FormGroup({
     archivo: new FormControl('', [Validators.required])
   })
+  tamanoValido!:boolean
   seguridad() {
-    let valido=true
+    let valido = true
     if (!window.localStorage.getItem('empresa')) {
       this.router.navigate(['/'])
       this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina')
-      valido=false
+      valido = false
     } else {
       this.empresaServicio.seguridad(window.localStorage.getItem('empresa')!).subscribe((res) => {
         if (res == null) {
           this.router.navigate(['/'])
-          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
+          this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina', 'ERROR')
           window.localStorage.removeItem('empresa')
-          valido=false
+          valido = false
         }
       })
     }
@@ -120,7 +121,12 @@ export class DetallesArchivosComponent implements OnInit {
       reader2.readAsDataURL(this.uploadedFiles[0])
 
     }
-
+    if (this.uploadedFiles[0].size > (10 * 1024 * 1024)) {
+      this.toastr.error('Tamaño maximo de archivos: 10mb', 'Tamaño excedido')
+      this.tamanoValido = false
+    } else {
+      this.tamanoValido = true
+    }
   }
 
   actualizar() {
@@ -132,8 +138,10 @@ export class DetallesArchivosComponent implements OnInit {
       idEmpresa: window.localStorage.getItem('empresa')
     }
     infoArchivo.archivo = this.archivo
+    this.toastr.success('Aviso: puede que tarde unos segundos en cargar los datos')
     this.archivoServicio.actualizar(infoArchivo, this.idArchivo).subscribe((res) => {
-      this.toastr.success('Aviso: puede que tarde unos segundos en cargar los datos', 'Actualizacion de archivo exitosa')
+      console.log(res)
+      this.toastr.success('Actualizacion de archivo exitosa')
       this.jalarDetalles(this.idArchivo)
     })
   }

@@ -222,7 +222,7 @@ a:link ,a:visited ,a:active{
 }
 
 .img-tarjeta{
-    background-color: red;
+    background-color: white !important;
     max-width: 100px;
     height: 100px;
     margin-left: auto;
