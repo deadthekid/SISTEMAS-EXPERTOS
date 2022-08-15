@@ -68,4 +68,10 @@ export class empresaService {
     desbloquearEmpresa(idEmpresa: Object):Observable<any>{        
         return this.http.put(this.url+'/desbloquearEmpresa',idEmpresa)
     }
+    venta(venta: object):Observable<any>{
+        return this.http.post(this.url+'/venta',venta)
+    }
+    historial(idEmpresa: string):Observable<any>{
+        return this.http.get(this.url+'/historial/'+idEmpresa)
+    }
 }

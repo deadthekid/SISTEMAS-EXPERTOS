@@ -42,5 +42,7 @@ router.get('/getProductos/:id',empresaController.getProductos)
 router.put('/actualizarProducto',empresaController.actualizarProducto)
 router.delete('/eliminarProducto',empresaController.eliminarProducto)
 router.put('/desbloquearEmpresa',empresaController.desbloquearEmpresa)
+router.post('/venta',empresaController.venta)
+router.get('/historial/:id',empresaController.historial)
 
 module.exports=router

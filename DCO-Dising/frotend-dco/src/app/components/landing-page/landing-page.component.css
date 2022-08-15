@@ -120,3 +120,12 @@ header.masthead {
       margin-bottom: 4rem;
     }
   }
+
+  .row{
+    place-content: center;
+  }
+  .btnCerrarSesion {
+    background-color: rgba(216, 246, 255, .50);
+    border-radius: 10px;
+    width: 100%;
+}

@@ -103,8 +103,8 @@ a:active {
         "nombre inputNombre . correo inputCorreo"
         "descripcion inputDescripcion inputDescripcion inputDescripcion inputDescripcion"
         "cambiarContra inputContra . confirmarContra inputConfirmar"
-        "imagen imagen imagen visualizacion . "
-        "imagen imagen imagen visualizacion ."
+        "imagen imagen imagen visualizacion visualizacion "
+        "imagen imagen imagen visualizacion visualizacion"
 
         ". btnGuardar btnGuardar btnGuardar .";
     height: 100%;
@@ -120,11 +120,12 @@ a:active {
     text-align: center;
 }
 
-.visualizacion {
+.visualizacion{
     grid-area: visualizacion;
     text-align: center;
-    width: 200px;
+    width: 400px;
     align-self: center;
+    justify-self: center;
 }
 
 .nombre {
