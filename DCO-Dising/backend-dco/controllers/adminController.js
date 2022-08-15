@@ -1,5 +1,6 @@
 const Plan = require("../models/Plan");
 const Usuario = require("../models/Usuario");
+const Plantilla = require('../models/Plantilla');
 
 
 //login admin
@@ -80,6 +81,68 @@ exports.actualizarPlan = async (req, res) => {
             res.send({mensaje:"plan actualizado",acceso:1});
         }else{
             res.send({mensaje:"no se encontro el plan",acceso:0});
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+//registro plantilla
+exports.registroPlantilla = async (req, res) => {
+    try {
+        let plantilla;
+        plantilla = new Plantilla(req.body);
+
+        await plantilla.save();
+        res.send(plantilla);
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+//listar plantillas
+exports.listarPlantillas = async (req, res) => {
+    try {
+        let plantillas = await Plantilla.find();
+        if(plantillas[0]){
+            res.send({mensaje:"plantillas encontradas",listaPlantillas:plantillas,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraron plantillas",acceso:0});
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+//obtener detalles plan
+exports.obtenerPlantilla = async (req, res) => {
+    try {
+        let plantilla = await Plantilla.findById(req.params.id);
+        if(plantilla){
+            res.send({mensaje:"plantilla encontrada",plantilla:plantilla,acceso:1});
+        }else{
+            res.send({mensaje:"no se encontraro la plantilla",acceso:0});
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+//actualizar datos de plantilla
+exports.actualizarPlantilla = async (req, res) => {
+    try {
+        const {id, nombre, html, css, javascript} = req.body
+        let plantilla = await Plantilla.findById(id);
+        if(plantilla){
+            plantilla = await Plantilla.findOneAndUpdate({ _id : id }, {
+                'nombre' : nombre,
+                'html' : html,
+                'css' : css,
+                'javascript' : javascript,
+            }, { new:true } );
+            res.send({mensaje:"plantilla actualizada",acceso:1});
+        }else{
+            res.send({mensaje:"no se encontro la plantilla",acceso:0});
         }
     } catch (error) {
         res.send(error);

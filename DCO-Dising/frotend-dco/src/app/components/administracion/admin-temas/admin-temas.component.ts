@@ -9,10 +9,29 @@ import { Router } from '@angular/router';
 })
 export class AdminTemasComponent implements OnInit {
 
+  listaPlantillas = [
+    {
+      nombre: '',
+      _id: ''
+    }
+  ]
+
   constructor(private router: Router, private toastr: ToastrService, private adminServicio: AdminService) { }
 
   ngOnInit(): void {
-    this.seguridad()
+    this.seguridad();
+    this.obtenerPlantillas();
+  }
+
+  obtenerPlantillas(){
+    this.adminServicio.getPlantillas().subscribe(data=>{
+      if(data.acceso){
+        console.log(data.mensaje);
+        this.listaPlantillas = data.listaPlantillas;
+      }
+    }, error=>{
+      console.log(error);
+    });
   }
 
   seguridad() {

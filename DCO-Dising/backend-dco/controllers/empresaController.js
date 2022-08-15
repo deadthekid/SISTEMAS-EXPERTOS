@@ -1,7 +1,9 @@
 const Empresa = require('../models/empresaModel');
 const Archivo = require('../models/archivoModel')
 const Producto = require('../models/Producto');
+const Plan = require('../models/Plan');
 const Venta = require('../models/ventaModel')
+
 
 exports.agregar = async (req, res) => {
     try {
@@ -21,6 +23,14 @@ exports.listar = async (req, res) => {
     try {
         let empresas = await Empresa.find();
         if (empresas.length > 0) {
+            let planes = await Plan.find();
+            empresas.forEach(empresa =>{
+                planes.forEach(plan => {
+                    if(empresa.plan == plan._id){
+                        empresa.plan = plan.nombre
+                    }
+                });
+            });
             res.send({ mensaje: "empresas encontrados", listaEmpresas: empresas, acceso: 1 });
         } else {
             res.send(false);

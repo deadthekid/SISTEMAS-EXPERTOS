@@ -14,30 +14,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">4001</th>
-                            <td>Plantilla 1</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4002</th>
-                            <td>Plantilla 2</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4005</th>
-                            <td>Plantilla 5</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4006</th>
-                            <td>Plantilla 7</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4007</th>
-                            <td>Plantilla 7</td>
-                            <td><button class="btn btnDetalles" routerLink="/admin/tema/1">Detalles</button></td>
+                          <tr *ngFor="let plantilla of listaPlantillas">
+                            <th scope="row">{{plantilla._id}}</th>
+                            <td>{{plantilla.nombre}}</td>
+                            <td><button class="btn btnDetalles" routerLink="/admin/tema/{{plantilla._id}}">Detalles</button></td>
                           </tr>
                         </tbody>
                       </table>
