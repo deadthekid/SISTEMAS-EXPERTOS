@@ -29,12 +29,27 @@ export class AdminService {
   }
 
   obtenerPlan( id : String): Observable<any>{
-    return this.http.get(this.url+`/${id}`);
+    return this.http.get(this.url+`/plan/${id}`);
   }
 
   actualizarPlan(informacion: object): Observable<any>{
     return this.http.put(this.url+"/plan/actualizar/",informacion)
   }
 
+  nuevaPlantilla(infoPlantilla: object): Observable<any>{
+    return this.http.post(this.url+"/nuevaPlantilla", infoPlantilla)
+  }
+
+  getPlantillas(): Observable<any>{
+    return this.http.get(this.url+"/plantillas")
+  }
+
+  obtenerPlantilla( id : String): Observable<any>{
+    return this.http.get(this.url+`/plantilla/${id}`);
+  }
+
+  actualizarPlantilla(informacion: object): Observable<any>{
+    return this.http.put(this.url+"/plantilla/actualizar/",informacion)
+  }
 
 }

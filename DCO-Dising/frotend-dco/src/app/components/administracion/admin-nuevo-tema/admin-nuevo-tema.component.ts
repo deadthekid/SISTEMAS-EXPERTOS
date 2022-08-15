@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Plantilla } from 'src/app/models/plantilla.model';
+
 @Component({
   selector: 'app-admin-nuevo-tema',
   templateUrl: './admin-nuevo-tema.component.html',
@@ -9,10 +12,38 @@ import { Router } from '@angular/router';
 })
 export class AdminNuevoTemaComponent implements OnInit {
 
-  constructor(private router: Router, private toastr: ToastrService, private adminServicio: AdminService) { }
+  formularioPlantilla = new FormGroup({
+    nombre: new FormControl(''),
+    html: new FormControl(''),
+    css: new FormControl(''),
+    javascript: new FormControl('')
+  });
+
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private adminServicio: AdminService) { }
 
   ngOnInit(): void {
     this.seguridad()
+  }
+
+  registrarPlantilla(){
+    const PLANTILLA = {
+      nombre : this.formularioPlantilla.value.nombre,
+      html : this.formularioPlantilla.value.html,
+      css : this.formularioPlantilla.value.css,
+      javascript : this.formularioPlantilla.value.javascript
+    }
+    //console.log(PLANTILLA);
+    this.adminServicio.nuevaPlantilla(PLANTILLA).subscribe(data=>{
+      console.log(data.mensaje);
+      this.toastr.success('La plantilla fue registrada con exito', 'Plantilla Registrada');
+      this.router.navigate(['admin/temas'])
+    }, error=>{
+      console.log(error);
+      this.formularioPlantilla.reset();
+    });
   }
 
   seguridad() {
