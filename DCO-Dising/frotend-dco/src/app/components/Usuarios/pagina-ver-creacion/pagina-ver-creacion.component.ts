@@ -1,5 +1,6 @@
-
-import { Component, OnInit, PipeTransform, Pipe} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Producto } from 'src/app/models/producto';
+import { ProductoService } from 'src/app/services/producto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -7,29 +8,25 @@ import { ToastrService } from 'ngx-toastr';
 import { Pagina } from 'src/app/models/pagina';
 import { PaginaService } from 'src/app/services/pagina.service';
 
-
-
 @Component({
-  selector: 'app-pagina-creacion',
-  templateUrl: './pagina-creacion.component.html',
-  styleUrls: ['./pagina-creacion.component.css']
+  selector: 'app-pagina-ver-creacion',
+  templateUrl: './pagina-ver-creacion.component.html',
+  styleUrls: ['./pagina-ver-creacion.component.css']
 })
-
-
-
-export class PaginaCreacionComponent implements OnInit  {paginaForm: FormGroup;
+export class PaginaVerCreacionComponent implements OnInit {paginaForm: FormGroup;
   html: string=""
   css:  string=""
   javascript: string=""
   empresaId: number=0;
   htmlStr=""
   cssStr=""
-
-  constructor(private fb: FormBuilder,
+ 
+  listProductos:Producto[]=[];
+  
+  constructor(private _productoService: ProductoService,private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private _paginaService: PaginaService,
-    private sanatizer:DomSanitizer) {
+    private _paginaService: PaginaService,) {
     this.paginaForm = this.fb.group({
       html:['',Validators.required],
       css:['',[Validators.required]],
@@ -37,36 +34,27 @@ export class PaginaCreacionComponent implements OnInit  {paginaForm: FormGroup;
       empresaId:['',Validators.required],
      
     })
-  }
+   }
 
   ngOnInit(): void {
+    this.obtenerProductos();
+    this.renderizarPagina();
    
+    
+    
   }
-  
-  agregarPagina(){
-    const PAGINA: Pagina={
-      html: this.paginaForm.get('html')?.value,
-      css: this.paginaForm.get('css')?.value,
-      javascript: this.paginaForm.get('javascript')?.value,
-      empresaId: this.paginaForm.get('empresaId')?.value
-    }
 
-    
-    console.log(PAGINA);
-    this._paginaService.guardarPagina(PAGINA).subscribe(data=>{
-      this.toastr.success('El usuario fue registrado con exito', 'Usuario Registrado');
-      this.router.navigate(['/paginas/ver'])
-    }, error=>{
+  obtenerProductos(){
+    this._productoService.getProductos().subscribe(data=>{
+      console.log(data);
+      this.listProductos = data;
+    },error=>{
       console.log(error);
-      this.paginaForm.reset();
     })
-
-
-    
   }
 
   renderizarPagina() {
-    let id="62f53e9d7c9354beb574fb3d"
+    let id="62faa2ee302b0f36dc086e26"
     this. _paginaService.obtenerPagina(id).subscribe(data => {
       if (data) {
       this.html =data.html;
@@ -88,8 +76,4 @@ export class PaginaCreacionComponent implements OnInit  {paginaForm: FormGroup;
     })
   }
 
-
 }
-
-
-
