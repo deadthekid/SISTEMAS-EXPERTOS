@@ -54,7 +54,7 @@ export class PaginaVerCreacionComponent implements OnInit {paginaForm: FormGroup
   }
 
   renderizarPagina() {
-    let id="62f53e9d7c9354beb574fb3d"
+    let id="62faa2ee302b0f36dc086e26"
     this. _paginaService.obtenerPagina(id).subscribe(data => {
       if (data) {
       this.html =data.html;
