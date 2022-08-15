@@ -46,6 +46,8 @@ import { DetallePaginaComponent } from './components/empresa/detalle-pagina/deta
 import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 import { PaginaVerCreacionComponent } from './components/Usuarios/pagina-ver-creacion/pagina-ver-creacion.component';
+import { AdminEditarTemaComponent } from './components/administracion/admin-editar-tema/admin-editar-tema.component';
+
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -84,6 +86,7 @@ const routes: Routes = [
   { path: 'admin/nuevoUsuario', component: AdminNuevoUsuarioComponent },
   { path: 'admin/nuevoPlan', component: AdminNuevoPlanComponent },
   { path: 'admin/nuevoTema', component: AdminNuevoTemaComponent },
+  { path: 'admin/editarTema/:id', component: AdminEditarTemaComponent },
   { path: 'empresa/Productos', component: ProductosComponent },
   { path: 'empresa/VerProductos', component: VerProductosComponent },
   { path: 'empresa/detalleProducto/:id', component: DetalleProductoComponent },

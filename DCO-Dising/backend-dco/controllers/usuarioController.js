@@ -13,7 +13,7 @@ exports.crearUsuario = async (req,res)=>{
 
     } catch(error){
         console.log(error);
-        res.status(500).send('Hubo un error')
+        res.send('Hubo un error')
     }
 }
 
@@ -29,31 +29,29 @@ exports.obtenerUsuarios = async(req,res)=>{
 
     }catch(error){
         console.log(error);
-        req.status(500).send('Hubo un error');
+        req.send('Hubo un error');
     }
 }
 
 exports.actualizarUsuario = async(req,res)=>{
     try{
 
-        const {nombre,correo,contrasenia,tipoUsuario} = req.body
-        let usuario = await Usuario.findById(req.params.id);
-
-        if(!usuario){
-            res.status(404).json({msg:'No existe el producto'})
+        const {id, nombre,correo,contrasenia} = req.body
+        let usuario = await Usuario.findById(id);
+        if(usuario){
+            usuario = await Usuario.findOneAndUpdate({ _id:id },{
+                'nombre': nombre,
+                'correo': correo,
+                'contrasenia': contrasenia
+            },{ new:true });
+            res.send({mensaje:"usuario actualizado",acceso:1});
+        }else{
+            res.send({mensaje:"no se encontro el usuario",acceso:0});
         }
-
-        usuario.nombre = nombre;
-        usuario.correo = correo;
-        usuario.contrasenia = contrasenia;
-        usuario.tipoUsuario = tipoUsuario;
-
-        usuario = await Usuario.findOneAndUpdate({_id:req.params.id},usuario,{new:true} );
-        res.json(usuario);
         
     }catch(error){
         console.log(error);
-        req.status(500).send('Hubo un error');
+        req.send('Hubo un error');
     }
 }
 
@@ -68,7 +66,7 @@ exports.obtenerUsuario = async(req,res)=>{
 
     }catch(error){
         console.log(error);
-        req.status(500).send('Hubo un error');
+        req.send('Hubo un error');
     }
 }
 

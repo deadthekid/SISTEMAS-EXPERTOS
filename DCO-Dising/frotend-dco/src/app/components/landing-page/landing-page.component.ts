@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -9,10 +10,12 @@ import { Router } from '@angular/router';
 export class LandingPageComponent implements OnInit {
 
   constructor(private router: Router,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService,
+    private adminServicio: AdminService) { }
 
   ngOnInit(): void {
     this.logeado()
+    this.getPlanes()
   }
   usuario = window.localStorage.getItem('usuario')
   empresa= window.localStorage.getItem('empresa')
@@ -33,5 +36,15 @@ export class LandingPageComponent implements OnInit {
     window.localStorage.removeItem('usuario')
     this.router.navigate(['/'])
     this.logeado()
+  }
+  planes:any
+  cantPlanes!:number
+  getPlanes(){
+    this.adminServicio.getPlanes().subscribe((res)=>{
+      this.planes=res.listaPlanes
+      this.cantPlanes=this.planes.length
+      console.log(this.planes)
+      console.log(this.cantPlanes)
+    })
   }
 }

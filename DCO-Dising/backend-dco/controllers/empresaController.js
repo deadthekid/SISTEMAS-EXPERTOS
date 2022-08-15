@@ -1,7 +1,9 @@
 const Empresa = require('../models/empresaModel');
 const Archivo = require('../models/archivoModel')
-const Productos = require('../models/Producto');
 const Producto = require('../models/Producto');
+const Plan = require('../models/Plan');
+const Venta = require('../models/ventaModel')
+
 
 exports.agregar = async (req, res) => {
     try {
@@ -21,6 +23,14 @@ exports.listar = async (req, res) => {
     try {
         let empresas = await Empresa.find();
         if (empresas.length > 0) {
+            let planes = await Plan.find();
+            empresas.forEach(empresa =>{
+                planes.forEach(plan => {
+                    if(empresa.plan == plan._id){
+                        empresa.plan = plan.nombre
+                    }
+                });
+            });
             res.send({ mensaje: "empresas encontrados", listaEmpresas: empresas, acceso: 1 });
         } else {
             res.send(false);
@@ -28,8 +38,7 @@ exports.listar = async (req, res) => {
         res.end()
     } catch (error) {
         console.log(error);
-        res.send(null);
-        res.end()
+        req.send('Hubo un error');
     }
 }
 
@@ -44,8 +53,7 @@ exports.obtenerEmpresa = async (req, res) => {
         res.end()
     } catch (error) {
         console.log(error);
-        res.send(null);
-        res.end()
+        req.send('Hubo un error');
     }
 }
 
@@ -62,9 +70,10 @@ exports.bloquearEmpresa = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        res.send(null);
+        req.send('Hubo un error');
     }
 }
+
 exports.desbloquearEmpresa = async (req, res) => {
     const { id } = req.body;
     try {
@@ -111,7 +120,7 @@ exports.obtener = async (req, res) => {
 exports.login = async (req, res) => {
     const { correo, contrasena } = req.body
     try {
-        let empresa = await Empresa.find({ "correo": correo, "contrasena": contrasena }, { "correo": 1, "contrasena": 1, "activo":1 },)
+        let empresa = await Empresa.find({ "correo": correo, "contrasena": contrasena }, { "correo": 1, "contrasena": 1, "activo": 1 },)
         if (empresa[0]) {
             res.send(empresa)
         } else {
@@ -423,5 +432,38 @@ exports.eliminarProducto = async (req, res) => {
     } catch (e) {
         res.send(e)
         res - end()
+    }
+}
+exports.venta = async (req, res) => {
+    try {
+        const venta = {
+            idProducto: req.body.idProducto,
+            idComprador: req.body.idComprador,
+            idEmpresa: '',
+            nombre: req.body.nombre,
+            precio: req.body.precio,
+            fecha: Date.now(),
+        }
+        const producto= await Producto.findById({'_id':req.body.idProducto},{'empresa':1})
+        venta.idEmpresa=producto.empresa
+        
+        const guardar = new Venta(venta)
+        guardar.save()
+        res.send(guardar)
+        res.end()
+    } catch (e) {
+        res.send(e)
+        res.end()
+    }
+}
+exports.historial=async(req,res)=>{
+    try{
+        let idEmpresa=req.params.id
+        const historial= await Venta.find({'idEmpresa':idEmpresa})
+        console.log(historial)
+        res.send(historial)
+    }catch(e){
+        res.send(e)
+        res.end()
     }
 }

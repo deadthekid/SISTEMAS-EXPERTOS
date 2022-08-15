@@ -1,34 +1,45 @@
 <div class="contenedor">
-    <div class="cabeza">
-        <a class="navbar-brand" href="/" style="width: 50%;">
-            <img class="logoNav" src="./assets/logo-lateral.png" style="width: 8%;"><img>
-        </a>
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            
+        </div>
     </div>
-    <div class="nav"></div>
-    <div class="contenido">
-        <form class="formLogin" [formGroup]="infoLogin">
-            <div class="titulo">
-                <h5>Iniciar Sesión</h5>
+    <div class="contenido-principal">
+        
+            <img class="logo-der" src="./assets/dco-favicon.png">
+            <div class="formulario">
+                <div class="titulo-formulario">
+                    <h2 class="titulo">Iniciar Sesión</h2>
+                </div>
+                <div class="cuerpo-formulario">
+                    <form class="formulario-principal" [formGroup]="infoLogin">
+                        
+                        <div class="entrada-contenedor">
+                            <input class="entradat" formControlName="correo" type="email" placeholder="Corrreo Electronico">
+                            <div class="mensaje-err-1" *ngIf="correo?.invalid && (correo?.dirty && correo?.touched)">Error, el campo es
+                                obligatorio</div>
+                        </div>
+                        <div class="entrada-contenedor">
+                            <input class="entradat" formControlName="contrasena" type="password" placeholder="Contraseña">
+                            <div class="mensaje-err-1" *ngIf="contrasena?.invalid && (contrasena?.dirty && contrasena?.touched)">Error, el
+                                campo es obligatorio</div>
+                        </div>
+                        <div class="entrada-contenedor">
+                            <a class="subtitulo" href="/empresa/registro">¿No tienes una cuenta? Registrate aca</a>
+                        </div>
+                        <div class="entrada-contenedor">
+                            <button class="btn-formulario" type="submit" (click)="login()">INGRESAR</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                
             </div>
-            <br>
-            <div class="datosEntrada">
-                <input class="entrada" type="email" placeholder="correo electrónico" formControlName="correo">
-                <div class="error" *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)">Error, el campo es
-                    obligatorio</div>
-            </div>
-            <br>
-            <div class="datosEntrada">
-                <input class="entrada" type="password" placeholder="contraseña" formControlName="contrasena">
-                <div class="error" *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)">Error, el
-                    campo es obligatorio</div>
-            </div>
-            <br>
-            <div></div>
-            <button class="btnLogin" type="submit" (click)="login()">INGRESAR</button>
-            <br>
-            <a href="/empresa/registro">¿No tienes una cuenta? Registrate aca</a>
-        </form>
-        <img src="../../../../assets/img/logo1.png" alt="" class="logo">
+        
     </div>
-    <div class="pie"></div>
+    
+    <div class="pie-pagina">
+        
+    </div>
 </div>
+

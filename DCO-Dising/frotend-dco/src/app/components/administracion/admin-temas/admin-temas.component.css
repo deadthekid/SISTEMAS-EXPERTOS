@@ -14,5 +14,7 @@
 
 .pie {
     background-color: #184E5D;
-    flex: 1;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
