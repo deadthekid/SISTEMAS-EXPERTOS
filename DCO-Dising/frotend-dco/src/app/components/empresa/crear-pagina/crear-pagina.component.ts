@@ -50,20 +50,6 @@ export class CrearPaginaComponent implements OnInit {
     console.log('con ayuda')
     this.verificarAyuda = true
   }
-  estilo = `
-
-    .probando{
-      background-color: red;
-      width:100%;
-      height: 100%;
-    }
-          
-  `
-  html = `
-    <div class="probando">
-      hola
-    </div>
-  `
 }
 
 
