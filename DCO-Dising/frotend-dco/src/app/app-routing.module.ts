@@ -47,9 +47,16 @@ import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 import { PaginaVerCreacionComponent } from './components/Usuarios/pagina-ver-creacion/pagina-ver-creacion.component';
 import { AdminEditarTemaComponent } from './components/administracion/admin-editar-tema/admin-editar-tema.component';
+
+import { PaginaSinAyudaComponent } from './components/empresa/pagina-sin-ayuda/pagina-sin-ayuda.component';
+import { PaginaConAyudaComponent } from './components/empresa/pagina-con-ayuda/pagina-con-ayuda.component';
+import { DetalleProductosComponent } from './components/detalle-productos/detalle-productos.component';
+import { GaleriaProductosComponent } from './components/galeria-productos/galeria-productos.component';
+
 import { PaginaVerCreacionDosComponent } from './components/Usuarios/pagina-ver-creacion-dos/pagina-ver-creacion-dos.component';
 import { PaginaVerCreacionTresComponent } from './components/Usuarios/pagina-ver-creacion-tres/pagina-ver-creacion-tres.component';
 import { PlantillaSeleccionComponent } from './components/empresa/plantilla-seleccion/plantilla-seleccion.component';
+
 
 
 const routes: Routes = [
@@ -101,10 +108,14 @@ const routes: Routes = [
   { path: 'Planes', component: PlanesComponent },
   { path: 'Tiendas', component: TiendasComponent },
   { path: 'empresa/administrarPaginas', component: AdministrarPaginasComponent },
-  {path: 'empresa/VerPaginas', component: VerPaginasComponent},
-  {path: 'empresa/DetallePagina/:id', component: DetallePaginaComponent},
-  {path: 'empresa/EditarPagina/:id', component: EditarPaginaComponent},
-  {path: 'empresa/CrearPagina', component: CrearPaginaComponent}  ,
+  { path: 'empresa/VerPaginas', component: VerPaginasComponent },
+  { path: 'empresa/DetallePagina/:id', component: DetallePaginaComponent },
+  { path: 'empresa/EditarPagina/:id', component: EditarPaginaComponent },
+  { path: 'empresa/CrearPagina', component: CrearPaginaComponent },
+  { path: 'empresa/PaginaSinAyuda', component: PaginaSinAyudaComponent },
+  { path: 'empresa/PaginaConAyuda', component: PaginaConAyudaComponent },
+  { path: 'empresa/:idEmpresa/galeriaProductos', component: GaleriaProductosComponent },
+  { path: 'empresa/:idEmpresa/producto/:idProducto', component: DetalleProductosComponent }
 ];
 
 @NgModule({

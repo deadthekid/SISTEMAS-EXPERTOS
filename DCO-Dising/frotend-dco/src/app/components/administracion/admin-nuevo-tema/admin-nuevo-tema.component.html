@@ -1,9 +1,9 @@
 <app-admin-navbar></app-admin-navbar>
 <div class="container-fluid">
-    <div class="row titulo">
-        <h3>Registrar Usuario</h3>
-    </div>
     <div class="row contenido">
+        <div class="row titulo">
+            <h3>Registrar Usuario</h3>
+        </div>
         <div class="col-6">
             <form [formGroup]="formularioPlantilla">
                 <label for="Nombre">Nombre</label>
@@ -28,9 +28,10 @@
                 </div>
             </form>
         </div>
+        <div class="row boton justify-content-center">
+            <button class="btn btn-success btnNuevo" (click)="registrarPlantilla()">Registrar</button>
+        </div>
     </div>
-    <div class="row boton justify-content-center">
-        <button class="btn btn-success btnNuevo" (click)="registrarPlantilla()">Registrar</button>
-    </div>
+
 </div>
 <div class="pie"><br></div>

@@ -44,7 +44,7 @@
             <a href="/empresa/categorias"><input class="btnPrincipal" type="button" value="CATEGORIAS"></a>
         </div>
     </div>
-    <img [src]="logo" alt="no disponible" class="logoEmpresa">
+    <img *ngIf="logo" [src]="logo" alt="no disponible" class="logoEmpresa">
     <div class="pie"><br></div>
 </div>
 

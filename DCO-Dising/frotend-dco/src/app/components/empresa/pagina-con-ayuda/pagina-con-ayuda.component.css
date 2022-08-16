@@ -1,3 +1,44 @@
+.input-file{
+    width: 100%;
+    height: 0;
+    border-style: #f0f2f7;
+    background: gray ;
+
+}
+
+.desborde{
+    overflow: hidden;
+}
+
+.input-file [type=file]{
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 50%;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    cursor: pointer;
+}
+
+.name-picture{
+    width: 100%;
+}
+
+.image{
+    
+    width: 100px;
+    height: 100px;
+}
+
+.ancho{
+    width: 50vh;
+    height: 50vh;
+}
+
 .contenedor{
     background-color: #ECFBFF;
     width: 100%;
@@ -52,19 +93,29 @@ a:link ,a:visited ,a:active{
     right: 10%;
 }
 
+.anchoMax{
+    width: 100%;
+}
+
+
+
 .formulario{
     background-color: #FFFFFF;
-    height: 60%;
+    height: 85%;
     width: 25%;
     box-shadow: -3px 3px 8px #184e5d;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    margin-left: 50px;
     
 }
-
+.visualizacion{
+    margin-bottom: 10px;
+}
 .titulo-formulario{
  flex: 1;
- margin: 12px 15px;
+ margin: 0px 15px;
  height: 100%;
  display: flex;
  align-items: flex-end;
@@ -75,6 +126,7 @@ a:link ,a:visited ,a:active{
     margin: 12px 15px;
     display: flex;
     flex-direction: column;
+    margin-left: 20%;
 }
 
 
@@ -105,6 +157,10 @@ a:link ,a:visited ,a:active{
     justify-content: center;
 }
 
+.entrada2{
+    width: 80%;
+}
+
 .terminos{
     display: flex;
 }
@@ -113,9 +169,20 @@ a:link ,a:visited ,a:active{
 
 .entrada-contenedor{
     flex: 2;
-    width: 100%;
+    width: 80%;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.entrada-contenedor3{
+    flex: 2;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .formulario-principal{
@@ -183,13 +250,26 @@ a:link ,a:visited ,a:active{
 }
 
 .btn-formulario{
-    width: 100%;
+    width: 100%!important;
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 15px;
     background-color: #184E5D;
     color: #ECFBFF;
+}
+.area-texto{
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.area-textoInterno{
+    width: 100%;
+    text-align: justify!important;
+}
+
+.btni{
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 15px;
 }
 
 .pie-formulario{

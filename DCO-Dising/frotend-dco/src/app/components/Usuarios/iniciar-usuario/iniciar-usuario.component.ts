@@ -30,7 +30,7 @@ export class IniciarUsuarioComponent implements OnInit {
   agregarUsuario(){
     console.log(this.usuarioForm);
     this.toastr.success('Inicio de sesión exitoso', 'Inicio de Sesión');
-    this.router.navigate(['/usuarios'])
+    this.router.navigate(['/Tiendas'])
   }
 
   login() {

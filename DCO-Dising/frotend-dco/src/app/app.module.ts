@@ -62,9 +62,16 @@ import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 import { PaginaVerCreacionComponent } from './components/Usuarios/pagina-ver-creacion/pagina-ver-creacion.component';
 import { AdminEditarTemaComponent } from './components/administracion/admin-editar-tema/admin-editar-tema.component';
+
+import { PaginaConAyudaComponent } from './components/empresa/pagina-con-ayuda/pagina-con-ayuda.component';
+import { PaginaSinAyudaComponent } from './components/empresa/pagina-sin-ayuda/pagina-sin-ayuda.component';
+import { GaleriaProductosComponent } from './components/galeria-productos/galeria-productos.component';
+import { DetalleProductosComponent } from './components/detalle-productos/detalle-productos.component';
+
 import { PaginaVerCreacionDosComponent } from './components/Usuarios/pagina-ver-creacion-dos/pagina-ver-creacion-dos.component';
 import { PaginaVerCreacionTresComponent } from './components/Usuarios/pagina-ver-creacion-tres/pagina-ver-creacion-tres.component';
 import { PlantillaSeleccionComponent } from './components/empresa/plantilla-seleccion/plantilla-seleccion.component';
+
 
 
 @NgModule({
@@ -118,9 +125,16 @@ import { PlantillaSeleccionComponent } from './components/empresa/plantilla-sele
     CrearPaginaComponent,
     PaginaVerCreacionComponent,
     AdminEditarTemaComponent,
+
+    PaginaConAyudaComponent,
+    PaginaSinAyudaComponent,
+    GaleriaProductosComponent,
+    DetalleProductosComponent,
+
     PaginaVerCreacionDosComponent,
     PaginaVerCreacionTresComponent,
     PlantillaSeleccionComponent,
+
 
 
   ],

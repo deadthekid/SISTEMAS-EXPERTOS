@@ -4,13 +4,12 @@
 
 .titulo {
     height: 10vh;
-    padding-top: 3vh;
-    padding-left: 9vh;
+    padding-left: 45%;
+    
 }
 
 .datosPlan {
-    padding-top: 8vh;
-    padding-left: 10vh;
+    padding-left: 30%;
 }
 
 .datoPlan {
@@ -23,12 +22,30 @@
 }
 
 .btnNuevo {
-    width: 10%;
-    height: 60%;
+    width: 300px;
+    height: 50px;
 }
 
 
 .pie {
     background-color: #184E5D;
-    flex: 1;
+    height: 3%;
+}
+
+.contenedor {
+    background-color: rgba(216, 246, 255, .50);
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido {
+    background-color: rgba(216, 246, 255, .50);
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    row-gap: 7px;
+    flex-wrap: wrap;
+    overflow: auto;
 }
