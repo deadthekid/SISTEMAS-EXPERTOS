@@ -7,5 +7,6 @@ const PaginaController = require('../controllers/paginaController')
 router.post('/',PaginaController.crearPagina);
 router.put('/:id',PaginaController.actualizarPagina);
 router.get('/:id',PaginaController.obtenerPagina);
+router.get('/',PaginaController.obtenerPaginas);
 module.exports = router;
 

@@ -29,6 +29,18 @@ const empresa = mongoose.Schema({
     pagina: {
         type: []
     },
+    estilo1: {
+        type: String,
+        required: false
+    },
+    estilo2: {
+        type: String,
+        required: false
+    },
+    estilo3: {
+        type: String,
+        required: false
+    },
     productos: {
         type: []
     },

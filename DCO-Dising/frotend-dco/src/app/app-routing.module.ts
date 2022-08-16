@@ -47,6 +47,9 @@ import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 import { PaginaVerCreacionComponent } from './components/Usuarios/pagina-ver-creacion/pagina-ver-creacion.component';
 import { AdminEditarTemaComponent } from './components/administracion/admin-editar-tema/admin-editar-tema.component';
+import { PaginaVerCreacionDosComponent } from './components/Usuarios/pagina-ver-creacion-dos/pagina-ver-creacion-dos.component';
+import { PaginaVerCreacionTresComponent } from './components/Usuarios/pagina-ver-creacion-tres/pagina-ver-creacion-tres.component';
+import { PlantillaSeleccionComponent } from './components/empresa/plantilla-seleccion/plantilla-seleccion.component';
 
 
 const routes: Routes = [
@@ -59,6 +62,7 @@ const routes: Routes = [
   { path: 'empresa/registro', component: RegistroComponent },
   { path: 'empresa/videos', component: VideosComponent },
   { path: 'empresa/imagenes', component: ImagenesComponent },
+  { path: 'empresa/creacion-c-ayuda', component: PlantillaSeleccionComponent },
   { path: 'empresa/otrosArchivos', component: OtrosArchivosComponent },
   { path: 'empresa/detalleArchivos/:id', component: DetallesArchivosComponent },
   { path: 'usuarios', component: PrincipalUsuariosComponent },
@@ -73,6 +77,8 @@ const routes: Routes = [
   { path: 'usuarios/pago/realizar-compra', component: RealizarCompraComponent },
   { path: 'usuarios/crearPagina', component: PaginaCreacionComponent },
   { path: 'usuarios/verPagina', component: PaginaVerCreacionComponent },
+  { path: 'usuarios/verPagina2/:id', component: PaginaVerCreacionDosComponent },
+  { path: 'usuarios/verPagina3/compra', component: PaginaVerCreacionTresComponent },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empresas', component: AdminEmpresasComponent },

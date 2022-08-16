@@ -17,6 +17,18 @@ const PaginaSchema = moongose.Schema({
         type:String,
         require:false
     },
+    img1 : {
+        type:String,
+        require:false
+    },
+    img2 : {
+        type:String,
+        require:false
+    },
+    img3 : {
+        type:String,
+        require:false
+    },
     fechaCreacion : {
         type:Date,
         default:Date.now()

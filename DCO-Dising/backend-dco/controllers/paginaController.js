@@ -62,4 +62,17 @@ exports.obtenerPagina = async(req,res)=>{
     }
 }
 
+exports.obtenerPaginas = async (req, res) => {
+    try {
+
+        const paginas = await Pagina.find();
+        res.json(paginas)
+
+    } catch (error) {
+        console.log(error);
+        res.send(error)
+        res.end()
+    }
+}
+
 
