@@ -42,7 +42,11 @@ export class RegistroComponent implements OnInit {
       pagina: [],
       productos: [],
       categorias: [],
-      activo: true
+      activo: true,
+      estilo1:"",
+      estilo2:"",
+      estilo3:""
+
     }
     console.log("empresa: ", empresa)
     this._empresaServicio.agregar(empresa).subscribe(data => {

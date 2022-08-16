@@ -235,6 +235,31 @@ exports.updCategorias = async (req, res) => {
         res.end()
     }
 }
+
+exports.updEstilos = async(req,res)=>{
+    try{
+
+        const {idEmpresa, estilo1,estilo2,estilo3} = req.body
+        console.log(estilo1)
+        let empresa = await Empresa.findById(idEmpresa);
+        if(empresa){
+            empresa = await Empresa.findOneAndUpdate({ _id:idEmpresa },{
+                'estilo1': estilo1,
+                'estilo2': estilo2,
+                'estilo3': estilo3
+            },{ new:true });
+            res.send({mensaje:"usuario actualizado",acceso:1});
+        }else{
+            res.send({mensaje:"no se encontro el usuario",acceso:0});
+        }
+        
+    }catch(error){
+        console.log(error);
+        req.send('Hubo un error');
+    }
+}
+
+
 exports.delCategorias = async (req, res) => {
     try {
         const { idEmpresa, categoria } = req.query
@@ -293,6 +318,9 @@ exports.listaImagenes = async (req, res) => {
         res.end()
     }
 }
+
+
+
 exports.listaVideos = async (req, res) => {
     try {
         const idEmpresa = req.params.id
