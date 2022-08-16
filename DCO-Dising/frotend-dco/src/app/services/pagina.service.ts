@@ -20,5 +20,8 @@ export class PaginaService {
     return this.http.get(this.url+"/"+id)
   }
   
+  getPaginas(): Observable<any>{
+    return this.http.get(this.url)
+  }
   
 }

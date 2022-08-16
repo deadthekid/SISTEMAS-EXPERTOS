@@ -14,7 +14,19 @@ const PaginaSchema = moongose.Schema({
         require:false
     },
     empresaId : {
-        type:Number,
+        type:String,
+        require:false
+    },
+    img1 : {
+        type:String,
+        require:false
+    },
+    img2 : {
+        type:String,
+        require:false
+    },
+    img3 : {
+        type:String,
         require:false
     },
     fechaCreacion : {

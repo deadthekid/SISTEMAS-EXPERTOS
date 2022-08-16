@@ -45,4 +45,6 @@ router.put('/desbloquearEmpresa',empresaController.desbloquearEmpresa)
 router.post('/venta',empresaController.venta)
 router.get('/historial/:id',empresaController.historial)
 
+router.put('/updEstilos',empresaController.updEstilos)
+
 module.exports=router

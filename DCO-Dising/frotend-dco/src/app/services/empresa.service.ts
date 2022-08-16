@@ -41,6 +41,10 @@ export class empresaService {
     editCategorias(infoCategoria: object): Observable<any> {
         return this.http.put(this.url + "/updCategorias", infoCategoria)
     }
+
+    editEstilos(infoEstilos: object): Observable<any> {
+        return this.http.put(this.url + "/updEstilos", infoEstilos)
+    }
     delCategorias(idEmpresa: string, categoria: string): Observable<any> {
         return this.http.delete(this.url + `/delCategorias/?idEmpresa=${idEmpresa}&categoria=${categoria}`)
     }
