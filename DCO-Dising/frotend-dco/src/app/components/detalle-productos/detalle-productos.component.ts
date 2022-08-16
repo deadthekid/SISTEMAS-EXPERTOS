@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Carrito } from 'src/app/models/interfaz-carrito';
@@ -26,7 +26,8 @@ export class DetalleProductosComponent implements OnInit {
   constructor(private aRoute:ActivatedRoute,
             private _productoService: ProductoService,
             private toastr: ToastrService,
-            private fb:FormBuilder) {
+            private fb:FormBuilder,
+            private router: Router) {
 
     this.productoForm = this.fb.group({
       nombre: ['',Validators.required],
@@ -39,7 +40,16 @@ export class DetalleProductosComponent implements OnInit {
   ngOnInit(): void {
     this.getIdEmpresa()
     this.obtenerProducto();
-    this.logged()
+    this.logeado()
+  }
+
+  logged!: boolean
+  logeado() {
+    if (window.localStorage.getItem('empresa') || window.localStorage.getItem('usuario')) {
+      this.logged = true
+    } else {
+      this.logged = false
+    }
   }
 
   idEmpresa!: string
@@ -100,15 +110,13 @@ export class DetalleProductosComponent implements OnInit {
       })
     }
     
-  }
+  } 
+   cerrarSesion() {
 
-  logeado!:boolean
-  logged(){
-    if(window.localStorage.getItem('usuario')){
-      this.logeado=true
-    }else{
-      this.logeado=false
-    }
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('empresa')
+    this.router.navigate(['/empresa/login'])
+
   }
 
 

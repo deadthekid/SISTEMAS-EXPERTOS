@@ -16,15 +16,16 @@ export class GaleriaProductosComponent implements OnInit {
   constructor(private empresaServicio: empresaService, private toastr: ToastrService, private router: Router, private route: ActivatedRoute,private _productoService: ProductoService) { }
 
   ngOnInit(): void {
+    this.logeado()
     this.getIdEmpresa()
     this.obtenerProductos();
   }
-  logeado!:boolean
-  logged(){
-    if(window.localStorage.getItem('usuario')){
-      this.logeado=true
-    }else{
-      this.logeado=false
+  logged!: boolean
+  logeado() {
+    if (window.localStorage.getItem('empresa') || window.localStorage.getItem('usuario')) {
+      this.logged = true
+    } else {
+      this.logged = false
     }
   }
 

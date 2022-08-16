@@ -213,12 +213,7 @@ a:link ,a:visited ,a:active{
     background-color: #184E5D;
     height: 3%;
 }
-.btnCerrarSesion {
-    background-color: rgba(216, 246, 255, .50);
-    color: white;
-    border-radius: 10px;
-    width: 100%;
-}
+
 
 .boton-comprar{
     background-color: #184E5D;
@@ -227,8 +222,31 @@ a:link ,a:visited ,a:active{
 .correccion-contenedor-r{
     width: 50px;
     color: #ECFBFF!important;
+    fill: white;
 }
 .logo{
     width: 150px;
     margin-left: 50px;
+}
+.btnCerrarSesion {
+    background-color: rgba(216, 246, 255, .50);
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+.correccion-btn{
+    
+    width: 100px;
+    background-color: #184E5D!important;
+    border: none;
+}
+
+.correccion-btn:focus{
+    border-color: #ECFBFF;
+}
+
+.correccion-contenedor-r{
+    width: 70%;
+    height: 20%;
+    color: white!important;
 }

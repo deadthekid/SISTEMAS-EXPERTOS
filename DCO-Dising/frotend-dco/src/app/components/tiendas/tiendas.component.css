@@ -126,3 +126,21 @@ a:active {
     color: #ECFBFF;
 
 }
+
+.correccion-btn{
+    
+    width: 100px;
+    background-color: #184E5D!important;
+    border: none;
+}
+
+.correccion-btn:focus{
+    border-color: #ECFBFF;
+}
+
+.correccion-contenedor-r{
+    width: 70%;
+    height: 20%;
+    color: white!important;
+    fill: white;
+}

@@ -171,6 +171,7 @@ display: flex;
 .img{
     height: 100%;
     width: 100%;
+    align-items: center;
 }
 
 .info-vendedor{
@@ -296,13 +297,6 @@ path{
     right: 20px;
 }
 
-.btnCerrarSesion {
-    background-color: rgba(216, 246, 255, .50);
-    color: white;
-    border-radius: 10px;
-    width: 100%;
-}
-
 .boton-comprar{
     background-color: #184E5D;
     color: #ECFBFF;
@@ -314,4 +308,27 @@ path{
 .logo{
     width: 150px;
     margin-left: 50px;
+}
+
+.btnCerrarSesion {
+    background-color: rgba(216, 246, 255, .50);
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+.correccion-btn{
+    
+    width: 100px;
+    background-color: #184E5D!important;
+    border: none;
+}
+
+.correccion-btn:focus{
+    border-color: #ECFBFF;
+}
+
+.correccion-contenedor-r{
+    width: 70%;
+    height: 20%;
+    color: white!important;
 }

@@ -1,34 +1,32 @@
 <div class="contenedor">
     <div class="navegacion">
         <div class="contenedor-nav">
-            <div class="nav-l">
-                <div class="nav-l" style="text-align: center;">
-                    <a class="navbar-brand" href="/" style="width: 50%;">
-                        <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
-                    </a>
-                </div>
-                <div class="nav-r">
-                    <a href="/">Inicio</a>
-                </div>
-                <div class="nav-r">
-                    <a href="/Planes/">Nuestros Planes</a>
-                </div>
-                <div class="nav-r">
-                    <a href="/Tiendas/">Tiendas</a>
-                </div>
-                <div class="nav-r">
-                    <a href="/usuarios/inicioUsuario">¿Cliente? Pase por acá</a>
-                </div>
-                <div class="nav-r">
-                    <a href="/empresa/login">¿Empresa? Vengase pa´ca</a>
-                </div>
-                <div class="nav-r">
-                    <a href="/admin/login">¿Admin? Tu ven por acá</a>
-                </div>
+            <div class="nav-l" style="text-align: center;">
+                <a class="navbar-brand" href="/" style="width: 50%;">
+                    <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
+                </a>
             </div>
-            <div class="nav-r" *ngIf="logeado">
+            <div class="nav-r">
+                <a href="/">Inicio</a>
+            </div>
+            <div class="nav-r">
+                <a href="/Planes/">Nuestros Planes</a>
+            </div>
+            <div class="nav-r">
+                <a href="/Tiendas/">Tiendas</a>
+            </div>
+            <div class="nav-r">
+                <a href="/usuarios/inicioUsuario">¿Cliente? Pase por acá</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/login">¿Empresa? Vengase pa´ca</a>
+            </div>
+            <div class="nav-r">
+                <a href="/admin/login">¿Admin? Tu ven por acá</a>
+            </div>
+            <div class="nav-r" *ngIf="logged==true">
                 <div class="contenedor-r">
-                    <button type="button" (click)="(mostrarCarrito())" class="btn btn-primary correccion-btn"
+                    <button type="button " (click)="(mostrarCarrito())" class="btn btn-primary correccion-btn"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <svg class="correccion-contenedor-r path" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 576 512">
@@ -38,9 +36,6 @@
                         </svg>
                     </button>
                 </div>
-                <div class="">
-                    <a href="/">Cerrar Sesión</a>
-                </div>
                 <div class="contenedor-r">
                     <svg class="svg path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                         <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -49,6 +44,11 @@
                     </svg>
                 </div>
 
+            </div>
+            <div class="nav-r" *ngIf="logged==true">
+                <div>
+                    <input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()">
+                </div>
             </div>
         </div>
     </div>
