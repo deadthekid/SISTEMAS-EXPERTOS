@@ -3,9 +3,9 @@ export class Pagina {
     html: string;
     css: string;
     javascript: string;
-    empresaId: number;
+    empresaId: string;
 
-    constructor(html:string,css: string,javascript: string, empresaId: number){
+    constructor(html:string,css: string,javascript: string, empresaId: string){
         this.html=html;
         this.css=css;
         this.javascript=javascript;

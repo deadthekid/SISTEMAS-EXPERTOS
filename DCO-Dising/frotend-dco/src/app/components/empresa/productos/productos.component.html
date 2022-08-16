@@ -33,7 +33,7 @@
             <a href="/empresa/VerProductos"><input class="btnPrincipal" type="button" value="VER PRODUCTOS"></a>
         </div>
     </div>
-    <img [src]="logo" alt="no disponible" class="logoEmpresa">
+    <img *ngIf="logo" [src]="logo" alt="no disponible" class="logoEmpresa">
     <div class="pie"><br></div>
 </div>
 

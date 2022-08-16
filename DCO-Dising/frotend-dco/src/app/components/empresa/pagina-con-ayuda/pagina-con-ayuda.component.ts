@@ -1,4 +1,3 @@
-
 import { Component, OnInit, PipeTransform, Pipe} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -7,17 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Pagina } from 'src/app/models/pagina';
 import { PaginaService } from 'src/app/services/pagina.service';
 
-
-
 @Component({
-  selector: 'app-pagina-creacion',
-  templateUrl: './pagina-creacion.component.html',
-  styleUrls: ['./pagina-creacion.component.css']
+  selector: 'app-pagina-con-ayuda',
+  templateUrl: './pagina-con-ayuda.component.html',
+  styleUrls: ['./pagina-con-ayuda.component.css']
 })
+export class PaginaConAyudaComponent implements OnInit {
 
-
-
-export class PaginaCreacionComponent implements OnInit  {
   paginaForm: FormGroup;
   html: string=""
   css:  string=""
@@ -35,8 +30,6 @@ export class PaginaCreacionComponent implements OnInit  {
       html:['',Validators.required],
       css:['',[Validators.required]],
       javascript:['',Validators.required],
-      empresaId:['',Validators.required],
-     
     })
   }
 
@@ -49,7 +42,7 @@ export class PaginaCreacionComponent implements OnInit  {
       html: this.paginaForm.get('html')?.value,
       css: this.paginaForm.get('css')?.value,
       javascript: this.paginaForm.get('javascript')?.value,
-      empresaId: this.paginaForm.get('empresaId')?.value
+      empresaId: window.localStorage.getItem('empresa')!
     }
 
     
@@ -89,8 +82,4 @@ export class PaginaCreacionComponent implements OnInit  {
     })
   }
 
-
 }
-
-
-

@@ -386,6 +386,7 @@ exports.eliminarArchivo = async (req, res) => {
 }
 exports.getProductos = async (req, res) => {
     try {
+        console.log(req.params.id)
         const productos = await Producto.find({ 'empresa': req.params.id })
         res.send(productos)
         res.end()

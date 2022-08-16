@@ -59,6 +59,10 @@ import { DetallePaginaComponent } from './components/empresa/detalle-pagina/deta
 import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 import { AdminEditarTemaComponent } from './components/administracion/admin-editar-tema/admin-editar-tema.component';
+import { PaginaConAyudaComponent } from './components/empresa/pagina-con-ayuda/pagina-con-ayuda.component';
+import { PaginaSinAyudaComponent } from './components/empresa/pagina-sin-ayuda/pagina-sin-ayuda.component';
+import { GaleriaProductosComponent } from './components/galeria-productos/galeria-productos.component';
+import { DetalleProductosComponent } from './components/detalle-productos/detalle-productos.component';
 
 
 @NgModule({
@@ -111,6 +115,10 @@ import { AdminEditarTemaComponent } from './components/administracion/admin-edit
     EditarPaginaComponent,
     CrearPaginaComponent,
     AdminEditarTemaComponent,
+    PaginaConAyudaComponent,
+    PaginaSinAyudaComponent,
+    GaleriaProductosComponent,
+    DetalleProductosComponent,
 
   ],
   imports: [

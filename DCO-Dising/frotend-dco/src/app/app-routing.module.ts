@@ -46,6 +46,10 @@ import { DetallePaginaComponent } from './components/empresa/detalle-pagina/deta
 import { EditarPaginaComponent } from './components/empresa/editar-pagina/editar-pagina.component';
 import { CrearPaginaComponent } from './components/empresa/crear-pagina/crear-pagina.component';
 import { AdminEditarTemaComponent } from './components/administracion/admin-editar-tema/admin-editar-tema.component';
+import { PaginaSinAyudaComponent } from './components/empresa/pagina-sin-ayuda/pagina-sin-ayuda.component';
+import { PaginaConAyudaComponent } from './components/empresa/pagina-con-ayuda/pagina-con-ayuda.component';
+import { DetalleProductosComponent } from './components/detalle-productos/detalle-productos.component';
+import { GaleriaProductosComponent } from './components/galeria-productos/galeria-productos.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -92,10 +96,14 @@ const routes: Routes = [
   { path: 'Planes', component: PlanesComponent },
   { path: 'Tiendas', component: TiendasComponent },
   { path: 'empresa/administrarPaginas', component: AdministrarPaginasComponent },
-  {path: 'empresa/VerPaginas', component: VerPaginasComponent},
-  {path: 'empresa/DetallePagina/:id', component: DetallePaginaComponent},
-  {path: 'empresa/EditarPagina/:id', component: EditarPaginaComponent},
-  {path: 'empresa/CrearPagina', component: CrearPaginaComponent}  ,
+  { path: 'empresa/VerPaginas', component: VerPaginasComponent },
+  { path: 'empresa/DetallePagina/:id', component: DetallePaginaComponent },
+  { path: 'empresa/EditarPagina/:id', component: EditarPaginaComponent },
+  { path: 'empresa/CrearPagina', component: CrearPaginaComponent },
+  { path: 'empresa/PaginaSinAyuda', component: PaginaSinAyudaComponent },
+  { path: 'empresa/PaginaConAyuda', component: PaginaConAyudaComponent },
+  { path: 'empresa/:idEmpresa/galeriaProductos', component: GaleriaProductosComponent },
+  { path: 'empresa/:idEmpresa/producto/:idProducto', component: DetalleProductosComponent }
 ];
 
 @NgModule({

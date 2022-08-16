@@ -5,13 +5,11 @@
 
 .pie {
     background-color: #184E5D;
-    flex: 1;
+    height: 3%;
 }
 
 .contenedor {
     background-color: rgba(216, 246, 255, .50);
-    width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -58,12 +56,6 @@
 
 .logo-img {
     width: 120%;
-}
-
-.btnCerrarSesion {
-    background-color: rgba(216, 246, 255, .50);
-    border-radius: 10px;
-    width: 100%;
 }
 
 .elementoNav{

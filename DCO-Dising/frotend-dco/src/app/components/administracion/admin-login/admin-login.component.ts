@@ -46,5 +46,11 @@ export class AdminLoginComponent implements OnInit {
       console.log(error);
     });
   }
+  get correo(){
+    return this.formLogin.get('correo')
+  }
+  get contrasena(){
+    return this.formLogin.get('contrasena')
+  }
 
 }
