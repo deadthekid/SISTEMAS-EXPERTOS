@@ -50,15 +50,22 @@ export class TiendasComponent implements OnInit {
   listaEmpresas: any
   getEmpresas() {
     this.empresaServicio.getEmpresas().subscribe((res) => {
-      this.listaEmpresas = res.listaEmpresas
-      let temporal = new Array
-      res.listaEmpresas.forEach((element: any) => {
-        if (element.activo && element.productos.length>0) {
-          temporal.push(element)
-        }
-      });
-      this.listaEmpresas = temporal
-      console.log(this.listaEmpresas)
+      if (res!=false) {
+        this.listaEmpresas = res.listaEmpresas
+        let temporal = new Array
+        res.listaEmpresas.forEach((element: any) => {
+          if (element.activo && element.productos.length > 0) {
+            temporal.push(element)
+          }else{
+            this.toastr.error('Parece que las empresas no tienen productos a la venta :(','Lo sentimos')
+          }
+        });
+        this.listaEmpresas = temporal
+        console.log(this.listaEmpresas)
+      }else{
+        this.toastr.error('No hay empresas disponibles')
+      }
+
     })
   }
 

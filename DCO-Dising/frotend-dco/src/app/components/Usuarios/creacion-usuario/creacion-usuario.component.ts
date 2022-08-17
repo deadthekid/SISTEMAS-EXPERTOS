@@ -21,7 +21,6 @@ export class CreacionUsuarioComponent implements OnInit {
       nombre:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       contraseña:['',Validators.required],
-      tipoUsuario:['',Validators.required],
       terminos:['',Validators.required]
 
     })
@@ -35,13 +34,13 @@ export class CreacionUsuarioComponent implements OnInit {
       nombre: this.usuarioForm.get('nombre')?.value,
       correo: this.usuarioForm.get('email')?.value,
       contrasenia: this.usuarioForm.get('contraseña')?.value,
-      tipoUsuario: this.usuarioForm.get('tipoUsuario')?.value,
+      tipoUsuario: "Usuario",
       terminos: this.usuarioForm.get('terminos')?.value
     }
     console.log(USUARIO);
     this._usuarioService.guardarUsuario(USUARIO).subscribe(data=>{
       this.toastr.success('El usuario fue registrado con exito', 'Usuario Registrado');
-      this.router.navigate(['/usuarios'])
+      this.router.navigate(['/'])
     }, error=>{
       console.log(error);
       this.usuarioForm.reset();

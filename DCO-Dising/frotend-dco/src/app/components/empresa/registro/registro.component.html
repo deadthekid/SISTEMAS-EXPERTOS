@@ -37,7 +37,6 @@
                     <div class="entrada-contenedor" style="text-align: center;">
                         <select class="entradat2" formControlName="plan" > 
                             (change)="changeSelect()">
-                            <option selected>...</option>
                             <option *ngFor="let plan of planes" [value]="plan._id">{{plan.nombre}}</option>
                         </select>
                         <div class="mensaje-err-1" *ngIf="plan?.invalid && (plan?.dirty || plan?.touched)">Error, el

@@ -32,16 +32,6 @@
                                 <span>La contraseña<strong> es obligatoria</strong></span>
                             </div>
                         </div>
-                        <div class="entrada-contenedor">
-                            <select class="entradat2" formControlName="tipoUsuario" > 
-                                <option class="opciones" value="Usuario">Usuario</option>
-                                <option class="opciones" value="Empresa">Empresa</option>
-                                <option class="opciones" value="Administrador">Adminsitrador</option>
-                            </select>
-                            <div class="mensaje-err-1" *ngIf="usuarioForm.get('tipoUsuario')?.hasError('required')&&usuarioForm.get('tipoUsuario')?.touched">
-                                <span>Seleccionar un tipo de usuario<strong>es obligatorio</strong></span>
-                            </div>
-                        </div>
                         <div class="entrada-contenedor2 entradat3">
                             <a class="terminos-link" ><input formControlName="terminos"  class="input-f" type="checkbox" placeholder="Nombre"> Acepta los Terminos y Condiciones</a>
                             <div class="mensaje-err-1" *ngIf="!usuarioForm.get('terminos')?.value&&usuarioForm.get('terminos')?.touched">
