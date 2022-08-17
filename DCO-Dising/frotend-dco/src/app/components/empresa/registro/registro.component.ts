@@ -42,9 +42,9 @@ export class RegistroComponent implements OnInit {
       productos: [],
       categorias: [],
       activo: true,
-      estilo1:"",
-      estilo2:"",
-      estilo3:""
+      estilo1:"1",
+      estilo2:"2",
+      estilo3:"3"
 
     }
     console.log("empresa: ", empresa)
