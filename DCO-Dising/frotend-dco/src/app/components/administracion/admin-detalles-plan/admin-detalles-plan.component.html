@@ -30,15 +30,6 @@
             <td>{{datosPlan.maxArchivos}}</td>
           </tr>
           <tr>
-            <td scope="row">Maximo de paginas</td>
-            <td>{{datosPlan.maxPaginas}}</td>
-          </tr>
-          <tr>
-            <td scope="row">Estilos personalizados</td>
-            <td *ngIf="datosPlan.ePersonalizados==true">Si</td>
-            <td *ngIf="datosPlan.ePersonalizados==false">No</td>
-          </tr>
-          <tr>
             <td scope="row">Comisión</td>
             <td>{{datosPlan.comision}} %</td>
           </tr>
@@ -66,14 +57,8 @@
           <input type="text" class="form-control" formControlName="nombre">
           <label for="descripcion">Descripción:</label>
           <input type="text" class="form-control" formControlName="descripcion">
-          <label for="maxPaginas">Maximo de paginas</label>
-          <input type="text" class="form-control" formControlName="maxPaginas">
           <label for="maxArchivos">Maximo de archivos</label>
           <input type="text" class="form-control" formControlName="maxArchivos">
-          <label for="ePersonalizados">Estilos personalizados</label>
-          <br>
-          <input type="checkbox" formControlName="ePersonalizados">
-          <br>
           <label for="comision">comision</label>
           <input type="text" class="form-control" formControlName="comision">
         </form>

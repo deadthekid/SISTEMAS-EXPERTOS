@@ -67,15 +67,13 @@ exports.obtenerPlan = async (req, res) => {
 //actualizar datos de plan
 exports.actualizarPlan = async (req, res) => {
     try {
-        const {id, nombre, descripcion, maxPaginas, maxArchivos, ePersonalizados, comision} = req.body
+        const {id, nombre, descripcion, maxArchivos, comision} = req.body
         let plan = await Plan.findById(id);
         if(plan){
             plan = await Plan.findOneAndUpdate({ _id : id }, {
                 'nombre' : nombre,
                 'descripcion' : descripcion,
-                'maxPaginas' : maxPaginas,
                 'maxArchivos' : maxArchivos,
-                'ePersonalizados' : ePersonalizados,
                 'comision' : comision
             }, { new:true } );
             res.send({mensaje:"plan actualizado",acceso:1});

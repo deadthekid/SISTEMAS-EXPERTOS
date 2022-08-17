@@ -13,14 +13,6 @@ const PlanSchema = mongoose.Schema({
         type:Number,
         require:true
     },
-    maxPaginas : {
-        type:Number,
-        require:true
-    },
-    ePersonalizados : {
-        type:Boolean,
-        require:true
-    },
     comision : {
         type:Number,
         require:true

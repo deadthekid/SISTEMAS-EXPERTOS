@@ -51,12 +51,9 @@ export class AdminDetallesPlanComponent implements OnInit {
       if(data.acceso){
         console.log(data.mensaje);
         this.datosPlan = data.plan;
-        //console.log(this.datosPlan);
         this.datosPlanNuevo.get('nombre')?.setValue(data.plan.nombre);
         this.datosPlanNuevo.get('descripcion')?.setValue(data.plan.descripcion);
-        this.datosPlanNuevo.get('maxPaginas')?.setValue(data.plan.maxPaginas);
         this.datosPlanNuevo.get('maxArchivos')?.setValue(data.plan.maxArchivos);
-        this.datosPlanNuevo.get('ePersonalizados')?.setValue(data.plan.ePersonalizados);
         this.datosPlanNuevo.get('comision')?.setValue(data.plan.comision);
       }else{
         console.log(data.mensaje);
@@ -71,9 +68,7 @@ export class AdminDetallesPlanComponent implements OnInit {
       id : this.datosPlan._id,
       nombre : this.datosPlanNuevo.value.nombre,
       descripcion : this.datosPlanNuevo.value.descripcion,
-      maxPaginas : this.datosPlanNuevo.value.maxPaginas,
       maxArchivos : this.datosPlanNuevo.value.maxArchivos,
-      ePersonalizados : this.datosPlanNuevo.value.ePersonalizados,
       comision : this.datosPlanNuevo.value.comision
     }
 

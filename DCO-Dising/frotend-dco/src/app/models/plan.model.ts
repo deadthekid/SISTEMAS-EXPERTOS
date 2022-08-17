@@ -3,17 +3,13 @@ export class Plan {
     nombre: string;
     descripcion: string
     maxArchivos: number;
-    maxPaginas: number;
-    ePersonalizados: boolean=false;
     comision: number;
 
-    constructor(nombre: string, descripcion: string, maxArchivos: number, maxPaginas: number, ePersonalizados: boolean, comision: number
+    constructor(nombre: string, descripcion: string, maxArchivos: number, comision: number
     ) {
         this.nombre = nombre
         this.descripcion = descripcion
         this.maxArchivos = maxArchivos
-        this.maxPaginas = maxPaginas
-        this.ePersonalizados = ePersonalizados
         this.comision = comision
     }
 }

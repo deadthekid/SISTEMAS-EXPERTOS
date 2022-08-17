@@ -37,8 +37,6 @@ constructor(
       nombre : this.formularioPlan.value.nombre!,
       descripcion : this.formularioPlan.value.desc!,
       maxArchivos : this.formularioPlan.value.maxA!,
-      maxPaginas : this.formularioPlan.value.maxP!,
-      ePersonalizados : this.formularioPlan.value.ePersonalizados!,
       comision : this.formularioPlan.value.comision!
     }
     //console.log(PLAN);
