@@ -81,7 +81,7 @@ const routes: Routes = [
   { path: 'empresa/categorias', component: CategoriasComponent },
   { path: 'usuarios/usaurio/producto', component: CreacionProductoComponent },
   { path: 'usuarios/ver-producto/:id', component: VerProductoAutenticadoComponent },
-  { path: 'usuarios/pago/realizar-compra', component: RealizarCompraComponent },
+  { path: 'usuarios/pago/realizar-compra', component: PaginaVerCreacionTresComponent },
   { path: 'usuarios/crearPagina', component: PaginaCreacionComponent },
   { path: 'usuarios/verPagina', component: PaginaVerCreacionComponent },
   { path: 'usuarios/verPagina2/:id', component: PaginaVerCreacionDosComponent },
@@ -114,8 +114,8 @@ const routes: Routes = [
   { path: 'empresa/CrearPagina', component: CrearPaginaComponent },
   { path: 'empresa/PaginaSinAyuda', component: PaginaSinAyudaComponent },
   { path: 'empresa/PaginaConAyuda', component: PaginaConAyudaComponent },
-  { path: 'empresa/:idEmpresa/galeriaProductos', component: GaleriaProductosComponent },
-  { path: 'empresa/:idEmpresa/producto/:idProducto', component: DetalleProductosComponent }
+  { path: 'empresa/:idEmpresa/galeriaProductos', component: PaginaVerCreacionComponent},
+  { path: 'empresa/:idEmpresa/producto/:idProducto', component: PaginaVerCreacionDosComponent }
 ];
 
 @NgModule({

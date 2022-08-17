@@ -26,9 +26,6 @@ const empresa = mongoose.Schema({
     bancoMultimedia: {
         type: []
     },
-    pagina: {
-        type: []
-    },
     estilo1: {
         type: String,
         required: false

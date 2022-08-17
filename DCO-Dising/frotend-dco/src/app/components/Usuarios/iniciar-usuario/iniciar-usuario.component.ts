@@ -42,7 +42,7 @@ export class IniciarUsuarioComponent implements OnInit {
         this.toastr.success('Ingreso de forma exitosa', 'Bienvenido');
         window.localStorage.setItem('usuario', data[0]._id)
 
-        this.router.navigate(['/usuarios/usaurio/inicio'])
+        this.router.navigate(['/Tiendas'])
       }else{
         this.toastr.error('Datos incorrectos', 'Correo o contraseña no validos');
       }

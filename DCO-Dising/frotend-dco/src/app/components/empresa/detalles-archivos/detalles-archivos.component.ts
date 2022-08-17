@@ -46,6 +46,9 @@ export class DetallesArchivosComponent implements OnInit {
           this.router.navigate(['/'])
           this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina', 'ERROR')
           window.localStorage.removeItem('empresa')
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
           valido = false
         }
       })
@@ -55,8 +58,11 @@ export class DetallesArchivosComponent implements OnInit {
   cerrarSesion() {
 
     window.localStorage.removeItem('empresa')
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
     this.toastr.success('Cierre de sesión exitoso')
-    this.router.navigate(['/empresa/login'])
+    this.router.navigate(['/'])
   }
   idArchivoURL() {
     this.idArchivo = window.location.href.split('/')[5]

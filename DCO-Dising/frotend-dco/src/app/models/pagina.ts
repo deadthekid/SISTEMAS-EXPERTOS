@@ -4,16 +4,12 @@ export class Pagina {
     css: string;
     javascript: string;
     empresaId: string;
-
-    constructor(html:string,css: string,javascript: string, empresaId: string){
-
-    empresaId: number;
     img1: string;
     img2: string;
     img3: string;
 
 
-    constructor(html:string,css: string,javascript: string, empresaId: number,img1: string,img2: string,img3: string){
+    constructor(html:string,css: string,javascript: string, empresaId: string,img1: string,img2: string,img3: string){
 
         this.html=html;
         this.css=css;

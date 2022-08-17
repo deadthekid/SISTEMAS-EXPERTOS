@@ -38,7 +38,7 @@ exports.listar = async (req, res) => {
         res.end()
     } catch (error) {
         console.log(error);
-        req.send('Hubo un error');
+        res.send('Hubo un error');
     }
 }
 
@@ -53,7 +53,7 @@ exports.obtenerEmpresa = async (req, res) => {
         res.end()
     } catch (error) {
         console.log(error);
-        req.send('Hubo un error');
+        res.send('Hubo un error');
     }
 }
 
@@ -70,7 +70,7 @@ exports.bloquearEmpresa = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        req.send('Hubo un error');
+        res.send('Hubo un error');
     }
 }
 
@@ -255,7 +255,7 @@ exports.updEstilos = async(req,res)=>{
         
     }catch(error){
         console.log(error);
-        req.send('Hubo un error');
+        res.send('Hubo un error');
     }
 }
 

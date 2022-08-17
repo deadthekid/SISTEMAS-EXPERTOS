@@ -1,10 +1,12 @@
-import { Component, OnInit, PipeTransform, Pipe} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 import { Pagina } from 'src/app/models/pagina';
+import { Producto } from 'src/app/models/producto';
 import { PaginaService } from 'src/app/services/pagina.service';
+import { ProductoService } from 'src/app/services/producto.service';
+import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { empresaService } from 'src/app/services/empresa.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-con-ayuda',
@@ -13,73 +15,84 @@ import { PaginaService } from 'src/app/services/pagina.service';
 })
 export class PaginaConAyudaComponent implements OnInit {
 
-  paginaForm: FormGroup;
-  html: string=""
-  css:  string=""
-  javascript: string=""
-  empresaId: number=0;
-  htmlStr=""
-  cssStr=""
+  listProductos: Producto[] = [];
+  listPaginas: Pagina[] = [];
+  listPaginas2: Pagina[] = [];
 
-  constructor(private fb: FormBuilder,
-    private router: Router,
-    private toastr: ToastrService,
-    private _paginaService: PaginaService,
-    private sanatizer:DomSanitizer) {
-    this.paginaForm = this.fb.group({
-      html:['',Validators.required],
-      css:['',[Validators.required]],
-      javascript:['',Validators.required],
-    })
+  constructor(private _productoService: ProductoService,
+    private _plantillaService: PaginaService,
+    private empresaServicio: empresaService
+    , private toastr: ToastrService,
+    private router: Router) {
+
+  }
+
+  editForm = {
+    idEmpresa: window.localStorage.getItem('empresa'),
+    estilo1: "1",
+    estilo2: "2",
+    estilo3: "3"
+  }
+
+  editForm2 = {
+    idEmpresa: window.localStorage.getItem('empresa'),
+    estilo1: "4",
+    estilo2: "5",
+    estilo3: "6"
   }
 
   ngOnInit(): void {
-   
-  }
-  
-  agregarPagina(){
-    const PAGINA: Pagina={
-      html: this.paginaForm.get('html')?.value,
-      css: this.paginaForm.get('css')?.value,
-      javascript: this.paginaForm.get('javascript')?.value,
-      empresaId: window.localStorage.getItem('empresa')!
-    }
-
-    
-    console.log(PAGINA);
-    this._paginaService.guardarPagina(PAGINA).subscribe(data=>{
-      this.toastr.success('El usuario fue registrado con exito', 'Usuario Registrado');
-      this.router.navigate(['/paginas/ver'])
-    }, error=>{
-      console.log(error);
-      this.paginaForm.reset();
-    })
-    
-
-    
+    this.obtenerProductos();
+    this.obtenerPlantillas();
   }
 
-  renderizarPagina() {
-    let id="62f691e65116e89d0e67dc41"
-    this. _paginaService.obtenerPagina(id).subscribe(data => {
-      if (data) {
-      this.html =data.html;
-       this.css= data.css;
-       this.javascript = data.javascript;
-       this.empresaId = data.empresaId;
-       this.htmlStr =data.html;
-       this.cssStr =data.css;
-       console.log(this.cssStr)
+  cerrarSesion() {
+    console.log('dio click en cerrar sesion')
+    window.localStorage.removeItem('empresa')
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
+    this.toastr.success('Cierre de sesión exitoso')
+    this.router.navigate(['/'])
+  }
 
-      }else{
-        this.toastr.error('Datos incorrectos', 'error');
-      }
-
+  obtenerProductos() {
+    this._productoService.getProductos().subscribe(data => {
+      console.log(data);
+      this.listProductos = data;
     }, error => {
       console.log(error);
-      this.paginaForm.reset();
-      this.toastr.error('Algo salio mal en el login')
     })
   }
 
+  obtenerPlantillas() {
+    this._plantillaService.obtenerPagina("1").subscribe(data => {
+      console.log(data);
+      this.listPaginas.push(data);
+    }, error => {
+      console.log(error);
+    })
+    this._plantillaService.obtenerPagina("6").subscribe(data => {
+      console.log(data);
+      this.listPaginas2.push(data);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  actualizarEstilos(op: any) {
+    if (op == "0") {
+      this.empresaServicio.editEstilos(this.editForm).subscribe((res) => {
+        console.log(res)
+        console.log(this.editForm)
+        this.toastr.success('Estilo asignado con exito')
+      })
+    } else if (op == "1") {
+      this.empresaServicio.editEstilos(this.editForm2).subscribe((res) => {
+        console.log(res)
+        this.toastr.success('Estilo asignado con exito')
+      })
+    }
+  }
 }
+

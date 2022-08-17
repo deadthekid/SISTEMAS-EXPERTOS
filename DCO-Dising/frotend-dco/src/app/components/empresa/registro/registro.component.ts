@@ -39,7 +39,6 @@ export class RegistroComponent implements OnInit {
       contrasena: this.contrasena?.value!,
       plan: this.plan?.value!,
       bancoMultimedia: [],
-      pagina: [],
       productos: [],
       categorias: [],
       activo: true,
@@ -51,7 +50,7 @@ export class RegistroComponent implements OnInit {
     console.log("empresa: ", empresa)
     this._empresaServicio.agregar(empresa).subscribe(data => {
       this.toastr.success('Se registro de forma exitosa', 'Registro de empresa exitoso');
-      this.router.navigate(['/empresa/login'])
+      this.router.navigate(['/'])
       console.log(data)
     }, error => {
       console.log(error);

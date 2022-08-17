@@ -7,7 +7,6 @@ export class Empresa {
     contrasena: string;
     plan: string;
     bancoMultimedia: any;
-    pagina: any;
     estilo1:string|null;
     estilo2:string|null;
     estilo3:string|null;
@@ -15,7 +14,7 @@ export class Empresa {
     categorias: any;
     activo: boolean=true
 
-    constructor(nombre: string, correo: string, descripcion: string,logo: string, contrasena: string, plan: string, bancoMultimedia: any, pagina: any, productos: any, categorias: any, activo: boolean
+    constructor(nombre: string, correo: string, descripcion: string,logo: string, contrasena: string, plan: string, bancoMultimedia: any, productos: any, categorias: any, activo: boolean
         , estilo1: string, estilo2: string, estilo3: string
     ) {
         this.nombre = nombre
@@ -25,7 +24,6 @@ export class Empresa {
         this.contrasena = contrasena
         this.plan = plan
         this.bancoMultimedia = bancoMultimedia
-        this.pagina = pagina
         this.productos = productos
         this.categorias=categorias
         this.activo=activo

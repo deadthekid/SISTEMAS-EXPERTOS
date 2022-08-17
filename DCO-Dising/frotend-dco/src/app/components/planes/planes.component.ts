@@ -34,6 +34,8 @@ export class PlanesComponent implements OnInit {
     this.toastr.success('Cierre de sesión exitoso')
     window.localStorage.removeItem('empresa')
     window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
     this.router.navigate(['/'])
     this.logeado()
   }

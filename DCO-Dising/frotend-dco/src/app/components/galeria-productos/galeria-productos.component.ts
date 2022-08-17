@@ -53,7 +53,10 @@ export class GaleriaProductosComponent implements OnInit {
 
     this.toastr.success('Cierre de sesión exitoso')
     window.localStorage.removeItem('empresa')
-    this.router.navigate(['/empresa/login'])
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
+    this.router.navigate(['/'])
 
   }
   carrito2: Carrito[] = [];

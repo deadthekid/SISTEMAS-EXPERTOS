@@ -36,6 +36,9 @@ export class MultimediaComponent implements OnInit {
           this.router.navigate(['/'])
           this.toastr.error('Necesita ingresar con una cuenta verificada para ingresar a esa pagina','ERROR')
           window.localStorage.removeItem('empresa')
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
           valido=false
         }
       })
@@ -44,8 +47,11 @@ export class MultimediaComponent implements OnInit {
   }
   cerrarSesion() {
     window.localStorage.removeItem('empresa')
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
     this.toastr.success('Cierre de sesión exitoso')
-    this.router.navigate(['/empresa/login'])
+    this.router.navigate(['/'])
   }
   logoEmpresa() {
     this.empresaServicio.logo(window.localStorage.getItem('empresa')!).subscribe((res) => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Carrito } from 'src/app/models/interfaz-carrito';
@@ -12,57 +12,126 @@ import { empresaService } from 'src/app/services/empresa.service';
   templateUrl: './pagina-ver-creacion-dos.component.html',
   styleUrls: ['./pagina-ver-creacion-dos.component.css']
 })
-export class PaginaVerCreacionDosComponent implements OnInit {paginaForm: FormGroup;
-  htmlStr=""
-  cssStr=""
-  html: string=""
-  css:  string=""
-  javascript: string=""
-  empresaId: number=0;
-  id:string | null;
-  productoForm:FormGroup;
-  nombre:string="";
-  precio:number=0;
-  img:string="";
-  vendedor:string="";
-  descripcion:string="";
+export class PaginaVerCreacionDosComponent implements OnInit {
+  paginaForm: FormGroup;
+  htmlStr = ""
+  cssStr = ""
+  html: string = ""
+  css: string = ""
+  javascript: string = ""
+  empresaId: number = 0;
+  productoForm: FormGroup;
+  nombre: string = "";
+  precio: number = 0;
+  img: string = "";
+  vendedor: string = "";
+  descripcion: string = "";
   listProductos: Producto[] = [];
-  e1="";
+  e1 = "";
 
-  carrito:Carrito[] = [];
-  constructor(private aRoute:ActivatedRoute,
-            private _productoService: ProductoService,
-            private _empresaService: empresaService,
-            private toastr: ToastrService,
-            private fb:FormBuilder,
-            private _paginaService: PaginaService) {
+  carrito: Carrito[] = [];
+  constructor(private aRoute: ActivatedRoute,
+    private _productoService: ProductoService,
+    private _empresaService: empresaService,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private _paginaService: PaginaService,
+    private router: Router) {
 
     this.productoForm = this.fb.group({
-      nombre: ['',Validators.required],
-      precio: ['',Validators.required],
-      img: ['',Validators.required]
-    })    
-
-    this.paginaForm = this.fb.group({
-      html:['',Validators.required],
-      css:['',[Validators.required]],
-      javascript:['',Validators.required],
-      empresaId:['',Validators.required],
-     
+      nombre: ['', Validators.required],
+      precio: ['', Validators.required],
+      img: ['', Validators.required]
     })
 
-    this.id=this.aRoute.snapshot.paramMap.get('id');
+    this.paginaForm = this.fb.group({
+      html: ['', Validators.required],
+      css: ['', [Validators.required]],
+      javascript: ['', Validators.required],
+      empresaId: ['', Validators.required],
+
+    })
+
   }
 
   ngOnInit(): void {
+    this.logeado()
+    this.getIdEmpresa()
+    this.getIdProducto()
     this.obtenerProducto();
     this.obtenerPagina();
   }
 
+  idEmpresa!: string
+  idProdcuto!: string
+  getIdProducto() {
+    this.idProdcuto = this.aRoute.snapshot.paramMap.get('idProducto')!
+  }
+  logged!: boolean
+
+
+
+  obtenerPagina() {
+    this._empresaService.getEmpresa(this.idEmpresa).subscribe(data => {
+      if (data) {
+        console.log(data)
+        this.e1 = data.empresa.estilo2;
+        console.log(this.e1)
+        this.renderizarPagina();
+      } else {
+        this.toastr.error('Datos incorrectos', 'error');
+      }
+    }, error => {
+      console.log(error);
+      this.paginaForm.reset();
+      this.toastr.error('Algo salio mal en el login')
+    })
+  }
+
+  renderizarPagina() {
+
+
+
+    this._paginaService.obtenerPagina(this.e1).subscribe(data => {
+      if (data) {
+        this.html = data.html;
+        this.css = data.css;
+        this.javascript = data.javascript;
+        this.empresaId = data.empresaId;
+        this.htmlStr = data.html;
+        this.cssStr = data.css;
+        console.log(this.cssStr)
+
+      } else {
+        this.toastr.error('Datos incorrectos', 'error');
+      }
+
+    }, error => {
+      console.log(error);
+      this.paginaForm.reset();
+      this.toastr.error('Algo salio mal en el login')
+    })
+  }
+  carrito2: Carrito[] = [];
+  
+  logeado() {
+    if (window.localStorage.getItem('empresa') || window.localStorage.getItem('usuario')) {
+      this.logged = true
+    } else {
+      this.logged = false
+    }
+  }
+
+  
+  getIdEmpresa() {
+    this.idEmpresa = this.aRoute.snapshot.paramMap.get('idEmpresa')!;
+    console.log(this.idEmpresa)
+  }
   obtenerProducto(){
-    if(this.id!==null){
-      this._productoService.buscarProducto(this.id).subscribe(data=>{
-        this.id = data._id;
+    console.log("idProducto",this.idProdcuto)
+    if(this.idProdcuto!==null){
+      this._productoService.buscarProducto(this.idProdcuto).subscribe(data=>{
+        this.idProdcuto = data._id;
        this.nombre =data.nombre;
        this.img= data.img;
        this.precio = data.precio;
@@ -73,8 +142,8 @@ export class PaginaVerCreacionDosComponent implements OnInit {paginaForm: FormGr
   }
 
   carritoCompras(){
-    if(this.id!==null){
-      this._productoService.buscarProducto(this.id).subscribe(data=>{
+    if(this.idProdcuto!==null){
+      this._productoService.buscarProducto(this.idProdcuto).subscribe(data=>{
         if(window.localStorage.getItem('carrito')==null){
           let productoAux= {
             idProducto: data._id,
@@ -111,49 +180,52 @@ export class PaginaVerCreacionDosComponent implements OnInit {paginaForm: FormGr
       })
     }
     
+  } 
+   cerrarSesion() {
+
+    this.toastr.success('Cierre de sesión exitoso')
+    window.localStorage.removeItem('empresa')
+    window.localStorage.removeItem('usuario')
+    window.localStorage.removeItem('usuarioAdmin')
+    window.localStorage.removeItem('carrito')
+    this.router.navigate(['/'])
+
   }
 
-  obtenerPagina(){
-    this._empresaService.getEmpresa(window.localStorage.getItem('empresa')|| '{}').subscribe(data => {
-      if (data) {
-        console.log(data)
-      this.e1 =data.empresa.estilo2;
-      console.log(this.e1)
-      this.renderizarPagina();
-      }else{
-        this.toastr.error('Datos incorrectos', 'error');
+
+  
+  mostrarCarrito() {
+    if (window.localStorage.getItem('carrito') == null) {
+      this.toastr.warning('Aun no agregado ningun producto a su carrito :(')
+    } else {
+      this.carrito2 = JSON.parse(window.localStorage.getItem('carrito') || '{}')
+      if (this.carrito2.length == 0) {
+        this.toastr.warning('Aun no agregado ningun producto a su carrito :(')
+        console.log(this.carrito2.length)
+      } else {
+        this.carrito2 = JSON.parse(window.localStorage.getItem('carrito') || '{}')
+        this.toastr.success('Productos cargados con Exito :)')
       }
-    }, error => {
-      console.log(error);
-      this.paginaForm.reset();
-      this.toastr.error('Algo salio mal en el login')
-    })
+
+    }
   }
-   
-  renderizarPagina() {
-    
-    
-
-    this. _paginaService.obtenerPagina(this.e1).subscribe(data => {
-      if (data) {
-      this.html =data.html;
-       this.css= data.css;
-       this.javascript = data.javascript;
-       this.empresaId = data.empresaId;
-       this.htmlStr =data.html;
-       this.cssStr =data.css;
-       console.log(this.cssStr)
-
-      }else{
-        this.toastr.error('Datos incorrectos', 'error');
-      }
-
+  obtenerProductosCarrito() {
+    this._productoService.getProductos().subscribe(data => {
+      console.log(data);
+      this.listProductos = data;
     }, error => {
       console.log(error);
-      this.paginaForm.reset();
-      this.toastr.error('Algo salio mal en el login')
     })
   }
 
+  eliminarProductoCarrito(id: any) {
+    this.carrito2 = JSON.parse(window.localStorage.getItem('carrito') || '{}')
+    let eliminarAux = id - 1;
+    this.carrito2.splice(eliminarAux, 1);
+    console.log(id);
+    window.localStorage.setItem('carrito', JSON.stringify(this.carrito2));
+    console.log(this.carrito2)
+    this.toastr.warning('Se elimino de su carrito el producto con exito')
 
+  }
 }

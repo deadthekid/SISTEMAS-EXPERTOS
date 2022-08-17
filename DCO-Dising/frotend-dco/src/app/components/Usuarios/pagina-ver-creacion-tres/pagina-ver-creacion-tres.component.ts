@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Carrito } from 'src/app/models/interfaz-carrito';
@@ -13,7 +13,8 @@ import { PaginaService } from 'src/app/services/pagina.service';
   templateUrl: './pagina-ver-creacion-tres.component.html',
   styleUrls: ['./pagina-ver-creacion-tres.component.css']
 })
-export class PaginaVerCreacionTresComponent implements OnInit {paginaForm: FormGroup;
+export class PaginaVerCreacionTresComponent implements OnInit {
+    paginaForm: FormGroup;
 
   compraForm: FormGroup;
   carrito: Carrito[] = [];
@@ -21,20 +22,21 @@ export class PaginaVerCreacionTresComponent implements OnInit {paginaForm: FormG
   subTotal: number = 0;
   Total: number = 0;
 
-  htmlStr=""
-  cssStr=""
-  html: string=""
-  css:  string=""
-  javascript: string=""
-  empresaId: number=0;
-  e1="";
+  htmlStr = ""
+  cssStr = ""
+  html: string = ""
+  css: string = ""
+  javascript: string = ""
+  empresaId: number = 0;
+  e1 = "";
   constructor(private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private _usuarioServicio: UsuarioService,
     private empresaServicio: empresaService,
     private _empresaService: empresaService,
-    private _paginaService: PaginaService) {
+    private _paginaService: PaginaService,
+    private aRoute: ActivatedRoute) {
     this.compraForm = this.fb.group({
       nombre: ['', Validators.required],
       numero: ['', [Validators.required]],
@@ -44,19 +46,22 @@ export class PaginaVerCreacionTresComponent implements OnInit {paginaForm: FormG
     })
 
     this.paginaForm = this.fb.group({
-      html:['',Validators.required],
-      css:['',[Validators.required]],
-      javascript:['',Validators.required],
-      empresaId:['',Validators.required],
-     
+      html: ['', Validators.required],
+      css: ['', [Validators.required]],
+      javascript: ['', Validators.required],
+      empresaId: ['', Validators.required],
+
     })
   }
 
   ngOnInit(): void {
     this.cargarCarrito();
     this.calcularInfo();
-    this.obtenerPagina();
+    this.renderizarPagina()
   }
+
+
+  idEmpresa!: string
 
   cargarCarrito() {
     if (window.localStorage.getItem('carrito') == null) {
@@ -122,38 +127,23 @@ export class PaginaVerCreacionTresComponent implements OnInit {paginaForm: FormG
     }
   }
 
-  obtenerPagina(){
-    this._empresaService.getEmpresa(window.localStorage.getItem('empresa')|| '{}').subscribe(data => {
-      if (data) {
-        console.log(data)
-      this.e1 =data.empresa.estilo3;
-      console.log(this.e1)
-      this.renderizarPagina();
-      }else{
-        this.toastr.error('Datos incorrectos', 'error');
-      }
-    }, error => {
-      console.log(error);
-      this.paginaForm.reset();
-      this.toastr.error('Algo salio mal en el login')
-    })
-  }
-   
+  
+
   renderizarPagina() {
-    
-    
 
-    this. _paginaService.obtenerPagina(this.e1).subscribe(data => {
+
+
+    this._paginaService.obtenerPagina("3").subscribe(data => {
       if (data) {
-      this.html =data.html;
-       this.css= data.css;
-       this.javascript = data.javascript;
-       this.empresaId = data.empresaId;
-       this.htmlStr =data.html;
-       this.cssStr =data.css;
-       console.log(this.cssStr)
+        this.html = data.html;
+        this.css = data.css;
+        this.javascript = data.javascript;
+        this.empresaId = data.empresaId;
+        this.htmlStr = data.html;
+        this.cssStr = data.css;
+        console.log(this.cssStr)
 
-      }else{
+      } else {
         this.toastr.error('Datos incorrectos', 'error');
       }
 
