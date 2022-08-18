@@ -1,8 +1,9 @@
 <app-admin-navbar></app-admin-navbar>
+
 <div class="container-fluid">
     <div class="row contenido">
         <div class="row titulo">
-            <h3>Registrar Usuario</h3>
+            <h3>Registrar Nuevo Tema</h3>
         </div>
         <div class="col-6">
             <form [formGroup]="formularioPlantilla">
@@ -12,7 +13,7 @@
                 </div>
                 <label for="HTML">HTML</label>
                 <div class="row justify-content-center datosPlantilla">
-                    <textarea name="HTML" rows="11" formControlName="html"></textarea>
+                    <textarea class="code-editor" name="HTML" rows="11" formControlName="html"></textarea>
                 </div>
             </form>
         </div>
@@ -20,11 +21,11 @@
             <form [formGroup]="formularioPlantilla">
                 <label for="CSS">CSS</label>
                 <div class="row justify-content-center datosPlantilla">
-                    <textarea name="CSS" rows="6" formControlName="css"></textarea>
+                    <textarea class="code-editor" name="CSS" rows="6" formControlName="css"></textarea>
                 </div>
                 <label for="JavaScript">JavaScript</label>
                 <div class="row justify-content-center datosPlantilla">
-                    <textarea name="JS" rows="6" formControlName="javascript"></textarea>
+                    <textarea class="code-editor" name="JS" rows="6" formControlName="javascript"></textarea>
                 </div>
             </form>
         </div>
@@ -35,3 +36,5 @@
 
 </div>
 <div class="pie"><br></div>
+
+<script src="prism-live.js?load=css,html,javascript"></script>
