@@ -61,7 +61,7 @@ export class AdminEditarTemaComponent implements OnInit {
     this.adminServicio.actualizarPlantilla(plantilla).subscribe( data => {
       if(data.acceso){
         this.toastr.success(data.mensaje);
-        this.getPlantilla();
+        this.router.navigate([`/admin/tema/${this.idPlantilla}`])
       }else{
         this.toastr.error(data.mensaje);
       }

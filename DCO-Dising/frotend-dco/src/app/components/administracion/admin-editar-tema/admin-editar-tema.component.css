@@ -21,15 +21,15 @@
     padding: 7px;
 }
 
+.code-editor {
+    background-color: #272822;
+    border: solid 1px;
+    color: #f8f8f2;
+}
+
 .pie {
     background-color: #184E5D;
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-.code-editor {
-    background-color: #272822;
-    border: solid 1px;
-    color: #f8f8f2;
 }
