@@ -1,0 +1,109 @@
+<div class="contenedor">
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            <div class="nav-l" style="text-align: center;">
+                <a class="navbar-brand" href="/empresa/principal" style="width: 50%;">
+                    <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
+                </a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/categorias">Categorías</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/multimedia">Banco Multimedia</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/administrarPaginas">Páginas</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/Productos">Productos</a>
+            </div> <div class="nav-r">
+                <a href="/empresa/historial">Historial</a>
+            </div>
+            <div class="nav-r">
+                <div>
+                    <input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenido">
+        <div class="detalles">
+            <div class="imagen">
+                <div id="imagen">
+                    <img [src]="detalles.visualizar" alt="no disponible" width="100%">
+                    <a [download]="detalles.nombre" [href]="descarga">Download</a>
+                </div>
+            </div>
+            <div class="nombre">
+                <h4 id="nombre">
+                    Nombre: {{detalles.nombre}}
+                </h4>
+            </div>
+            <div class="shortcut">
+                <h4 id="shortcut">
+                    Shortcut: {{detalles.shortcut}}
+                </h4>
+            </div>
+            <div class="actualizar">
+                <div id="actualizar">
+                    <button type="button" class="btn botones" data-bs-toggle="modal" data-bs-target="#modalActualizar">
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+            <div class="eliminar">
+                <div id="eliminar">
+                    <button type="button" class="btn botones" data-bs-toggle="modal" data-bs-target="#modalEliminar">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pie"><br></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro en eliminar este archivo?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="eliminar()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar archivo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="infoArchivo">
+                    <input type="file" class="form-control" (change)="subir($event)" formControlName="archivo">
+                </form>
+            </div>
+            <div class="visualizacion">
+                <img *ngIf="infoArchivo.valid" [src]="visualizar" alt="esperando archivo" style="width: 100%;">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="actualizar()" *ngIf="infoArchivo.valid && tamanoValido==true" data-bs-dismiss="modal">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>

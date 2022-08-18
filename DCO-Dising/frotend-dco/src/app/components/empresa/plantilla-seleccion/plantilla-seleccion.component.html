@@ -1,0 +1,98 @@
+<div class="contenedor">
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            <div class="nav-l">
+                    <img class="logo" src="./assets/logo-lateral.png"><img>          
+            </div>
+            <div class="nav-c">
+                <div class="contenedor-formulario ">
+                    <form class="formulario">
+                            <div class="contenedor-search">
+                                <input class="buscador " type="search" placeholder="Buscar" aria-label="Search">
+                                <div style="padding-left: 0px;"> 
+                                    <button class="buscador-btn" type="submit"><img class="logo-search" src="./assets/search.svg"></button>
+                                </div>
+                                
+                            </div> 
+                    </form>
+                </div>
+            </div>
+            <div class="nav-r">
+                <div>
+                    <a href="/usuarios">Iniciar Sesion</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="contenido-principal">
+        <div class="container">
+            <div class="row">
+                    <div class="col-12 mt-4" *ngFor="let pagina of listPaginas;index as i" >
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" >
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{{pagina.img1}}" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{{pagina.img2}}" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{{pagina.img3}}" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-info float-end" (click)="actualizarEstilos(0)">Seleccionar</button>
+                    </div>
+
+                    <div class="col-12 mt-4" *ngFor="let pagina of listPaginas2;index as i" >
+                        <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="true" >
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="{{pagina.img1}}" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{{pagina.img2}}" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="{{pagina.img3}}" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-info float-end" (click)="actualizarEstilos(1)">Seleccionar</button>
+                    </div>
+                      
+            </div>
+            
+        </div>
+    </div>
+    <div class="pie-pagina">
+        
+    </div>
+</div>

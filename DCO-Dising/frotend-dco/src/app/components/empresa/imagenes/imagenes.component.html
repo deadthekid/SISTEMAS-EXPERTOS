@@ -1,0 +1,46 @@
+<div class="contenedor">
+    <div class="navegacion">
+        <div class="contenedor-nav">
+            <div class="nav-l" style="text-align: center;">
+                <a class="navbar-brand" href="/empresa/principal" style="width: 50%;">
+                    <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
+                </a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/categorias">Categorías</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/multimedia">Banco Multimedia</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/administrarPaginas">Páginas</a>
+            </div>
+            <div class="nav-r">
+                <a href="/empresa/Productos">Productos</a>
+            </div> <div class="nav-r">
+                <a href="/empresa/historial">Historial</a>
+            </div>
+            <div class="nav-r">
+                <div>
+                    <input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenido">
+        <div class="imagenes">
+            <div class="row">
+                <div class="card col-3" style="width: 18rem; padding: 5px;" *ngFor="let i of imagenes | paginate: {itemsPerPage: 15, currentPage: page}">
+                    <img [src]="i.datos" class="card-img-top imgCard" alt="..." >
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.nombre}} </h5>
+                        <div style="text-align: center;"><input type="button" value="Detalles" class="btnDetalles" (click)="detalles(i.id)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pagination-controls style="text-align: center; background-color: rgba(216, 246, 255, .50);" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
+    <div class="pie"><br></div>
+</div>

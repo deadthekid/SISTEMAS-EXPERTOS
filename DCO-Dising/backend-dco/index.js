@@ -1,16 +1,39 @@
-var express = require('express');
+const express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
+const conectarDB = require('./config/db');
+const cors = require("cors");
+const path = require('path');
+const multipart = require('connect-multiparty');
+//Creamos el servidor
+const app = express();
+
+//Conectamos a la DB
+
+app.use(cors());
+conectarDB()
+
 
 //Middleware
-app.use(express.static('public'));//Se usa para ejecutar funciones middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+//Se usa para ejecutar funciones middleware
+app.use(bodyParser.json({ limit: '200mb' }));
+app.use(bodyParser.urlencoded({
+    limit: '200mb',
+    extended: true
+}
+));
 
-app.post('/guardar',function(req,res){
-    res.send(`Guardar el Usuario ${req.body.nombre}`);
-})
+//rutas
 
-app.listen(8888,function(){
-    console.log('Se levanto el servidor');
+app.use('/api/usuarios',require('./routes/usuario'));
+app.use('/api/productos',require('./routes/producto'));
+app.use('/empresa/',require('./routes/empresa'));
+app.use('/admin/',require('./routes/admin'));
+app.use('/api/paginas',require('./routes/pagina'));
+
+
+app.listen(4000, () => {
+    console.log('El servidor esta corriendo perfectamente');
 });
+
+
+

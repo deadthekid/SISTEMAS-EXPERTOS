@@ -1,0 +1,36 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container-fluid">
+    <div class="row titulo">
+        <h3>Editar Plantilla</h3>
+    </div>
+    <div class="row contenido">
+        <div class="col-6">
+            <form [formGroup]="formularioPlantilla">
+                <label for="Nombre">Nombre</label>
+                <div class="row justify-content-center datosPlantilla">
+                    <input type="tex" formControlName="nombre">
+                </div>
+                <label for="HTML">HTML</label>
+                <div class="row justify-content-center datosPlantilla">
+                    <textarea name="HTML" rows="11" formControlName="html"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+            <form [formGroup]="formularioPlantilla">
+                <label for="CSS">CSS</label>
+                <div class="row justify-content-center datosPlantilla">
+                    <textarea name="CSS" rows="6" formControlName="css"></textarea>
+                </div>
+                <label for="JavaScript">JavaScript</label>
+                <div class="row justify-content-center datosPlantilla">
+                    <textarea name="JS" rows="6" formControlName="javascript"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row boton justify-content-center">
+        <button class="btn btn-success btnNuevo" (click)="editarPlantilla()">Aceptar</button>
+    </div>
+</div>
+<div class="pie"><br></div>

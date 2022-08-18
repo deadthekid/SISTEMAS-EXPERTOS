@@ -1,0 +1,116 @@
+<div class="contenedor">
+  <div class="navegacion">
+    <div class="contenedor-nav">
+      <div class="nav-l" style="text-align: center;">
+        <a class="navbar-brand" href="/empresa/principal" style="width: 50%;">
+          <img class="logo" src="./assets/logo-lateral.png" style="width: 100%;"><img>
+        </a>
+      </div>
+      <div class="nav-r">
+        <a href="/empresa/categorias">Categorías</a>
+      </div>
+      <div class="nav-r">
+        <a href="/empresa/multimedia">Banco Multimedia</a>
+      </div>
+      <div class="nav-r">
+        <a href="/empresa/administrarPaginas">Páginas</a>
+      </div>
+      <div class="nav-r">
+        <a href="/empresa/Productos">Productos</a>
+      </div>
+      <div class="nav-r">
+        <a href="/empresa/historial">Historial</a>
+      </div>
+      <div class="nav-r">
+        <div>
+          <input class="btnCerrarSesion" type="button" value="Cerrar Sesión" (click)="cerrarSesion()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contenido-principal">
+    <div style="text-align: center;">
+      <h1>
+        Seleccione la plantilla que desea utilizar para las vistas
+      </h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mt-4" *ngFor="let pagina of listPaginas;index as i">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{pagina.img1}}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{pagina.img2}}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{pagina.img3}}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <button type="button" class="btn btn-info float-end" (click)="actualizarEstilos(0)">Seleccionar</button>
+        </div>
+
+        <div class="col-12 mt-4" *ngFor="let pagina of listPaginas2;index as i">
+          <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{pagina.img1}}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{pagina.img2}}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{{pagina.img3}}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <button type="button" class="btn btn-info float-end" (click)="actualizarEstilos(1)">Seleccionar</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="pie-pagina">
+
+  </div>
+</div>

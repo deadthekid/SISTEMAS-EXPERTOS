@@ -1,0 +1,20 @@
+.btnTema{
+    border-radius: 7px;
+    background-color: #184E5D;
+    color: white;
+    margin-top: 1.5rem;
+}
+
+.btnDetalles {
+    border-radius: 7px;
+    background-color: #184E5D;
+    color: white;
+}
+ 
+
+.pie {
+    background-color: #184E5D;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
