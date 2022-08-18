@@ -1,8 +1,9 @@
 <app-admin-navbar></app-admin-navbar>
+
 <div class="container-fluid">
     <div class="row contenido">
         <div class="row titulo">
-            <h3>Registrar Usuario</h3>
+            <h3>Registrar Nuevo Tema</h3>
         </div>
         <div class="col-6">
             <form [formGroup]="formularioPlantilla">
@@ -12,7 +13,8 @@
                 </div>
                 <label for="HTML">HTML</label>
                 <div class="row justify-content-center datosPlantilla">
-                    <textarea name="HTML" rows="11" formControlName="html"></textarea>
+                    <textarea class="prism-live language-html" name="HTML" rows="11" formControlName="html">
+                    </textarea>
                 </div>
             </form>
         </div>
@@ -35,3 +37,5 @@
 
 </div>
 <div class="pie"><br></div>
+
+<script src="prism-live.js?load=css,html,javascript"></script>
