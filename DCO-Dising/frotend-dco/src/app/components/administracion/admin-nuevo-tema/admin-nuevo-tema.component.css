@@ -17,6 +17,12 @@
     height: 50px;
 }
 
+.code-editor {
+    background-color: #272822;
+    border: solid 1px;
+    color: #f8f8f2;
+}
+
 .datosPlantilla {
     padding: 7px;
 }
