@@ -14,7 +14,8 @@
 
 .btnNuevo {
     width: 10%;
-    height: 60%;
+    position: fixed;
+    bottom: 30px;
 }
 
 .datosPlantilla {
