@@ -57,7 +57,7 @@ export class TiendasComponent implements OnInit {
           if (element.activo && element.productos.length > 0) {
             temporal.push(element)
           }else{
-            this.toastr.error('Parece que las empresas no tienen productos a la venta :(','Lo sentimos')
+            this.toastr.error('Parece que algunas empresas no tienen productos a la venta :(  regresa luego y podrían haber mas opciones ;)','Lo sentimos')
           }
         });
         this.listaEmpresas = temporal
